@@ -34,6 +34,11 @@ COPY = ["assets", "data", "slots", "robots.txt", "_headers", "_redirects"]
 
 DEFAULT_SITE = "https://openarc.example.com"
 
+# Default thumbnail glyph used when a catalog entry omits "icon". Kept as a plain
+# string constant so it never lands inside an f-string expression (which would
+# raise SyntaxError on Python < 3.12, e.g. the CI runner's Python 3.11).
+DEFAULT_ICON = "\U0001F3AE"
+
 
 def load_games() -> list[dict]:
     with open(DATA, encoding="utf-8") as fh:
@@ -56,7 +61,7 @@ def render_item(g: dict) -> str:
         '        <li class="card"'
         f' data-source="{e(g.get("source", "other"))}"'
         f' data-tags="{e(" ".join(g.get("tags", [])))}">\n'
-        f'          <div class="thumb" aria-hidden="true">{e(g.get("icon", "\U0001F3AE"))}</div>\n'
+        f'          <div class="thumb" aria-hidden="true">{e(g.get("icon", DEFAULT_ICON))}</div>\n'
         f'          <h3>{e(g["title"])}</h3>\n'
         f'          <p>{e(g.get("description", ""))}</p>\n'
         '          <div class="meta">\n'
