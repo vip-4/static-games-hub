@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import json
 import os
+import posixpath
 import re
 import sys
 
@@ -196,17 +197,25 @@ def main() -> int:
                 continue
             p = os.path.join(root, name)
             h = open(p, encoding="utf-8").read()
-            for href in re.findall(r'href="([^"]+)"', h):
+            for href in re.findall(r'(?:href|src)="([^"]+)"', h):
                 if href.startswith(("http", "#", "mailto:", "tel:", "data:", "//")):
                     continue
                 clean = href.split("#")[0].split("?")[0]
                 if not clean:
                     continue
-                # strip any base-path prefix (e.g. /repo/assets/... -> assets/...)
-                rel = clean.lstrip("/")
-                target = os.path.join(DIST, rel)
-                if not os.path.exists(target):  # retry one level up (base-path build)
-                    target = os.path.join(DIST, "/".join(rel.split("/")[1:]))
+                # Resolve relative to the file's own directory (handles ./ and ../),
+                # or as root-absolute (strip leading /, with a base-path retry).
+                filedir = os.path.relpath(os.path.dirname(p), DIST).replace(os.sep, "/")
+                if clean.startswith("/"):
+                    rel = clean.lstrip("/")
+                    target = os.path.join(DIST, *rel.split("/"))
+                    if not os.path.exists(target):  # base-path build: /repo/.. -> ..
+                        parts = rel.split("/")
+                        if len(parts) > 1:
+                            target = os.path.join(DIST, *parts[1:])
+                else:
+                    rel = posixpath.normpath(posixpath.join(filedir, clean))
+                    target = os.path.join(DIST, *rel.split("/"))
                 if not os.path.exists(target):
                     broken.append((os.path.relpath(p, DIST), href))
     check(not broken, "all internal links resolve",
