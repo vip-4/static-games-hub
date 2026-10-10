@@ -1,0 +1,11 @@
+# Cloudflare Pages configuration.
+# Deploy:  npx wrangler@latest pages deploy dist --project-name=openarc
+# Auth comes from CLOUDFLARE_API_TOKEN (env) or `wrangler login` — never from this file.
+
+name = "openarc"
+compatibility_date = "2026-01-01"
+pages_build_output_dir = "dist"
+
+# Static assets only — nothing is executed at the edge, so no keys are needed.
+[build]
+command = "python scripts/build.py"

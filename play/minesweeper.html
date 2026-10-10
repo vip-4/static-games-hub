@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Minesweeper — Free Open-Source Static Puzzle Game | OpenArc</title>
+  <meta name="description" content="Play Minesweeper free: reveal safe cells without hitting a mine. A lightweight, dependency-free, open-source static HTML5 puzzle game you can self-host." />
+  <meta name="keywords" content="minesweeper game, open source game, HTML5 puzzle game, static game, minesweeper online" />
+  <meta name="author" content="OpenArc" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0e1020" />
+  <meta name="color-scheme" content="dark" />
+  <link rel="canonical" href="https://openarc.example.com/play/minesweeper.html" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="OpenArc" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="Minesweeper — Free Open-Source Static Puzzle Game" />
+  <meta property="og:description" content="Reveal safe cells without hitting a mine. Dependency-free static HTML5 puzzle game." />
+  <meta property="og:url" content="https://openarc.example.com/play/minesweeper.html" />
+  <meta property="og:image" content="https://openarc.example.com/assets/img/cover.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@openarc" />
+  <meta name="twitter:title" content="Minesweeper — OpenArc" />
+  <meta name="twitter:description" content="Reveal safe cells without hitting a mine. Dependency-free static HTML5 game." />
+  <meta name="twitter:image" content="https://openarc.example.com/assets/img/cover.png" />
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"VideoGame","name":"Minesweeper",
+   "description":"Classic Minesweeper: reveal safe cells without hitting a mine. Dependency-free static HTML5 build.",
+   "url":"https://openarc.example.com/play/minesweeper.html","genre":"Puzzle",
+   "playMode":"SinglePlayer","gamePlatform":"Web Browser",
+   "applicationCategory":"Game","operatingSystem":"Any (browser)",
+   "isAccessibleForFree":true,
+   "license":"https://opensource.org/licenses/MIT"}
+  </script>
+
+  <link rel="stylesheet" href="/assets/css/style.css" />
+  <style>
+    .board { display: grid; grid-template-columns: repeat(9, 34px); gap: 3px;
+             justify-content: center; margin: 16px auto; }
+    .cell { width: 34px; height: 34px; border-radius: 6px; cursor: pointer; font-weight: 700;
+            background: #1f2347; color: var(--text); border: 1px solid #343a72; font-size: 15px; }
+    .cell:hover { background: #2a2f5a; }
+    .cell.open { background: #12152c; cursor: default; }
+    .cell.flag { background: #2a2350; }
+    .cell.mine { background: #ff5da2; }
+    .hint, .status { text-align: center; }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header">
+    <a class="brand" href="/">🎮 OpenArc</a>
+    <nav aria-label="Primary"><a href="/games.html">Games</a></nav>
+  </header>
+  <main id="main">
+    <section aria-labelledby="t">
+      <h1 id="t" style="text-align:center">Minesweeper</h1>
+      <p class="hint">
+        Click (or Tab + Enter) to reveal · right-click or use <strong>Flag mode</strong> to mark a mine.
+      </p>
+      <p class="status" id="status" role="status" aria-live="polite">Safe cells left: 71</p>
+      <div class="controls" style="justify-content:center">
+        <button class="btn" id="flag" aria-pressed="false">Flag mode: off</button>
+        <button class="btn" id="new">New game</button>
+      </div>
+      <div class="board" id="board" aria-label="Minesweeper board"></div>
+    </section>
+      <!--GAME_CONTENT-->
+  </main>
+  <script>
+    const N = 9, MINES = 10, TOTAL_SAFE = N * N - MINES;
+    const boardEl = document.getElementById("board"), statusEl = document.getElementById("status");
+    const flagBtn = document.getElementById("flag");
+    let cells, placed, revealed, over, flagMode;
+
+    function idx(r, c) { return r * N + c; }
+    function neighbors(r, c) {
+      const out = [];
+      for (let dr = -1; dr <= 1; dr++) for (let dc = -1; dc <= 1; dc++) {
+        if (!dr && !dc) continue;
+        const nr = r + dr, nc = c + dc;
+        if (nr >= 0 && nr < N && nc >= 0 && nc < N) out.push([nr, nc]);
+      }
+      return out;
+    }
+    function reset() {
+      cells = Array.from({ length: N * N }, () => ({ mine: false, open: false, flag: false, adj: 0 }));
+      placed = false; revealed = 0; over = false; flagMode = false;
+      flagBtn.setAttribute("aria-pressed", "false"); flagBtn.textContent = "Flag mode: off";
+      boardEl.innerHTML = "";
+      for (let r = 0; r < N; r++) for (let c = 0; c < N; c++) {
+        const b = document.createElement("button");
+        b.type = "button"; b.className = "cell"; b.dataset.r = r; b.dataset.c = c;
+        b.setAttribute("aria-label", `Row ${r + 1} column ${c + 1}, hidden`);
+        b.addEventListener("click", () => act(r, c));
+        b.addEventListener("contextmenu", e => { e.preventDefault(); toggleFlag(r, c); });
+        boardEl.appendChild(b);
+      }
+      statusEl.textContent = `Safe cells left: ${TOTAL_SAFE}`;
+    }
+    function placeMines(sr, sc) {
+      const pool = [];
+      for (let r = 0; r < N; r++) for (let c = 0; c < N; c++) {
+        if (Math.abs(r - sr) <= 1 && Math.abs(c - sc) <= 1) continue; // never on first click
+        pool.push([r, c]);
+      }
+      for (let i = pool.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [pool[i], pool[j]] = [pool[j], pool[i]];
+      }
+      pool.slice(0, MINES).forEach(([r, c]) => { cells[idx(r, c)].mine = true; });
+      for (let r = 0; r < N; r++) for (let c = 0; c < N; c++) {
+        if (cells[idx(r, c)].mine) continue;
+        cells[idx(r, c)].adj = neighbors(r, c).filter(([nr, nc]) => cells[idx(nr, nc)].mine).length;
+      }
+      placed = true;
+    }
+    function toggleFlag(r, c) {
+      if (over) return;
+      const cell = cells[idx(r, c)];
+      if (cell.open) return;
+      cell.flag = !cell.flag;
+      paint();
+    }
+    function act(r, c) {
+      if (over) return;
+      const cell = cells[idx(r, c)];
+      if (flagMode && !cell.open) { toggleFlag(r, c); return; }
+      if (cell.open || cell.flag) return;
+      if (!placed) placeMines(r, c);
+      if (cell.mine) { cell.open = true; over = true; revealAll(); statusEl.textContent = "Boom! Press New game."; return; }
+      flood(r, c);
+      if (revealed === TOTAL_SAFE) { over = true; statusEl.textContent = "You cleared the board!"; }
+      else statusEl.textContent = `Safe cells left: ${TOTAL_SAFE - revealed}`;
+      paint();
+    }
+    function flood(r, c) {
+      const stack = [[r, c]];
+      while (stack.length) {
+        const [cr, cc] = stack.pop();
+        const cell = cells[idx(cr, cc)];
+        if (cell.open || cell.flag) continue;
+        cell.open = true; revealed++;
+        if (cell.adj !== 0) continue;
+        neighbors(cr, cc).forEach(([nr, nc]) => {
+          const n = cells[idx(nr, nc)];
+          if (!n.open && !n.flag && !n.mine) stack.push([nr, nc]);
+        });
+      }
+    }
+    function revealAll() {
+      cells.forEach(cell => { if (cell.mine) cell.open = true; });
+      paint();
+    }
+    function paint() {
+      const nodes = boardEl.children;
+      cells.forEach((cell, i) => {
+        const b = nodes[i];
+        b.className = "cell" + (cell.open ? " open" : "") + (cell.flag ? " flag" : "")
+                    + (cell.open && cell.mine ? " mine" : "");
+        if (cell.open) {
+          b.textContent = cell.mine ? "💣" : (cell.adj || "");
+          b.setAttribute("aria-label", cell.mine ? "Mine" : `Revealed ${cell.adj || "empty"}`);
+        } else {
+          b.textContent = cell.flag ? "🚩" : "";
+          b.setAttribute("aria-label", cell.flag ? "Flagged" : "Hidden");
+        }
+      });
+    }
+    flagBtn.addEventListener("click", () => {
+      flagMode = !flagMode;
+      flagBtn.setAttribute("aria-pressed", String(flagMode));
+      flagBtn.textContent = `Flag mode: ${flagMode ? "on" : "off"}`;
+    });
+    document.getElementById("new").addEventListener("click", reset);
+    reset();
+  </script>
+</body>
+</html>

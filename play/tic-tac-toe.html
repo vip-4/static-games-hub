@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tic-Tac-Toe — OpenArc</title>
+  <meta name="description" content="Play Tic-Tac-Toe, a lightweight open-source static game hosted on OpenArc." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://openarc.example.com/play/tic-tac-toe.html" />
+  <meta name="keywords" content="tic tac toe, open source game, HTML5 game, static game, browser game" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="OpenArc" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="Tic-Tac-Toe — OpenArc" />
+  <meta property="og:description" content="Minimal two-player Tic-Tac-Toe built in vanilla JavaScript." />
+  <meta property="og:url" content="https://openarc.example.com/play/tic-tac-toe.html" />
+  <meta property="og:image" content="https://openarc.example.com/assets/img/cover.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@openarc" />
+  <meta name="twitter:title" content="Tic-Tac-Toe — OpenArc" />
+  <meta name="twitter:description" content="Minimal two-player Tic-Tac-Toe built in vanilla JavaScript." />
+  <meta name="twitter:image" content="https://openarc.example.com/assets/img/cover.png" />
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"VideoGame","name":"Tic-Tac-Toe",
+   "description":"Minimal two-player Tic-Tac-Toe built in vanilla JavaScript.",
+   "url":"https://openarc.example.com/play/tic-tac-toe.html","genre":"Puzzle",
+   "playMode":"SinglePlayer","gamePlatform":"Web Browser",
+   "applicationCategory":"Game","operatingSystem":"Any (browser)",
+   "isAccessibleForFree":true,
+   "license":"https://opensource.org/licenses/MIT"}
+  </script>
+  <link rel="stylesheet" href="/assets/css/style.css" />
+  <style>
+    .board { display: grid; grid-template-columns: repeat(3, 80px); gap: 8px; margin: 24px auto; }
+    .cell { width: 80px; height: 80px; font-size: 38px; display: grid; place-items: center;
+      background: #12152c; border: 1px solid #343a72; border-radius: 10px; cursor: pointer; color: var(--text); }
+    .cell:hover { background: #1b1f3f; }
+    .status { text-align: center; color: var(--muted); }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header">
+    <a class="brand" href="/">🎮 OpenArc</a>
+    <nav aria-label="Primary"><a href="/games.html">Games</a></nav>
+  </header>
+  <main id="main">
+    <section aria-labelledby="t" style="text-align:center">
+      <h1 id="t">Tic-Tac-Toe</h1>
+      <div class="board" id="board" role="grid" aria-label="Tic-Tac-Toe board"></div>
+      <p class="status" id="status">Your move: X</p>
+      <button class="btn" onclick="reset()" style="margin:auto;display:block">New game</button>
+    </section>
+      <!--GAME_CONTENT-->
+  </main>
+  <script>
+    let board, turn, done;
+    const boardEl = document.getElementById("board"), statusEl = document.getElementById("status");
+    function reset() {
+      board = Array(9).fill("");
+      turn = "X"; done = false; statusEl.textContent = "Your move: X";
+      boardEl.innerHTML = "";
+      for (let i=0;i<9;i++){
+        const c = document.createElement("button");
+        c.className = "cell"; c.setAttribute("role","gridcell");
+        c.onclick = () => move(i); boardEl.appendChild(c);
+      }
+    }
+    function move(i){
+      if (done || board[i]) return;
+      board[i] = turn; boardEl.children[i].textContent = turn;
+      if (win(turn)) { done = true; statusEl.textContent = turn + " wins!"; return; }
+      if (board.every(Boolean)) { done = true; statusEl.textContent = "Draw"; return; }
+      turn = turn === "X" ? "O" : "X"; statusEl.textContent = "Your move: " + turn;
+    }
+    function win(p){
+      const L=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+      return L.some(([a,b,c])=>board[a]===p&&board[b]===p&&board[c]===p);
+    }
+    reset();
+  </script>
+</body>
+</html>

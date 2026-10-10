@@ -1,0 +1,49 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Uses the built-in GITHUB_TOKEN — no personal access token needed and none is
+# stored in the repo. Requires: Settings ▸ Pages ▸ Source = "GitHub Actions".
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Build
+        # Project sites live under /<repo>/ — set BASE_PATH to "/" when using a
+        # custom domain (and add --site-url https://your-domain).
+        run: |
+          BASE="${{ vars.BASE_PATH || '/' }}"
+          python scripts/build.py --base "$BASE" --site-url "${{ vars.SITE_URL || 'https://openarc.example.com' }}"
+      - name: Validate SEO / GEO / a11y
+        run: python scripts/check-seo.py
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

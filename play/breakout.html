@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Breakout — Free Open-Source Static Arcade Game | OpenArc</title>
+  <meta name="description" content="Play Breakout free: bounce the ball and clear every brick. A lightweight, dependency-free, open-source static HTML5 arcade game you can self-host." />
+  <meta name="keywords" content="breakout game, brick breaker, open source game, HTML5 arcade game, static game" />
+  <meta name="author" content="OpenArc" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0e1020" />
+  <meta name="color-scheme" content="dark" />
+  <link rel="canonical" href="https://openarc.example.com/play/breakout.html" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="OpenArc" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="Breakout — Free Open-Source Static Arcade Game" />
+  <meta property="og:description" content="Bounce the ball and clear every brick. Dependency-free static HTML5 arcade game." />
+  <meta property="og:url" content="https://openarc.example.com/play/breakout.html" />
+  <meta property="og:image" content="https://openarc.example.com/assets/img/cover.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@openarc" />
+  <meta name="twitter:title" content="Breakout — OpenArc" />
+  <meta name="twitter:description" content="Bounce the ball and clear every brick. Dependency-free static HTML5 game." />
+  <meta name="twitter:image" content="https://openarc.example.com/assets/img/cover.png" />
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"VideoGame","name":"Breakout",
+   "description":"Bounce the ball and clear every brick in this dependency-free static HTML5 arcade game.",
+   "url":"https://openarc.example.com/play/breakout.html","genre":"Arcade",
+   "playMode":"SinglePlayer","gamePlatform":"Web Browser",
+   "applicationCategory":"Game","operatingSystem":"Any (browser)",
+   "isAccessibleForFree":true,
+   "license":"https://opensource.org/licenses/MIT"}
+  </script>
+
+  <link rel="stylesheet" href="/assets/css/style.css" />
+  <style>
+    .stage { display: grid; place-items: center; gap: 10px; padding: 16px 0; }
+    canvas { background: #0c0e22; border: 2px solid #343a72; border-radius: 12px; max-width: 100%; }
+    .hint, .status { text-align: center; color: var(--muted); font-size: 14px; }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header">
+    <a class="brand" href="/">🎮 OpenArc</a>
+    <nav aria-label="Primary"><a href="/games.html">Games</a></nav>
+  </header>
+  <main id="main">
+    <section class="stage" aria-labelledby="t">
+      <h1 id="t">Breakout</h1>
+      <p class="hint">Arrow keys or mouse move the paddle · Space starts / pauses</p>
+      <p class="status" id="status" role="status" aria-live="polite">Press Space to start</p>
+      <canvas id="c" width="480" height="320" aria-label="Breakout playfield"></canvas>
+      <button class="btn" id="new">New game</button>
+    </section>
+      <!--GAME_CONTENT-->
+  </main>
+  <script>
+    const cv = document.getElementById("c"), ctx = cv.getContext("2d");
+    const statusEl = document.getElementById("status");
+    const ROWS = 5, COLS = 8, BW = 54, BH = 16, GAP = 4, TOP = 34;
+    const PW = 80, PH = 10;
+    let paddle, ball, bricks, score, lives, running, started;
+
+    function buildBricks() {
+      bricks = [];
+      for (let r = 0; r < ROWS; r++) for (let c = 0; c < COLS; c++) {
+        bricks.push({ x: GAP + c * (BW + GAP), y: TOP + r * (BH + GAP), w: BW, h: BH, alive: true,
+                      color: ["#ffd24a", "#7ee0ff", "#8ff0c4", "#c9b8ff", "#ff9ab0"][r] });
+      }
+    }
+    function reset() {
+      paddle = { x: (cv.width - PW) / 2, y: cv.height - 24 };
+      ball = { x: cv.width / 2, y: cv.height - 40, dx: 3, dy: -3, r: 6 };
+      buildBricks(); score = 0; lives = 3; running = false; started = false;
+      statusEl.textContent = "Press Space to start";
+      draw();
+    }
+    function draw() {
+      ctx.fillStyle = "#0c0e22"; ctx.fillRect(0, 0, cv.width, cv.height);
+      bricks.forEach(b => { if (!b.alive) return; ctx.fillStyle = b.color; ctx.fillRect(b.x, b.y, b.w, b.h); });
+      ctx.fillStyle = "#7ee0ff"; ctx.fillRect(paddle.x, paddle.y, PW, PH);
+      ctx.fillStyle = "#ffd24a";
+      ctx.beginPath(); ctx.arc(ball.x, ball.y, ball.r, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = "#b3b9e0"; ctx.font = "12px system-ui";
+      ctx.fillText(`Score ${score}`, 10, 18);
+      ctx.fillText(`Lives ${lives}`, cv.width - 60, 18);
+    }
+    function tick() {
+      if (!running) return;
+      ball.x += ball.dx; ball.y += ball.dy;
+      if (ball.x - ball.r < 0 || ball.x + ball.r > cv.width) ball.dx *= -1;
+      if (ball.y - ball.r < 0) ball.dy *= -1;
+      if (ball.y + ball.r > cv.height) { lives--; if (lives <= 0) { running = false;
+        statusEl.textContent = `Game over — score ${score}. Press Space to restart.`; return; }
+        ball.x = cv.width / 2; ball.y = cv.height - 40; ball.dx = 3; ball.dy = -3; }
+      if (ball.y + ball.r >= paddle.y && ball.y - ball.r <= paddle.y + PH &&
+          ball.x >= paddle.x && ball.x <= paddle.x + PW && ball.dy > 0) {
+        ball.dy = -Math.abs(ball.dy);
+        const hit = (ball.x - (paddle.x + PW / 2)) / (PW / 2);
+        ball.dx = Math.max(-4.5, Math.min(4.5, hit * 4.5));
+      }
+      bricks.forEach(b => {
+        if (!b.alive) return;
+        if (ball.x > b.x && ball.x < b.x + b.w && ball.y > b.y && ball.y < b.y + b.h) {
+          b.alive = false; ball.dy *= -1; score += 10;
+          if (bricks.every(x => !x.alive)) { running = false;
+            statusEl.textContent = `You cleared every brick! Score ${score}.`; }
+        }
+      });
+      if (running) statusEl.textContent = `Score ${score} · Lives ${lives}`;
+      draw();
+    }
+    function startPause() {
+      if (!started) { started = true; running = true; statusEl.textContent = "Playing"; }
+      else running = !running;
+    }
+    addEventListener("keydown", e => {
+      if (e.key === " ") { e.preventDefault(); startPause(); }
+      if (e.key === "ArrowLeft" || e.key.toLowerCase() === "a") paddle.x = Math.max(0, paddle.x - 22);
+      if (e.key === "ArrowRight" || e.key.toLowerCase() === "d") paddle.x = Math.min(cv.width - PW, paddle.x + 22);
+    });
+    cv.addEventListener("mousemove", e => {
+      const rect = cv.getBoundingClientRect();
+      paddle.x = Math.max(0, Math.min(cv.width - PW, (e.clientX - rect.left) * (cv.width / rect.width) - PW / 2));
+    });
+    document.getElementById("new").addEventListener("click", reset);
+    reset(); setInterval(tick, 16);
+  </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+# Netlify production deploy config for the static games hub.
+# Publish the pre-rendered build output (scripts/build.py).
+[build]
+  publish = "dist"
+  command = "python scripts/build.py"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400, stale-while-revalidate=604800"
+
+[[redirects]]
+  from = "/game/*"
+  to = "/play/:splat"
+  status = 301

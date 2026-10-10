@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>All games — OpenArc open-source static game catalog</title>
+
+  <!-- Core SEO -->
+  <meta name="description" content="Browse every lightweight open-source HTML5 game in the OpenArc catalog, filterable by source: itch.io, GitHub, Ludum Dare and Simple Game Tutorials." />
+  <meta name="keywords" content="open source games catalog, static HTML5 games, lightweight browser games, itch.io open source, Ludum Dare games" />
+  <meta name="author" content="OpenArc" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="theme-color" content="#0e1020" />
+  <meta name="color-scheme" content="dark" />
+  <link rel="canonical" href="https://openarc.example.com/games.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="OpenArc" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="All games — OpenArc open-source static game catalog" />
+  <meta property="og:description" content="Browse every lightweight open-source HTML5 game in the OpenArc catalog, filterable by source." />
+  <meta property="og:url" content="https://openarc.example.com/games.html" />
+  <meta property="og:image" content="https://openarc.example.com/assets/img/cover.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="OpenArc — lightweight open-source static games." />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@openarc" />
+  <meta name="twitter:title" content="All games — OpenArc" />
+  <meta name="twitter:description" content="Browse every lightweight open-source HTML5 game in the OpenArc catalog." />
+  <meta name="twitter:image" content="https://openarc.example.com/assets/img/cover.png" />
+
+  <link rel="preload" href="/assets/css/style.css" as="style" />
+  <link rel="stylesheet" href="/assets/css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text y='14' font-size='14'>🎮</text></svg>" />
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://openarc.example.com/"},
+    {"@type":"ListItem","position":2,"name":"Games","item":"https://openarc.example.com/games.html"}]}
+  </script>
+  <!--ITEMLIST_JSONLD-->
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <a class="brand" href="/">🎮 OpenArc</a>
+    <nav aria-label="Primary">
+      <a href="/games.html" aria-current="page">Games</a>
+      <a href="/#sources">Sources</a>
+      <a href="/#faq">FAQ</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section aria-labelledby="all-h">
+      <h1 id="all-h">All games</h1>
+      <p class="section-note">
+        The complete OpenArc catalog of lightweight open-source static games.
+        Filter by source or search by name, tag or description.
+      </p>
+
+      <h2 id="catalog-h">Full catalog</h2>
+
+      <div class="controls">
+        <div class="filters" id="filters" role="group" aria-label="Filter games by source"></div>
+        <label class="search-label">
+          <span>Search</span>
+          <input type="search" id="search" placeholder="Search games…" aria-label="Search games" />
+        </label>
+      </div>
+
+      <p class="stats" id="stats" aria-live="polite"></p>
+
+      <!-- Pre-rendered at build time: fully indexable without JavaScript -->
+      <ul id="games-grid" class="grid">
+        <!--STATIC_GAMES-->
+      </ul>
+
+      <noscript>
+        <p class="section-note">
+          Filtering needs JavaScript, but all games are listed above and every link works.
+          Machine-readable catalog: <a href="/data/games.json">games.json</a>.
+        </p>
+      </noscript>
+    </section>
+
+      <!--SOURCE_SECTION-->
+  </main>
+
+  <footer class="site-footer">
+    <p>OpenArc · lightweight open-source static games</p>
+    <nav aria-label="Footer">
+      <a href="/">Home</a>
+      <a href="/data/games.json">Catalog (JSON)</a>
+    </nav>
+  </footer>
+
+  <script src="/assets/js/main.js" defer></script>
+</body>
+</html>

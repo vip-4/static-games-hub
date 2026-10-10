@@ -1,0 +1,148 @@
+/* OpenArc — accessible, performance-friendly static stylesheet.
+   No web fonts, no external requests, no layout-shifting media. */
+:root {
+  --bg: #0e1020;
+  --panel: #171a33;
+  --panel-2: #1f2347;
+  --text: #eef1ff;      /* contrast vs --bg: ~13:1 (AAA) */
+  --muted: #b3b9e0;     /* contrast vs --bg: ~8:1 (AAA) */
+  --accent: #ffd24a;
+  --accent-2: #7ee0ff;
+  --radius: 14px;
+}
+* { box-sizing: border-box; }
+
+/* ---- Accessibility ---- */
+[hidden] { display: none !important; }
+.skip-link {
+  position: absolute; left: -9999px; top: 0; z-index: 100;
+  background: var(--accent); color: #1a1320; padding: 10px 16px;
+  border-radius: 0 0 8px 0; font-weight: 700;
+}
+.skip-link:focus { left: 0; }
+:focus-visible { outline: 3px solid var(--accent-2); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  background: radial-gradient(1200px 600px at 50% -10%, #232850, var(--bg));
+  color: var(--text);
+  line-height: 1.65;
+}
+a { color: var(--accent-2); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ---- Header ---- */
+.site-header {
+  display: flex; align-items: center; gap: 18px; flex-wrap: wrap;
+  padding: 14px 24px; background: rgba(0,0,0,.25);
+  border-bottom: 1px solid #2b2f55; position: sticky; top: 0; z-index: 10;
+}
+.brand { font-weight: 800; font-size: 20px; color: var(--accent); letter-spacing: .5px; }
+.site-header nav a { color: var(--muted); margin-left: 10px; }
+.site-header nav a:hover { color: var(--text); text-decoration: none; }
+.site-header nav a[aria-current="page"] { color: var(--accent); font-weight: 700; }
+
+main { max-width: 1040px; margin: 0 auto; padding: 32px 18px 64px; }
+
+/* ---- Hero ---- */
+.hero { text-align: center; padding: 32px 0 20px; }
+.hero h1 { font-size: clamp(28px, 5vw, 46px); margin: 0 0 14px; line-height: 1.15; }
+.lead { color: var(--muted); max-width: 760px; margin: 0 auto 22px; font-size: 18px; }
+.cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.btn {
+  display: inline-block; padding: 12px 22px; border-radius: 999px;
+  background: var(--panel-2); color: var(--text); border: 1px solid #343a72;
+}
+.btn.primary { background: linear-gradient(180deg, var(--accent), #f5a623); color: #1a1320; font-weight: 700; border: none; }
+.btn:hover { text-decoration: none; transform: translateY(-1px); }
+.stats { color: var(--accent); font-size: 14px; margin-top: 16px; min-height: 20px; }
+
+h1 { font-size: clamp(26px, 4vw, 38px); }
+h2 { font-size: 24px; margin: 44px 0 14px; border-left: 4px solid var(--accent); padding-left: 12px; }
+h3 { font-size: 18px; margin: 0; }
+.section-note { color: var(--muted); font-size: 15px; }
+
+/* ---- TL;DR (GEO block) ---- */
+.tldr {
+  max-width: 720px; margin: 20px auto 0; text-align: left;
+  background: var(--panel); border: 1px solid #2a2f5a;
+  border-radius: var(--radius); padding: 14px 20px;
+}
+.tldr h2 { font-size: 16px; margin: 0 0 8px; border: none; padding: 0; color: var(--accent); }
+.tldr ul { margin: 0; padding-left: 20px; }
+.tldr li { color: var(--muted); font-size: 14px; }
+
+/* ---- Game grid ---- */
+.grid {
+  display: grid; gap: 16px; list-style: none; margin: 0; padding: 0;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+}
+.card {
+  background: linear-gradient(180deg, var(--panel), #12152c);
+  border: 1px solid #2a2f5a; border-radius: var(--radius);
+  padding: 16px; display: flex; flex-direction: column; gap: 10px;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.card:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,0,0,.45); }
+.card .thumb { font-size: 40px; }
+.card p { margin: 0; color: var(--muted); font-size: 14px; }
+.card .meta { display: flex; gap: 8px; flex-wrap: wrap; margin-top: auto; }
+.tag {
+  font-size: 11px; padding: 3px 9px; border-radius: 999px;
+  background: #262b52; color: var(--muted); border: 1px solid #343a72;
+}
+.tag.src { background: #143a2e; color: #8ff0c4; }
+.tag.lic { background: #2a2350; color: #c9b8ff; }
+.card .play { align-self: flex-start; margin-top: 6px; }
+
+/* ---- Table ---- */
+.src-table { width: 100%; border-collapse: collapse; margin: 8px 0 16px; font-size: 15px; }
+.src-table caption { text-align: left; color: var(--muted); font-size: 14px; padding-bottom: 8px; }
+.src-table th, .src-table td { border: 1px solid #2a2f5a; padding: 10px 12px; text-align: left; }
+.src-table thead th { background: var(--panel-2); color: var(--text); }
+.src-table td { color: var(--muted); }
+
+/* ---- FAQ ---- */
+.faq details {
+  background: var(--panel); border: 1px solid #2a2f5a;
+  border-radius: 10px; padding: 10px 14px; margin-bottom: 8px;
+}
+.faq summary { cursor: pointer; font-weight: 600; }
+.faq p { margin: 8px 0 0; color: var(--muted); }
+
+/* ---- Steps ---- */
+.steps li { color: var(--muted); margin-bottom: 6px; }
+
+/* ---- Controls (listing page) ---- */
+.controls {
+  display: flex; gap: 14px; flex-wrap: wrap; align-items: center;
+  justify-content: space-between; margin: 16px 0;
+}
+.filters { display: flex; gap: 8px; flex-wrap: wrap; }
+.filters button {
+  padding: 7px 14px; border-radius: 999px; cursor: pointer;
+  background: var(--panel-2); color: var(--text); border: 1px solid #343a72;
+}
+.filters button[aria-pressed="true"] { background: var(--accent); color: #1a1320; border: none; font-weight: 700; }
+.search-label { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 14px; }
+#search {
+  padding: 9px 14px; border-radius: 10px; min-width: 220px;
+  background: var(--panel); color: var(--text); border: 1px solid #343a72;
+}
+
+/* ---- Footer ---- */
+.site-footer { padding: 24px; text-align: center; color: var(--muted); border-top: 1px solid #2b2f55; }
+.site-footer nav a { margin: 0 8px; }
+
+code { background: #0c0e22; padding: 2px 6px; border-radius: 6px; color: var(--accent); }
+
+@media (max-width: 600px) {
+  .controls { flex-direction: column; align-items: stretch; }
+  #search { width: 100%; }
+}

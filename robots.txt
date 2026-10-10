@@ -1,0 +1,38 @@
+# OpenArc — static open-source games hub
+# Everything is public and indexable; the site ships zero gated content.
+
+User-agent: *
+Allow: /
+
+# ---- Generative / AI crawlers (explicitly welcome, for GEO) ----
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Bytespider
+Disallow: /
+
+Sitemap: https://openarc.example.com/sitemap.xml
+
+# Machine-readable summary for AI crawlers: /llms.txt
+# Full catalog as JSON:                    /data/games.json

@@ -1,0 +1,3 @@
+# Only needed for `python scripts/deploy.py --target r2`.
+# Building, validating and deploying elsewhere needs the stdlib only.
+boto3>=1.34

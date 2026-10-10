@@ -1,0 +1,2 @@
+# Cloudflare Pages redirects (equivalent of the netlify.toml rule).
+/game/*   /play/:splat   301

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Slot Games &middot; Blender MCP</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>SLOT GAMES</h1>
+    <span class="tag">Blender MCP module</span>
+    <select id="game" class="game-select"></select>
+  </header>
+
+  <main>
+    <section class="reels-wrap">
+      <div id="reels" class="reels"></div>
+      <div id="features" class="features"></div>
+    </section>
+
+    <section class="controls">
+      <label>Bet
+        <select id="bet"></select>
+      </label>
+      <label>Lines
+        <input id="lines" type="number" min="1" value="20" />
+      </label>
+      <button id="spin" class="spin-btn">SPIN</button>
+      <div id="status" class="status"></div>
+    </section>
+
+    <section class="paytable">
+      <h2>Paytable &amp; Symbols</h2>
+      <div id="symbols" class="symbols"></div>
+      <ul id="mechanics" class="mechanics"></ul>
+      <p id="rules" class="rules"></p>
+    </section>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>

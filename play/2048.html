@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2048 — Free Open-Source Static Puzzle Game | OpenArc</title>
+  <meta name="description" content="Play 2048 free in your browser: merge numbered tiles to reach 2048. A lightweight, dependency-free, open-source static HTML5 puzzle game you can self-host." />
+  <meta name="keywords" content="2048 game, 2048 online, open source game, HTML5 puzzle game, static game, merge tiles" />
+  <meta name="author" content="OpenArc" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0e1020" />
+  <meta name="color-scheme" content="dark" />
+  <link rel="canonical" href="https://openarc.example.com/play/2048.html" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="OpenArc" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="2048 — Free Open-Source Static Puzzle Game" />
+  <meta property="og:description" content="Merge numbered tiles to reach 2048. Dependency-free static HTML5 puzzle game." />
+  <meta property="og:url" content="https://openarc.example.com/play/2048.html" />
+  <meta property="og:image" content="https://openarc.example.com/assets/img/cover.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@openarc" />
+  <meta name="twitter:title" content="2048 — OpenArc" />
+  <meta name="twitter:description" content="Merge numbered tiles to reach 2048. Dependency-free static HTML5 game." />
+  <meta name="twitter:image" content="https://openarc.example.com/assets/img/cover.png" />
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"VideoGame","name":"2048",
+   "description":"Merge numbered tiles to reach 2048 in this dependency-free static HTML5 puzzle game.",
+   "url":"https://openarc.example.com/play/2048.html","genre":"Puzzle",
+   "playMode":"SinglePlayer","gamePlatform":"Web Browser",
+   "applicationCategory":"Game","operatingSystem":"Any (browser)",
+   "isAccessibleForFree":true,
+   "license":"https://opensource.org/licenses/MIT"}
+  </script>
+
+  <link rel="stylesheet" href="/assets/css/style.css" />
+  <style>
+    .board { display: grid; grid-template-columns: repeat(4, 74px); gap: 8px;
+             justify-content: center; margin: 18px auto; }
+    .tile { width: 74px; height: 74px; display: grid; place-items: center;
+            border-radius: 10px; font-weight: 800; font-size: 26px; color: #10122a;
+            background: #2a2f5a; }
+    .tile[data-v="0"] { background: #171a33; }
+    .hint, .status { text-align: center; }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header">
+    <a class="brand" href="/">🎮 OpenArc</a>
+    <nav aria-label="Primary"><a href="/games.html">Games</a></nav>
+  </header>
+  <main id="main">
+    <section aria-labelledby="t">
+      <h1 id="t" style="text-align:center">2048</h1>
+      <p class="hint">Use arrow keys or WASD to merge tiles. Reach <strong>2048</strong> to win.</p>
+      <p class="status" id="status" role="status" aria-live="polite">Score: 0</p>
+      <div class="board" id="board" aria-label="2048 board"></div>
+      <button class="btn" id="new" style="margin:0 auto;display:block">New game</button>
+    </section>
+      <!--GAME_CONTENT-->
+  </main>
+  <script>
+    const N = 4, boardEl = document.getElementById("board"), statusEl = document.getElementById("status");
+    const COLORS = {0:"#171a33",2:"#eee4da",4:"#ede0c8",8:"#f2b179",16:"#f59563",
+      32:"#f67c5f",64:"#f65e3b",128:"#edcf72",256:"#edcc61",512:"#edc850",
+      1024:"#edc53f",2048:"#edc22e"};
+    let b, score, won, over;
+
+    function emptyBoard() { return Array.from({length: N}, () => Array(N).fill(0)); }
+    function addTile() {
+      const cells = [];
+      for (let r = 0; r < N; r++) for (let c = 0; c < N; c++) if (!b[r][c]) cells.push([r, c]);
+      if (!cells.length) return;
+      const [r, c] = cells[Math.floor(Math.random() * cells.length)];
+      b[r][c] = Math.random() < 0.9 ? 2 : 4;
+    }
+    function slideRow(row) {
+      const a = row.filter(v => v);
+      for (let i = 0; i < a.length - 1; i++) {
+        if (a[i] === a[i + 1]) { a[i] *= 2; score += a[i]; if (a[i] === 2048) won = true; a.splice(i + 1, 1); }
+      }
+      while (a.length < N) a.push(0);
+      return a;
+    }
+    function moveLeft() { let m = false;
+      for (let r = 0; r < N; r++) { const s = slideRow(b[r]); if (s.join() !== b[r].join()) m = true; b[r] = s; } return m; }
+    function moveRight() { let m = false;
+      for (let r = 0; r < N; r++) { const s = slideRow(b[r].slice().reverse()).reverse();
+        if (s.join() !== b[r].join()) m = true; b[r] = s; } return m; }
+    function trans() { return b[0].map((_, c) => b.map(r => r[c])); }
+    function moveUp() { b = trans(); const m = moveLeft(); b = trans(); return m; }
+    function moveDown() { b = trans(); const m = moveRight(); b = trans(); return m; }
+
+    function canMove() {
+      for (let r = 0; r < N; r++) for (let c = 0; c < N; c++) {
+        if (!b[r][c]) return true;
+        if (c < N - 1 && b[r][c] === b[r][c + 1]) return true;
+        if (r < N - 1 && b[r][c] === b[r + 1][c]) return true;
+      }
+      return false;
+    }
+    function draw() {
+      boardEl.innerHTML = "";
+      for (let r = 0; r < N; r++) for (let c = 0; c < N; c++) {
+        const v = b[r][c];
+        const d = document.createElement("div");
+        d.className = "tile"; d.dataset.v = v; d.textContent = v || "";
+        d.style.background = COLORS[v] || "#3c3f72";
+        boardEl.appendChild(d);
+      }
+      statusEl.textContent = over ? `Game over — score ${score}`
+        : won ? `You reached 2048! Score ${score}` : `Score: ${score}`;
+    }
+    function step(dir) {
+      if (over || won) return;
+      const moved = dir === 0 ? moveLeft() : dir === 1 ? moveUp()
+                  : dir === 2 ? moveRight() : moveDown();
+      if (!moved) return;
+      addTile();
+      if (!canMove()) over = true;
+      draw();
+    }
+    function reset() { b = emptyBoard(); score = 0; won = false; over = false; addTile(); addTile(); draw(); }
+
+    addEventListener("keydown", e => {
+      const k = e.key.toLowerCase();
+      if (k === "arrowleft" || k === "a") step(0);
+      else if (k === "arrowup" || k === "w") step(1);
+      else if (k === "arrowright" || k === "d") step(2);
+      else if (k === "arrowdown" || k === "s") step(3);
+    });
+    document.getElementById("new").addEventListener("click", reset);
+    reset();
+  </script>
+</body>
+</html>

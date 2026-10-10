@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Memory Match — Free Open-Source Static Game | OpenArc</title>
+  <meta name="description" content="Play Memory Match free: flip tiles and find all eight emoji pairs. A lightweight, dependency-free, open-source static HTML5 memory game you can self-host." />
+  <meta name="keywords" content="memory match game, matching pairs, open source game, HTML5 memory game, static game" />
+  <meta name="author" content="OpenArc" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0e1020" />
+  <meta name="color-scheme" content="dark" />
+  <link rel="canonical" href="https://openarc.example.com/play/memory.html" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="OpenArc" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="Memory Match — Free Open-Source Static Game" />
+  <meta property="og:description" content="Flip tiles and find all emoji pairs. Dependency-free static HTML5 memory game." />
+  <meta property="og:url" content="https://openarc.example.com/play/memory.html" />
+  <meta property="og:image" content="https://openarc.example.com/assets/img/cover.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@openarc" />
+  <meta name="twitter:title" content="Memory Match — OpenArc" />
+  <meta name="twitter:description" content="Flip tiles and find all emoji pairs. Dependency-free static HTML5 game." />
+  <meta name="twitter:image" content="https://openarc.example.com/assets/img/cover.png" />
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"VideoGame","name":"Memory Match",
+   "description":"Flip tiles and match all eight emoji pairs in this dependency-free static HTML5 memory game.",
+   "url":"https://openarc.example.com/play/memory.html","genre":"Puzzle",
+   "playMode":"SinglePlayer","gamePlatform":"Web Browser",
+   "applicationCategory":"Game","operatingSystem":"Any (browser)",
+   "isAccessibleForFree":true,
+   "license":"https://opensource.org/licenses/MIT"}
+  </script>
+
+  <link rel="stylesheet" href="/assets/css/style.css" />
+  <style>
+    .board { display: grid; grid-template-columns: repeat(4, 72px); gap: 8px;
+             justify-content: center; margin: 18px auto; }
+    .tile { width: 72px; height: 72px; font-size: 30px; border-radius: 10px; cursor: pointer;
+            background: #1f2347; color: var(--text); border: 1px solid #343a72; }
+    .tile[aria-pressed="true"] { background: #2a2f5a; }
+    .tile.matched { background: #143a2e; border-color: #2f7d5d; }
+    .hint, .status { text-align: center; }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header">
+    <a class="brand" href="/">🎮 OpenArc</a>
+    <nav aria-label="Primary"><a href="/games.html">Games</a></nav>
+  </header>
+  <main id="main">
+    <section aria-labelledby="t">
+      <h1 id="t" style="text-align:center">Memory Match</h1>
+      <p class="hint">Click (or Tab + Enter) to flip tiles and find all eight pairs.</p>
+      <p class="status" id="status" role="status" aria-live="polite">Moves: 0 · Pairs: 0/8</p>
+      <div class="board" id="board" aria-label="Memory board"></div>
+      <button class="btn" id="new" style="margin:0 auto;display:block">New game</button>
+    </section>
+      <!--GAME_CONTENT-->
+  </main>
+  <script>
+    const ICONS = ["🍎","🍌","🍇","🍓","🥑","🍒","🥕","🌽"];
+    const boardEl = document.getElementById("board"), statusEl = document.getElementById("status");
+    let deck, first, moves, pairs, lock;
+
+    function reset() {
+      deck = ICONS.concat(ICONS).sort(() => Math.random() - 0.5);
+      first = null; moves = 0; pairs = 0; lock = false;
+      boardEl.innerHTML = "";
+      deck.forEach((sym, i) => {
+        const b = document.createElement("button");
+        b.className = "tile"; b.type = "button"; b.dataset.sym = sym; b.dataset.i = i;
+        b.setAttribute("aria-pressed", "false");
+        b.setAttribute("aria-label", `Tile ${i + 1}, hidden`);
+        b.textContent = "❔";
+        b.addEventListener("click", () => flip(b));
+        boardEl.appendChild(b);
+      });
+      update();
+    }
+    function update() { statusEl.textContent = `Moves: ${moves} · Pairs: ${pairs}/8`; }
+    function flip(btn) {
+      if (lock || btn.classList.contains("matched") || btn.getAttribute("aria-pressed") === "true") return;
+      btn.textContent = btn.dataset.sym;
+      btn.setAttribute("aria-pressed", "true");
+      btn.setAttribute("aria-label", `Tile ${Number(btn.dataset.i) + 1}, ${btn.dataset.sym}`);
+      if (!first) { first = btn; return; }
+      moves++; update();
+      if (first.dataset.sym === btn.dataset.sym) {
+        [first, btn].forEach(b => { b.classList.add("matched"); b.setAttribute("aria-label", `Matched ${b.dataset.sym}`); });
+        first = null; pairs++;
+        update();
+        if (pairs === 8) statusEl.textContent = `You won in ${moves} moves!`;
+        return;
+      }
+      lock = true;
+      const a = first; first = null;
+      setTimeout(() => {
+        [a, btn].forEach(b => { b.textContent = "❔"; b.setAttribute("aria-pressed", "false"); });
+        lock = false;
+      }, 700);
+    }
+    document.getElementById("new").addEventListener("click", reset);
+    reset();
+  </script>
+</body>
+</html>

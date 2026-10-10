@@ -1,0 +1,66 @@
+name: Build, validate & deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+# SECURITY: every credential is referenced as ${{ secrets.* }} — never inline.
+# Add them under Settings ▸ Secrets and variables ▸ Actions.
+
+jobs:
+  build:
+    name: Build + SEO/GEO validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Build static site
+        run: python scripts/build.py
+      - name: Validate meta, structured data, a11y, crawlability
+        run: python scripts/check-seo.py
+      - name: Keep build output
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist
+
+  deploy-r2:
+    name: Deploy to Cloudflare R2
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' && vars.DEPLOY_R2 == 'true'
+    env:
+      R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+      R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+      R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+      R2_BUCKET: ${{ secrets.R2_BUCKET }}
+      R2_ENDPOINT: ${{ secrets.R2_ENDPOINT }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python scripts/build.py
+      - run: pip install -r requirements-deploy.txt
+      - run: python scripts/deploy.py --target r2
+
+  deploy-pages:
+    name: Deploy to Cloudflare Pages
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' && vars.DEPLOY_PAGES == 'true'
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python scripts/build.py
+      - run: npx --yes wrangler@latest pages deploy dist --project-name=${{ vars.CF_PAGES_PROJECT || 'openarc' }}

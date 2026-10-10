@@ -1,0 +1,258 @@
+[
+  {
+    "id": "snake",
+    "title": "Snake",
+    "description": "Classic snake — eat, grow, avoid the wall. Self-contained, no dependencies.",
+    "icon": "🐍",
+    "source": "openarc",
+    "license": "MIT",
+    "tags": ["arcade", "static", "self-hosted"],
+    "playable": true,
+    "local": true,
+    "url": "/play/snake.html",
+    "controls": "Arrow keys or W/A/S/D to steer; Space restarts after a game over.",
+    "howto": [
+      "Steer the snake towards the food to grow longer and score points.",
+      "Avoid the walls and your own tail — either ends the run.",
+      "Every piece of food increases your length, leaving less room to turn.",
+      "Press Space (or New game) to start again."
+    ],
+    "tips": [
+      "Hug the edges early so the centre stays open.",
+      "Never box yourself into a tight loop around your own body."
+    ]
+  },
+  {
+    "id": "tic-tac-toe",
+    "title": "Tic-Tac-Toe",
+    "description": "Minimal two-player Tic-Tac-Toe built in vanilla JS.",
+    "icon": "❌",
+    "source": "openarc",
+    "license": "MIT",
+    "tags": ["puzzle", "static", "self-hosted"],
+    "playable": true,
+    "local": true,
+    "url": "/play/tic-tac-toe.html",
+    "controls": "Click a cell, or Tab to it and press Enter, to place your mark.",
+    "howto": [
+      "X moves first and players alternate turns.",
+      "Line up three of your marks in a row, column or diagonal to win.",
+      "If all nine cells fill with no line, the game is a draw.",
+      "Use New game to reset the board."
+    ],
+    "tips": [
+      "Take the centre — it sits on the most possible winning lines.",
+      "Always block an opponent who has two in a row."
+    ]
+  },
+  {
+    "id": "2048",
+    "title": "2048",
+    "description": "Merge numbered tiles to reach 2048. Keyboard-controlled, dependency-free.",
+    "icon": "🔢",
+    "source": "openarc",
+    "license": "MIT",
+    "tags": ["puzzle", "static", "self-hosted"],
+    "playable": true,
+    "local": true,
+    "url": "/play/2048.html",
+    "controls": "Arrow keys or W/A/S/D slide every tile in that direction.",
+    "howto": [
+      "Slide the tiles with the arrow keys.",
+      "Two tiles with the same number merge into their sum.",
+      "A new tile appears after every successful move.",
+      "Reach 2048 to win; the run ends when no move is possible."
+    ],
+    "tips": [
+      "Keep your highest tile locked in one corner.",
+      "Avoid sliding in the direction that breaks your corner stack."
+    ]
+  },
+  {
+    "id": "memory",
+    "title": "Memory Match",
+    "description": "Flip tiles and find all eight emoji pairs. Fully keyboard accessible.",
+    "icon": "🧠",
+    "source": "openarc",
+    "license": "MIT",
+    "tags": ["puzzle", "memory", "self-hosted"],
+    "playable": true,
+    "local": true,
+    "url": "/play/memory.html",
+    "controls": "Click a tile, or Tab to it and press Enter, to flip it. No mouse drag needed.",
+    "howto": [
+      "Flip two tiles to look for a matching pair.",
+      "Matching pairs stay face up and are removed from play.",
+      "Tiles that do not match flip back after a moment.",
+      "Clear all eight pairs in as few moves as possible."
+    ],
+    "tips": [
+      "Remember positions revealed by earlier missed flips.",
+      "Clear pairs you already know first to shrink the board."
+    ]
+  },
+  {
+    "id": "breakout",
+    "title": "Breakout",
+    "description": "Bounce the ball and clear every brick. Mouse or arrow keys control the paddle.",
+    "icon": "🧱",
+    "source": "openarc",
+    "license": "MIT",
+    "tags": ["arcade", "static", "self-hosted"],
+    "playable": true,
+    "local": true,
+    "url": "/play/breakout.html",
+    "controls": "Arrow keys or the mouse move the paddle; Space starts and pauses.",
+    "howto": [
+      "Keep the ball from falling past your paddle.",
+      "Bounce the ball upwards to break the brick rows.",
+      "Clear every brick to win the round.",
+      "You start with three lives."
+    ],
+    "tips": [
+      "Strike the ball with the paddle edges for wider angles.",
+      "Keep an escape lane above the paddle for fast returns."
+    ]
+  },
+  {
+    "id": "pong",
+    "title": "Pong",
+    "description": "Classic Pong against a simple AI. Keyboard or mouse paddle control.",
+    "icon": "🏓",
+    "source": "openarc",
+    "license": "MIT",
+    "tags": ["arcade", "static", "self-hosted"],
+    "playable": true,
+    "local": true,
+    "url": "/play/pong.html",
+    "controls": "Arrow keys or W/S (or the mouse) move your paddle; Space starts.",
+    "howto": [
+      "Move your paddle on the left to return the ball.",
+      "An AI opponent defends the right side.",
+      "Score a point when the ball passes the opponent.",
+      "First to five points wins the match."
+    ],
+    "tips": [
+      "Hit with the paddle edges to add angle to your return.",
+      "Watch the vertical speed change after each hit."
+    ]
+  },
+  {
+    "id": "minesweeper",
+    "title": "Minesweeper",
+    "description": "Reveal safe cells without hitting a mine. Keyboard and flag mode supported.",
+    "icon": "💣",
+    "source": "openarc",
+    "license": "MIT",
+    "tags": ["puzzle", "static", "self-hosted"],
+    "playable": true,
+    "local": true,
+    "url": "/play/minesweeper.html",
+    "controls": "Click to reveal a cell; right-click or use Flag mode to mark a mine.",
+    "howto": [
+      "Reveal a cell to see how many mines touch it.",
+      "Each number counts the mines in the eight surrounding cells.",
+      "Flag the cells you are confident about.",
+      "Reveal every safe cell to win."
+    ],
+    "tips": [
+      "Open in a corner for a safer first move.",
+      "Deduce from the numbers instead of guessing."
+    ]
+  },
+  {
+    "id": "sgt-tetris",
+    "title": "Tetris",
+    "description": "Stack and clear lines in this MIT-licensed browser Tetris.",
+    "icon": "🟦",
+    "source": "simplegametutorials",
+    "license": "MIT",
+    "tags": ["arcade", "open-source"],
+    "playable": true,
+    "local": false,
+    "url": "https://github.com/Simple-Game-Tutorials"
+  },
+  {
+    "id": "sgt-asteroids",
+    "title": "Asteroids",
+    "description": "Rotate, thrust and shoot — a compact open-source Asteroids clone.",
+    "icon": "☄️",
+    "source": "simplegametutorials",
+    "license": "MIT",
+    "tags": ["arcade", "open-source"],
+    "playable": true,
+    "local": false,
+    "url": "https://github.com/Simple-Game-Tutorials"
+  },
+  {
+    "id": "sgt-minesweeper",
+    "title": "Minesweeper",
+    "description": "Reveal safe cells without hitting a mine. Open-source logic.",
+    "icon": "💣",
+    "source": "simplegametutorials",
+    "license": "MIT",
+    "tags": ["puzzle", "open-source"],
+    "playable": true,
+    "local": false,
+    "url": "https://github.com/Simple-Game-Tutorials"
+  },
+  {
+    "id": "browse-itchio",
+    "title": "itch.io · open-source tag",
+    "description": "Browse indie games published with open-source licenses on itch.io.",
+    "icon": "🕹️",
+    "source": "itchio",
+    "license": "varies",
+    "tags": ["open-source", "indie"],
+    "playable": false,
+    "local": false,
+    "url": "https://itch.io/games/tag-open-source"
+  },
+  {
+    "id": "browse-ludumdare",
+    "title": "Ludum Dare · game jam",
+    "description": "Entries from the Ludum Dare game jam, many released with source.",
+    "icon": "🏆",
+    "source": "ludumdare",
+    "license": "varies",
+    "tags": ["jam", "open-source"],
+    "playable": false,
+    "local": false,
+    "url": "https://ldjam.com/"
+  },
+  {
+    "id": "browse-github",
+    "title": "GitHub · trending HTML5",
+    "description": "Trending open-source HTML5 / Canvas / WebGL game repositories.",
+    "icon": "🐙",
+    "source": "github",
+    "license": "varies",
+    "tags": ["open-source", "trending"],
+    "playable": false,
+    "local": false,
+    "url": "https://github.com/topics/html5-game"
+  },
+  {
+    "id": "slot-games",
+    "title": "Slot Games",
+    "description": "Seven Blender-MCP slot machines with sticky wilds, jackpot wheels, Hold & Win and cash collect. Pick a title, set your bet and lines, then SPIN.",
+    "icon": "🎰",
+    "source": "openarc",
+    "license": "MIT",
+    "tags": ["casino", "arcade", "self-hosted"],
+    "playable": true,
+    "local": false,
+    "url": "/slots/",
+    "controls": "Choose a game from the dropdown, set bet and lines, then press SPIN.",
+    "howto": [
+      "Select a slot title from the top dropdown (Phoenix Fortune, Deep Sea Jackpot, Dragon Cash Hold & Win, Pirate Treasure Collect, and more).",
+      "Set your bet level and number of paylines.",
+      "Press SPIN to spin the reels and watch wins, respins, jackpots and bonus rounds animate.",
+      "Open the paytable panel to read each symbol's role and the game's special mechanics."
+    ],
+    "tips": [
+      "Respins and Hold & Win rounds can chain, so let the animation finish before spinning again.",
+      "Each game's RTP is reproducible from a seed, so results are fair and auditable."
+    ]
+  }
+]
