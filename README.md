@@ -178,7 +178,7 @@ static-games-hub/
 │     snake  tic-tac-toe  2048  memory  breakout  pong  minesweeper
 ├── slots/                         # Blender-MCP slot machine SPA (index.html/app.js/styles.css)
 ├── assets/ css/ js/ img/cover.png
-├── data/games.json                # single source of truth (14 entries)
+├── data/games.json                # single source of truth (19 entries)
 ├── _headers  _redirects           # Cloudflare Pages headers + 301s
 ├── scripts/
 │   ├── build.py        # pre-render -> dist/ (+ llms.txt, sitemap.xml, game copy)

@@ -254,5 +254,65 @@
       "Respins and Hold & Win rounds can chain, so let the animation finish before spinning again.",
       "Each game's RTP is reproducible from a seed, so results are fair and auditable."
     ]
+  },
+  {
+    "id": "gh-ancientbeast",
+    "title": "Ancient Beast",
+    "description": "Turn-based strategy board game pitting mutant animal factions against each other. Open-source HTML5.",
+    "icon": "🐺",
+    "source": "github",
+    "license": "open-source",
+    "tags": ["strategy", "open-source", "html5"],
+    "playable": true,
+    "local": false,
+    "url": "https://github.com/FreezingMoon/AncientBeast"
+  },
+  {
+    "id": "gh-kaetram",
+    "title": "Kaetram Open",
+    "description": "Browser-based MMORPG with a full open-source client and server. Play and read the source.",
+    "icon": "🗡️",
+    "source": "github",
+    "license": "open-source",
+    "tags": ["mmorpg", "open-source", "multiplayer"],
+    "playable": true,
+    "local": false,
+    "url": "https://github.com/Kaetram/Kaetram-Open"
+  },
+  {
+    "id": "gh-sandboxels",
+    "title": "Sandboxels",
+    "description": "An element-based falling-sand sandbox game — combine hundreds of materials and watch simulations unfold.",
+    "icon": "🧪",
+    "source": "github",
+    "license": "open-source",
+    "tags": ["sandbox", "simulation", "open-source"],
+    "playable": true,
+    "local": false,
+    "url": "https://github.com/R74nCom/sandboxels"
+  },
+  {
+    "id": "gh-c4",
+    "title": "Connect Four (c4)",
+    "description": "A clean, dependency-free Connect Four playable in the browser, with AI opponent.",
+    "icon": "🟡",
+    "source": "github",
+    "license": "MIT",
+    "tags": ["puzzle", "open-source", "html5"],
+    "playable": true,
+    "local": false,
+    "url": "https://github.com/kenrick95/c4"
+  },
+  {
+    "id": "gh-slither-clone",
+    "title": "Slither.io Clone",
+    "description": "Open-source .io-style snake battle — grow by eating, avoid other players. Pure HTML5/Canvas.",
+    "icon": "🐍",
+    "source": "github",
+    "license": "open-source",
+    "tags": ["io", "arcade", "open-source"],
+    "playable": true,
+    "local": false,
+    "url": "https://github.com/knagaitsev/slither.io-clone"
   }
 ]
