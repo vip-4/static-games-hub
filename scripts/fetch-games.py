@@ -31,6 +31,15 @@ Outputs
   data/games.json                    # only with --merge: new ids are appended
                                      # (existing entries are NEVER overwritten)
 
+Cover images (optional, --covers)
+----------------------------------
+  3. Pexels + Pixabay (when PEXELS_API_KEY / PIXABAY_API_KEY are set)
+     - Enriches data/games.json with a `cover` image URL per game.
+     - Pexels is tried first; Pixabay is used as a fallback.
+     - ONLY the resulting image URL is written to disk — the API keys are read
+       from the environment (or --pexels-key / --pixabay-key) and never stored.
+     - `browse-*` link cards are skipped; existing covers are kept unless --force.
+
 Usage
 -----
   # dry run — just see what would be fetched
@@ -49,6 +58,12 @@ Usage
       --curated mozilla/BrowserQuest,ellisonleao/clumsy-bird \
       --min-stars 20 --limit 8 --out data/games.generated.json --merge
 
+  # enrich the catalog with cover images (keys via env, never stored)
+  set PEXELS_API_KEY=xxxx
+  set PIXABAY_API_KEY=yyyy
+  python scripts/fetch-games.py --covers
+  python scripts/fetch-games.py --covers --force --cover-limit 10   # re-fetch 10
+
 Verification
 ------------
   * Key validity is printed in plain language (valid / invalid / rate-limited / missing).
@@ -66,6 +81,7 @@ import re
 import sys
 import time
 import urllib.error
+import urllib.parse
 import urllib.request
 from typing import Any, Optional
 
@@ -80,6 +96,11 @@ GAMES_JSON = os.path.join(DATA, "games.json")
 ITCH_API = "https://itch.io/api/1"
 GITHUB_API = "https://api.github.com"
 GITHUB_SEARCH = f"{GITHUB_API}/search/repositories"
+
+# Cover-image sources (optional — only used by --covers). Keys are read from
+# environment variables / CLI flags, never written to disk.
+PEXELS_API = "https://api.pexels.com/v1/search"
+PIXABAY_API = "https://pixabay.com/api/"
 
 log = logging.getLogger("openarc-fetch")
 
@@ -348,6 +369,227 @@ def fetch_github(topics: list[str], curated: list[str], token: Optional[str],
 
 
 # --------------------------------------------------------------------------- #
+# Cover images (Pexels / Pixabay) — optional, keyed by env var
+# --------------------------------------------------------------------------- #
+def validate_pexels_key(key: Optional[str]) -> dict:
+    """Return a verdict dict: status + human-readable reason + fix advice."""
+    if not key:
+        return {"status": "missing",
+                "reason": "PEXELS_API_KEY is empty or unset.",
+                "fix": "Create a key at https://www.pexels.com/api/new and pass it via "
+                       "the PEXELS_API_KEY environment variable (or --pexels-key)."}
+    problems = []
+    if not re.fullmatch(r"[A-Za-z0-9_-]{20,}", key):
+        problems.append("format looks unexpected (expected 20+ chars of [A-Za-z0-9_-])")
+    try:
+        status, _ = _get_json(f"{PEXELS_API}?query=test&per_page=1",
+                              headers={"Authorization": key})
+    except Exception as e:  # noqa: BLE001
+        return {"status": "unknown",
+                "reason": f"could not reach Pexels to verify the key ({e}).",
+                "fix": "Check connectivity and retry; key format looks OK"
+                       + (" (" + "; ".join(problems) + ")" if problems else "") + "."}
+    if status == 200:
+        note = "Pexels key authenticated."
+        if problems:
+            note += " (Note: " + "; ".join(problems) + " — but the live probe succeeded, "
+            note += "so it still works; re-copy it cleanly to silence the warning.)"
+        return {"status": "valid", "reason": note, "fix": ""}
+    if status in (401, 403):
+        return {"status": "invalid",
+                "reason": f"Pexels rejected the key (HTTP {status}).",
+                "fix": "The key is wrong, expired or revoked. Regenerate it at "
+                       "https://www.pexels.com/api/new and copy it without extra spaces."}
+    if status == 429:
+        return {"status": "ratelimited",
+                "reason": "Pexels key works but the API is rate-limiting (HTTP 429).",
+                "fix": "Retry shortly — this script backs off automatically."}
+    return {"status": "error", "reason": f"unexpected HTTP {status} from Pexels.",
+            "fix": "Retry; if it persists the key or service may be unhealthy."}
+
+
+def validate_pixabay_key(key: Optional[str]) -> dict:
+    """Return a verdict dict: status + human-readable reason + fix advice."""
+    if not key:
+        return {"status": "missing",
+                "reason": "PIXABAY_API_KEY is empty or unset.",
+                "fix": "Create a key at https://pixabay.com/api/docs/ and pass it via "
+                       "the PIXABAY_API_KEY environment variable (or --pixabay-key)."}
+    problems = []
+    if not re.fullmatch(r"\d+-[a-f0-9]+", key):
+        problems.append("format looks unexpected (expected '<digits>-<hex>')")
+    try:
+        # Pixabay requires per_page >= 3; using 1 here would itself 400.
+        status, _ = _get_json(f"{PIXABAY_API}?key={urllib.parse.quote(key)}&q=test&per_page=3")
+    except Exception as e:  # noqa: BLE001
+        return {"status": "unknown",
+                "reason": f"could not reach Pixabay to verify the key ({e}).",
+                "fix": "Check connectivity and retry; key format looks OK"
+                       + (" (" + "; ".join(problems) + ")" if problems else "") + "."}
+    if status == 200:
+        note = "Pixabay key authenticated."
+        if problems:
+            note += " (Note: " + "; ".join(problems) + " — but the live probe succeeded.)"
+        return {"status": "valid", "reason": note, "fix": ""}
+    if status in (400, 401, 403):
+        return {"status": "invalid",
+                "reason": f"Pixabay rejected the key (HTTP {status}).",
+                "fix": "The key is wrong or revoked. Regenerate it at "
+                       "https://pixabay.com/api/docs/ and copy it without extra spaces."}
+    return {"status": "error", "reason": f"unexpected HTTP {status} from Pixabay.",
+            "fix": "Retry; if it persists the key or service may be unhealthy."}
+
+
+def cover_queries(g: dict) -> list[str]:
+    """Build an ordered list of search queries for a game's cover image.
+
+    Most specific first (exact title), then a generic variant, then a
+    genre-aware term so a topical image is used when no photo matches the
+    exact title (common for niche open-source games).
+    """
+    _GENRE_TERM = {
+        "arcade": "arcade game", "puzzle": "puzzle", "strategy": "strategy game",
+        "action": "action game", "shooter": "space shooter", "rpg": "rpg",
+        "simulation": "simulation", "sandbox": "sandbox", "io": "arcade game",
+        "casino": "casino", "memory": "puzzle", "mmorpg": "fantasy rpg",
+        "multiplayer": "multiplayer game",
+    }
+    title = (g.get("title") or "").strip()
+    tags = g.get("tags", []) or []
+    q: list[str] = []
+    if title:
+        q.append(title)
+        q.append(f"{title} game")
+    for t in tags:
+        if t in _GENRE_TERM:
+            q.append(_GENRE_TERM[t])
+            break
+    seen: set[str] = set()
+    out: list[str] = []
+    for x in q:
+        if x and x.lower() not in seen:
+            seen.add(x.lower())
+            out.append(x)
+    return out or [title or "game"]
+
+
+def fetch_cover_pexels(queries: list[str], key: str) -> Optional[str]:
+    """Return a landscape cover URL from Pexels, or None on any failure.
+
+    Tries each query in order; transient 403/429 are retried once per query.
+    """
+    for query in queries:
+        url = (f"{PEXELS_API}?query={urllib.parse.quote(query)}"
+               f"&per_page=3&orientation=landscape")
+        for attempt in range(2):  # transient 403/429 can happen on shared IPs
+            try:
+                status, body = _get_json(url, headers={"Authorization": key})
+            except Exception as e:  # noqa: BLE001
+                log.warning("Pexels request failed for '%s': %s", query, e)
+                return None
+            if status == 200 and isinstance(body, dict):
+                for photo in (body.get("photos") or []):
+                    src = photo.get("src", {})
+                    u = src.get("large") or src.get("medium") or src.get("original")
+                    if u:
+                        return u
+                break  # no photo for this query; try the next query
+            if status in (403, 429):
+                log.warning("Pexels HTTP %s for '%s' — retry %d/2", status, query, attempt + 1)
+                time.sleep(2 ** attempt)
+                continue
+            break
+    return None
+
+
+def fetch_cover_pixabay(queries: list[str], key: str) -> Optional[str]:
+    """Return a cover URL from Pixabay (fallback source), or None on failure."""
+    for query in queries:
+        try:
+            status, body = _get_json(
+                f"{PIXABAY_API}?key={urllib.parse.quote(key)}&q={urllib.parse.quote(query)}"
+                f"&image_type=photo&orientation=horizontal&per_page=3&safesearch=true")
+        except Exception as e:  # noqa: BLE001
+            log.warning("Pixabay request failed for '%s': %s", query, e)
+            return None
+        if status != 200 or not isinstance(body, dict):
+            continue
+        for hit in (body.get("hits") or []):
+            url = hit.get("largeImageURL") or hit.get("webformatURL")
+            if url:
+                return url
+    return None
+
+
+def enrich_covers(path: str, pexels_key: Optional[str], pixabay_key: Optional[str],
+                  force: bool = False, limit: Optional[int] = None) -> int:
+    """Attach a `cover` URL to each catalog entry (Pexels first, Pixabay fallback).
+
+    Only the resulting image URL is written back into games.json — API keys are
+    never persisted. `browse-*` entries are skipped (they are link cards, not
+    playable games). Existing covers are preserved unless `force` is set.
+    """
+    if not os.path.exists(path):
+        log.error("catalog %s not found — run a fetch first.", path)
+        return 0
+    pv = validate_pexels_key(pexels_key)
+    pxb = validate_pixabay_key(pixabay_key)
+    log.info("Pexels key: %s — %s", pv["status"], pv["reason"])
+    if pv["fix"]:
+        log.info("  ↳ fix: %s", pv["fix"])
+    log.info("Pixabay key: %s — %s", pxb["status"], pxb["reason"])
+    if pxb["fix"]:
+        log.info("  ↳ fix: %s", pxb["fix"])
+
+    # We attempt a fetch whenever a key was *provided*, even if the pre-flight
+    # probe was inconclusive (transient 403/429). The per-game fetch degrades
+    # gracefully to None, so a bad/rate-limited key simply yields no cover.
+    use_pexels = bool(pexels_key) and pv["status"] != "missing"
+    use_pixabay = bool(pixabay_key) and pxb["status"] != "missing"
+    if not use_pexels and not use_pixabay:
+        log.warning("No cover-image key provided — leaving covers empty "
+                    "(emoji fallback is used at build time).")
+        return 0
+
+    games = load_json(path)
+    changed = done = 0
+    for g in games:
+        if limit is not None and done >= limit:
+            break
+        gid = g.get("id", "")
+        if gid.startswith("browse-"):
+            continue
+        if g.get("cover") and not force:
+            continue
+        done += 1
+        title = g.get("title", "")
+        queries = cover_queries(g)
+        cover = None
+        if use_pexels:
+            cover = fetch_cover_pexels(queries, pexels_key)
+            if cover:
+                log.info("cover (Pexels) for '%s'", title)
+        if not cover and use_pixabay:
+            cover = fetch_cover_pixabay(queries, pixabay_key)
+            if cover:
+                log.info("cover (Pixabay) for '%s'", title)
+        if cover:
+            g["cover"] = cover
+            changed += 1
+        else:
+            log.warning("no cover found for '%s'", title)
+        time.sleep(0.4)  # stay polite with the public APIs
+
+    if changed:
+        with open(path, "w", encoding="utf-8") as fh:
+            json.dump(games, fh, indent=2, ensure_ascii=False)
+        log.info("wrote %d cover URL(s) -> %s", changed, os.path.normpath(path))
+    else:
+        log.info("no covers added (all skipped or none found).")
+    return changed
+
+
+# --------------------------------------------------------------------------- #
 # Merge + persistence
 # --------------------------------------------------------------------------- #
 def load_json(path: str) -> list[dict]:
@@ -407,6 +649,19 @@ def parse_args(argv: Optional[list[str]] = None) -> argparse.Namespace:
     ap.add_argument("--no-github", action="store_true", help="Skip GitHub entirely.")
     ap.add_argument("--merge", action="store_true",
                     help="Append new ids into data/games.json (never overwrites).")
+    ap.add_argument("--covers", action="store_true",
+                    help="Enrich games.json with cover images from Pexels/Pixabay "
+                         "(writes only the image URL, never the API key).")
+    ap.add_argument("--pexels-key",
+                    default=os.environ.get("PEXELS_API_KEY"),
+                    help="Pexels API key (defaults to $PEXELS_API_KEY).")
+    ap.add_argument("--pixabay-key",
+                    default=os.environ.get("PIXABAY_API_KEY"),
+                    help="Pixabay API key (defaults to $PIXABAY_API_KEY).")
+    ap.add_argument("--force", action="store_true",
+                    help="Re-fetch covers even if already set (with --covers).")
+    ap.add_argument("--cover-limit", type=int, default=0,
+                    help="Max games to enrich with --covers (0 = all).")
     ap.add_argument("--log-level", default="INFO",
                     help="DEBUG, INFO, WARNING, ERROR.")
     return ap.parse_args(argv)
@@ -416,6 +671,13 @@ def main(argv: Optional[list[str]] = None) -> int:
     args = parse_args(argv)
     logging.basicConfig(level=getattr(logging, args.log_level.upper(), logging.INFO),
                         format="%(levelname)s %(message)s")
+
+    # --covers is a standalone mode: enrich the existing catalog with images.
+    if args.covers:
+        added = enrich_covers(GAMES_JSON, args.pexels_key, args.pixabay_key,
+                              args.force, args.cover_limit or None)
+        log.info("covers added/updated: %d", added)
+        return 0
 
     generated: list[dict] = []
     if not args.no_github:

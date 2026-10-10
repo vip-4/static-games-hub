@@ -56,6 +56,15 @@ def play_href(g: dict) -> str:
 
 def render_item(g: dict) -> str:
     e = html.escape
+    ea = lambda s: html.escape(s, quote=True)  # noqa: E731 (attr-safe escaping)
+    cover = g.get("cover")
+    if cover:
+        # Decorative cover; the emoji glyph is the accessible fallback if the
+        # image fails to load (onerror removes the <img>, revealing the glyph).
+        thumb = (f'<img class="cover" src="{ea(cover)}" alt="" loading="lazy" '
+                 f'width="400" height="120" onerror="this.remove()">')
+    else:
+        thumb = ""
     tags = "".join(f'<span class="tag">{e(t)}</span>' for t in g.get("tags", []))
     lic = f'<span class="tag lic">{e(g["license"])}</span>' if g.get("license") else ""
     ext = "" if (g.get("playable") and g.get("local")) else ' target="_blank" rel="noopener noreferrer"'
@@ -64,7 +73,7 @@ def render_item(g: dict) -> str:
         '        <li class="card"'
         f' data-source="{e(g.get("source", "other"))}"'
         f' data-tags="{e(" ".join(g.get("tags", [])))}">\n'
-        f'          <div class="thumb" aria-hidden="true">{e(g.get("icon", DEFAULT_ICON))}</div>\n'
+        f'          <div class="thumb" aria-hidden="true">{thumb}{e(g.get("icon", DEFAULT_ICON))}</div>\n'
         f'          <h3>{e(g["title"])}</h3>\n'
         f'          <p>{e(g.get("description", ""))}</p>\n'
         '          <div class="meta">\n'
@@ -208,7 +217,7 @@ def _license_url(g: dict) -> str | None:
     return LICENSE_URL.get(lic)
 
 
-def game_schema_head(g: dict, site_url: str) -> str:
+def game_schema_head(g: dict, site_url: str, image: str | None = None) -> str:
     """Build head JSON-LD: VideoGame + BreadcrumbList as separate <script> blocks."""
     e = html.escape
     site = site_url.rstrip("/")
@@ -230,6 +239,8 @@ def game_schema_head(g: dict, site_url: str) -> str:
         "operatingSystem": "Any (browser)",
         "isAccessibleForFree": True,
     }
+    if image:
+        vg["image"] = image
     lic_url = _license_url(g)
     if lic_url:
         vg["license"] = lic_url
@@ -313,6 +324,10 @@ def render_game_detail(g: dict, site_url: str) -> str:
     desc = g.get("description", "")
     tags = g.get("tags", [])
     lic = g.get("license", "varies")
+    cover = g.get("cover")
+    # Social/crawler preview image: the game cover if we have one, else the
+    # site default. Cover URLs are absolute (Pexels/Pixabay CDN), so use as-is.
+    og_img = cover if cover else (site + "/assets/img/cover.png")
 
     keywords = ", ".join([title] + tags + [g.get("source", "other"), lic,
                                           "open source game", "HTML5 game",
@@ -326,6 +341,12 @@ def render_game_detail(g: dict, site_url: str) -> str:
 
     # ---- visible body ----
     body = []
+    if cover:
+        body.append(
+            '      <figure class="game-cover-wrap">\n'
+            f'        <img class="game-cover" src="{ea(cover)}" '
+            f'alt="{e(title)} — themed artwork" loading="lazy" '
+            f'width="1200" height="630">\n      </figure>')
     body.append("      <dl class=\"game-meta\">")
     body.append(f"        <dt>Source</dt><dd>{e(src_name)}</dd>")
     body.append(f"        <dt>License</dt><dd>{e(lic)}</dd>")
@@ -383,8 +404,9 @@ def render_game_detail(g: dict, site_url: str) -> str:
         "__OG_DESC__": ea(desc),
         "__TW_TITLE__": ea(page_title),
         "__TW_DESC__": ea(desc),
-        "__OG_IMG__": ea(site + "/assets/img/cover.png"),
-        "<!--JSONLD-->": game_schema_head(g, site_url),
+        "__OG_IMG__": ea(og_img),
+        "__LEAD__": ea(desc or title),
+        "<!--JSONLD-->": game_schema_head(g, site_url, image=og_img),
         "<!--GAME_CONTENT-->": "\n".join(body),
     }
     for k, v in repl.items():
@@ -516,27 +538,32 @@ def render_sitemap(games: list[dict], today: str, site_url: str) -> str:
     """Generate sitemap.xml from the catalog so URLs can never drift.
 
     Every catalog entry gets its own canonical detail page, plus the two hubs.
+    Games that have a `cover` image also emit an <image:image> entry (Google
+    image-sitemap extension) so the artwork is discoverable.
     (The /play/*.html shells are reachable from inside those pages but are
     consolidated via rel=canonical, so they are intentionally omitted here.)
     """
     base = site_url.rstrip("/")
     urls = [
-        (f"{base}/", "daily", "1.0"),
-        (f"{base}/games.html", "daily", "0.9"),
+        (f"{base}/", "daily", "1.0", None),
+        (f"{base}/games.html", "daily", "0.9", None),
     ]
     for g in games:
-        urls.append((f"{base}/games/{g['id']}.html", "monthly", "0.7"))
+        urls.append((f"{base}/games/{g['id']}.html", "monthly", "0.7", g.get("cover")))
     body = "\n".join(
         "  <url>\n"
         f"    <loc>{loc}</loc>\n"
         f"    <lastmod>{today}</lastmod>\n"
         f"    <changefreq>{freq}</changefreq>\n"
         f"    <priority>{prio}</priority>\n"
-        "  </url>"
-        for loc, freq, prio in urls
+        + (f"    <image:image>\n      <image:loc>{img}</image:loc>\n    </image:image>\n"
+           if img else "")
+        + "  </url>"
+        for loc, freq, prio, img in urls
     )
     return ('<?xml version="1.0" encoding="UTF-8"?>\n'
-            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '
+            'xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n'
             f"{body}\n</urlset>\n")
 
 
