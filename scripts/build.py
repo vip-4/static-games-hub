@@ -46,9 +46,12 @@ def load_games() -> list[dict]:
 
 
 def play_href(g: dict) -> str:
-    if g.get("playable") and g.get("local"):
-        return f"/play/{g['id']}.html"
-    return g.get("url") or "#"
+    """Canonical link for a catalog entry: its own indexable detail page.
+
+    Local playable games are embedded inside that page (and linked to /play/),
+    external games link out from it — so every game gets one crawlable URL.
+    """
+    return f"/games/{g['id']}.html"
 
 
 def render_item(g: dict) -> str:
@@ -155,6 +158,240 @@ def render_game_content(g: dict, site_url: str) -> str:
     return "\n".join(out)
 
 
+# --------------------------------------------------------------------------- #
+# Per-game DETAIL pages (one indexable page per catalog entry; GEO + sitemap)
+# --------------------------------------------------------------------------- #
+GAME_TMPL = os.path.join(ROOT, "game.html")
+
+GENRE_MAP = {
+    "arcade": "Arcade", "puzzle": "Puzzle", "strategy": "Strategy",
+    "action": "Action", "shooter": "Shooter", "rpg": "Role-Playing",
+    "simulation": "Simulation", "sandbox": "Sandbox", "io": ".io",
+    "casino": "Casino", "memory": "Puzzle", "mmorpg": "MMORPG",
+    "multiplayer": "Multiplayer",
+}
+
+# Human-readable source names, used to keep per-game page titles unique
+# (e.g. "Minesweeper" appears both as an OpenArc game and a Simple-Game-Tutorials one).
+SRC_NAME = {
+    "openarc": "OpenArc",
+    "simplegametutorials": "Simple Game Tutorials",
+    "itchio": "itch.io",
+    "ludumdare": "Ludum Dare",
+    "github": "GitHub",
+}
+
+LICENSE_URL = {
+    "MIT": "https://opensource.org/licenses/MIT",
+    "Apache-2.0": "https://www.apache.org/licenses/LICENSE-2.0",
+    "GPL-3.0": "https://www.gnu.org/licenses/gpl-3.0.html",
+    "GPL-2.0": "https://www.gnu.org/licenses/old-licenses/gpl-2.0.html",
+    "BSD-3-Clause": "https://opensource.org/licenses/BSD-3-Clause",
+    "BSD-2-Clause": "https://opensource.org/licenses/BSD-2-Clause",
+    "MPL-2.0": "https://www.mozilla.org/MPL/2.0/",
+    "AGPL-3.0": "https://www.gnu.org/licenses/agpl-3.0.html",
+    "LGPL-3.0": "https://www.gnu.org/licenses/lgpl-3.0.html",
+    "Unlicense": "https://unlicense.org/",
+    "CC0-1.0": "https://creativecommons.org/publicdomain/zero/1.0/",
+}
+
+
+def _genre(g: dict) -> str:
+    for t in g.get("tags", []):
+        if t in GENRE_MAP:
+            return GENRE_MAP[t]
+    return "Indie"
+
+
+def _license_url(g: dict) -> str | None:
+    lic = g.get("license", "")
+    return LICENSE_URL.get(lic)
+
+
+def game_schema_head(g: dict, site_url: str) -> str:
+    """Build head JSON-LD: VideoGame + BreadcrumbList as separate <script> blocks."""
+    e = html.escape
+    site = site_url.rstrip("/")
+    gid = g["id"]
+    url = f"{site}/games/{gid}.html"
+    title = g["title"]
+    desc = g.get("description", "")
+
+    vg: dict[str, Any] = {
+        "@context": "https://schema.org",
+        "@type": "VideoGame",
+        "name": title,
+        "description": desc,
+        "url": url,
+        "genre": _genre(g),
+        "playMode": "SinglePlayer",
+        "gamePlatform": "Web Browser",
+        "applicationCategory": "Game",
+        "operatingSystem": "Any (browser)",
+        "isAccessibleForFree": True,
+    }
+    lic_url = _license_url(g)
+    if lic_url:
+        vg["license"] = lic_url
+
+    crumbs = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": site + "/"},
+            {"@type": "ListItem", "position": 2, "name": "Games", "item": site + "/games.html"},
+            {"@type": "ListItem", "position": 3, "name": title, "item": url},
+        ],
+    }
+    faq_html, faq_json = game_faq(g, site, url)
+    blocks = [
+        '<script type="application/ld+json">',
+        json.dumps(vg, ensure_ascii=False),
+        "</script>",
+        '<script type="application/ld+json">',
+        json.dumps(crumbs, ensure_ascii=False),
+        "</script>",
+        '<script type="application/ld+json">',
+        json.dumps(faq_json, ensure_ascii=False),
+        "</script>",
+    ]
+    return "\n".join(blocks)
+
+
+def game_faq(g: dict, site: str, url: str) -> tuple[str, dict]:
+    """Per-game FAQ block + FAQPage JSON-LD for generative-engine citation."""
+    e = html.escape
+    title = g["title"]
+    tags = g.get("tags", [])
+    lic = g.get("license", "varies")
+    controls = g.get("controls") or (
+        "Open the game in your browser and use the on-screen controls; "
+        "everything runs client-side with no install."
+    )
+    qas = [
+        (f"What is {title}?",
+         f"{title} is a lightweight, open-source "
+         f"{', '.join(tags) if tags else 'HTML5'} game in the OpenArc catalog. "
+         f"It runs in any modern browser with plain HTML, CSS and JavaScript."),
+        (f"Is {title} open source?",
+         f"Yes — it is released under the {lic} license and links to its source, "
+         f"so you can read, modify and redistribute it."),
+        (f"How do I play {title}?",
+         controls),
+        (f"Can I self-host {title}?",
+         "Yes. OpenArc is a fully static site: copy the built dist/ folder to any "
+         "static host (GitHub Pages, Netlify, Cloudflare Pages) and the game stays "
+         "available offline."),
+    ]
+    parts = ['      <section aria-labelledby="gfaq-h">',
+             f'        <h2 id="gfaq-h">{e(title)} — FAQ</h2>',
+             '        <div class="faq">']
+    faq_json: dict[str, Any] = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [],
+    }
+    for q, a in qas:
+        parts.append(f'          <details>\n            <summary>{e(q)}</summary>\n'
+                     f'            <p>{e(a)}</p>\n          </details>')
+        faq_json["mainEntity"].append({
+            "@type": "Question", "name": q,
+            "acceptedAnswer": {"@type": "Answer", "text": a},
+        })
+    parts.append("        </div>\n      </section>")
+    return "\n".join(parts), faq_json
+
+
+def render_game_detail(g: dict, site_url: str) -> str:
+    """Render a full, indexable detail page for one catalog entry."""
+    e = html.escape
+    ea = lambda s: html.escape(s, quote=True)  # noqa: E731 (short helper)
+    site = site_url.rstrip("/")
+    gid = g["id"]
+    url = f"{site}/games/{gid}.html"
+    title = g["title"]
+    desc = g.get("description", "")
+    tags = g.get("tags", [])
+    lic = g.get("license", "varies")
+
+    keywords = ", ".join([title] + tags + [g.get("source", "other"), lic,
+                                          "open source game", "HTML5 game",
+                                          "static game", "browser game"])
+
+    # Per-game page title must be unique across the catalog (same game name can
+    # appear under different sources), so disambiguate by source.
+    src = g.get("source", "other")
+    src_name = SRC_NAME.get(src, src)
+    page_title = f"{title} | OpenArc" if src == "openarc" else f"{title} · {src_name} | OpenArc"
+
+    # ---- visible body ----
+    body = []
+    body.append("      <dl class=\"game-meta\">")
+    body.append(f"        <dt>Source</dt><dd>{e(src_name)}</dd>")
+    body.append(f"        <dt>License</dt><dd>{e(lic)}</dd>")
+    body.append(f"        <dt>Tags</dt><dd>{e(', '.join(tags) if tags else '—')}</dd>")
+    if g.get("stars"):
+        body.append(f"        <dt>Stars</dt><dd>{e(str(g['stars']))}</dd>")
+    body.append("      </dl>")
+
+    if g.get("playable") and g.get("local"):
+        body.append(
+            f'      <div class="stage">\n'
+            f'        <iframe src="/play/{e(gid)}.html" title="Play {e(title)}" '
+            f'loading="lazy" class="game-frame"></iframe>\n'
+            f'        <p><a class="btn primary" href="/play/{e(gid)}.html">'
+            f'Play {e(title)} full screen</a></p>\n      </div>')
+    else:
+        ext = ea(g.get("url", "#"))
+        body.append(
+            f'      <p><a class="btn primary" href="{ext}" '
+            f'target="_blank" rel="noopener noreferrer">'
+            f'Play / View source on {e(g.get("source", "upstream"))}</a></p>')
+
+    if g.get("controls"):
+        body.append(
+            '      <section aria-labelledby="ctl-h">\n'
+            '        <h2 id="ctl-h">Controls</h2>\n'
+            f'        <p>{e(g["controls"])}</p>\n      </section>')
+    if g.get("howto"):
+        steps = "\n".join(f"          <li>{e(s)}</li>" for s in g["howto"])
+        body.append(
+            '      <section aria-labelledby="how-h">\n'
+            f'        <h2 id="how-h">How to play {e(title)}</h2>\n'
+            f'        <ol class="steps">\n{steps}\n        </ol>\n      </section>')
+    if g.get("tips"):
+        items = "\n".join(f"          <li>{e(t)}</li>" for t in g["tips"])
+        body.append(
+            '      <section aria-labelledby="tips-h">\n'
+            '        <h2 id="tips-h">Tips</h2>\n'
+            f'        <ul>\n{items}\n        </ul>\n      </section>')
+
+    # per-game FAQ (also carries FAQPage JSON-LD)
+    faq_html, _ = game_faq(g, site, url)
+    body.append(faq_html)
+
+    # ---- template substitution ----
+    with open(GAME_TMPL, encoding="utf-8") as fh:
+        tpl = fh.read()
+    repl = {
+        "__TITLE__": ea(page_title),
+        "__H1__": e(title),
+        "__DESC__": ea(desc),
+        "__KEYWORDS__": ea(keywords),
+        "__CANON__": ea(url),
+        "__OG_TITLE__": ea(page_title),
+        "__OG_DESC__": ea(desc),
+        "__TW_TITLE__": ea(page_title),
+        "__TW_DESC__": ea(desc),
+        "__OG_IMG__": ea(site + "/assets/img/cover.png"),
+        "<!--JSONLD-->": game_schema_head(g, site_url),
+        "<!--GAME_CONTENT-->": "\n".join(body),
+    }
+    for k, v in repl.items():
+        tpl = tpl.replace(k, v)
+    return tpl
+
+
 SOURCE_NOTES = {
     "openarc": "Self-hosted here — MIT licensed, dependency-free, playable without leaving the site.",
     "simplegametutorials": "MIT-licensed vanilla-JavaScript classics.",
@@ -229,36 +466,66 @@ def minify_tree() -> tuple[int, int, int]:
 
 
 def build_play_pages(games: list[dict], site_url: str) -> int:
-    """Copy play/*.html, injecting catalog-driven content + schema."""
+    """Copy play/*.html, injecting catalog-driven content + schema.
+
+    Each play page's canonical URL is pointed at its detail page so search
+    engines index one URL per game (the detail page) instead of duplicating.
+    """
     src_dir = os.path.join(ROOT, "play")
     dst_dir = os.path.join(DIST, "play")
     os.makedirs(dst_dir, exist_ok=True)
     by_id = {g["id"]: g for g in games}
+    site = site_url.rstrip("/")
     n = 0
     for name in sorted(os.listdir(src_dir)):
         if not name.endswith(".html"):
             continue
         with open(os.path.join(src_dir, name), encoding="utf-8") as fh:
             content = fh.read()
-        g = by_id.get(name[:-5])
+        gid = name[:-5]
+        g = by_id.get(gid)
         injected = render_game_content(g, site_url) if g else ""
         content = content.replace("<!--GAME_CONTENT-->", injected)
+        # consolidate canonical -> /games/{id}.html
+        content = re.sub(
+            r'(<link rel="canonical" href=")[^"]*(")',
+            rf'\1{site}/games/{gid}.html\2', content)
         with open(os.path.join(dst_dir, name), "w", encoding="utf-8") as fh:
             fh.write(content)
         n += 1
     return n
 
 
+def build_game_pages(games: list[dict], site_url: str) -> int:
+    """Generate one indexable detail page per catalog entry under dist/games/."""
+    dst_dir = os.path.join(DIST, "games")
+    os.makedirs(dst_dir, exist_ok=True)
+    n = 0
+    for g in games:
+        gid = g["id"]
+        # safe filename: keep only [A-Za-z0-9._-]
+        safe = re.sub(r"[^A-Za-z0-9._-]", "-", gid)
+        out = render_game_detail(g, site_url)
+        with open(os.path.join(dst_dir, f"{safe}.html"), "w", encoding="utf-8") as fh:
+            fh.write(out)
+        n += 1
+    return n
+
+
 def render_sitemap(games: list[dict], today: str, site_url: str) -> str:
-    """Generate sitemap.xml from the catalog so URLs can never drift."""
+    """Generate sitemap.xml from the catalog so URLs can never drift.
+
+    Every catalog entry gets its own canonical detail page, plus the two hubs.
+    (The /play/*.html shells are reachable from inside those pages but are
+    consolidated via rel=canonical, so they are intentionally omitted here.)
+    """
     base = site_url.rstrip("/")
     urls = [
         (f"{base}/", "daily", "1.0"),
         (f"{base}/games.html", "daily", "0.9"),
     ]
     for g in games:
-        if g.get("playable") and g.get("local"):
-            urls.append((f"{base}/play/{g['id']}.html", "monthly", "0.6"))
+        urls.append((f"{base}/games/{g['id']}.html", "monthly", "0.7"))
     body = "\n".join(
         "  <url>\n"
         f"    <loc>{loc}</loc>\n"
@@ -393,6 +660,10 @@ def build(base: str = "/", site_url: str = DEFAULT_SITE, cname: str | None = Non
     # play pages get unique copy + HowTo/Breadcrumb schema injected
     n_play = build_play_pages(games, site_url)
     print(f"built {n_play} play pages (content + schema injected)")
+
+    # per-game detail pages: canonical URL + VideoGame/Breadcrumb/FAQ schema
+    n_detail = build_game_pages(games, site_url)
+    print(f"built {n_detail} game detail pages (independent meta + sitemap entries)")
 
     # sitemap generated from the catalog (no manual drift)
     sm = os.path.join(DIST, "sitemap.xml")

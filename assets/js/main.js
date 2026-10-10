@@ -11,8 +11,9 @@ const esc = (s) => String(s).replace(/[&<>"']/g, (c) =>
   ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
 function playHref(g) {
-  if (g.playable && g.local) return `/play/${g.id}.html`;
-  return g.url || "#";
+  // Canonical link is the game's own detail page (works for both local and
+  // externally-hosted games); the detail page then links to play/source.
+  return `/games/${g.id}.html`;
 }
 
 function buildItem(g) {

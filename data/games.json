@@ -6,7 +6,11 @@
     "icon": "🐍",
     "source": "openarc",
     "license": "MIT",
-    "tags": ["arcade", "static", "self-hosted"],
+    "tags": [
+      "arcade",
+      "static",
+      "self-hosted"
+    ],
     "playable": true,
     "local": true,
     "url": "/play/snake.html",
@@ -29,7 +33,11 @@
     "icon": "❌",
     "source": "openarc",
     "license": "MIT",
-    "tags": ["puzzle", "static", "self-hosted"],
+    "tags": [
+      "puzzle",
+      "static",
+      "self-hosted"
+    ],
     "playable": true,
     "local": true,
     "url": "/play/tic-tac-toe.html",
@@ -52,7 +60,11 @@
     "icon": "🔢",
     "source": "openarc",
     "license": "MIT",
-    "tags": ["puzzle", "static", "self-hosted"],
+    "tags": [
+      "puzzle",
+      "static",
+      "self-hosted"
+    ],
     "playable": true,
     "local": true,
     "url": "/play/2048.html",
@@ -75,7 +87,11 @@
     "icon": "🧠",
     "source": "openarc",
     "license": "MIT",
-    "tags": ["puzzle", "memory", "self-hosted"],
+    "tags": [
+      "puzzle",
+      "memory",
+      "self-hosted"
+    ],
     "playable": true,
     "local": true,
     "url": "/play/memory.html",
@@ -98,7 +114,11 @@
     "icon": "🧱",
     "source": "openarc",
     "license": "MIT",
-    "tags": ["arcade", "static", "self-hosted"],
+    "tags": [
+      "arcade",
+      "static",
+      "self-hosted"
+    ],
     "playable": true,
     "local": true,
     "url": "/play/breakout.html",
@@ -121,7 +141,11 @@
     "icon": "🏓",
     "source": "openarc",
     "license": "MIT",
-    "tags": ["arcade", "static", "self-hosted"],
+    "tags": [
+      "arcade",
+      "static",
+      "self-hosted"
+    ],
     "playable": true,
     "local": true,
     "url": "/play/pong.html",
@@ -144,7 +168,11 @@
     "icon": "💣",
     "source": "openarc",
     "license": "MIT",
-    "tags": ["puzzle", "static", "self-hosted"],
+    "tags": [
+      "puzzle",
+      "static",
+      "self-hosted"
+    ],
     "playable": true,
     "local": true,
     "url": "/play/minesweeper.html",
@@ -167,7 +195,10 @@
     "icon": "🟦",
     "source": "simplegametutorials",
     "license": "MIT",
-    "tags": ["arcade", "open-source"],
+    "tags": [
+      "arcade",
+      "open-source"
+    ],
     "playable": true,
     "local": false,
     "url": "https://github.com/Simple-Game-Tutorials"
@@ -179,7 +210,10 @@
     "icon": "☄️",
     "source": "simplegametutorials",
     "license": "MIT",
-    "tags": ["arcade", "open-source"],
+    "tags": [
+      "arcade",
+      "open-source"
+    ],
     "playable": true,
     "local": false,
     "url": "https://github.com/Simple-Game-Tutorials"
@@ -191,7 +225,10 @@
     "icon": "💣",
     "source": "simplegametutorials",
     "license": "MIT",
-    "tags": ["puzzle", "open-source"],
+    "tags": [
+      "puzzle",
+      "open-source"
+    ],
     "playable": true,
     "local": false,
     "url": "https://github.com/Simple-Game-Tutorials"
@@ -203,7 +240,10 @@
     "icon": "🕹️",
     "source": "itchio",
     "license": "varies",
-    "tags": ["open-source", "indie"],
+    "tags": [
+      "open-source",
+      "indie"
+    ],
     "playable": false,
     "local": false,
     "url": "https://itch.io/games/tag-open-source"
@@ -215,7 +255,10 @@
     "icon": "🏆",
     "source": "ludumdare",
     "license": "varies",
-    "tags": ["jam", "open-source"],
+    "tags": [
+      "jam",
+      "open-source"
+    ],
     "playable": false,
     "local": false,
     "url": "https://ldjam.com/"
@@ -227,7 +270,10 @@
     "icon": "🐙",
     "source": "github",
     "license": "varies",
-    "tags": ["open-source", "trending"],
+    "tags": [
+      "open-source",
+      "trending"
+    ],
     "playable": false,
     "local": false,
     "url": "https://github.com/topics/html5-game"
@@ -239,7 +285,11 @@
     "icon": "🎰",
     "source": "openarc",
     "license": "MIT",
-    "tags": ["casino", "arcade", "self-hosted"],
+    "tags": [
+      "casino",
+      "arcade",
+      "self-hosted"
+    ],
     "playable": true,
     "local": false,
     "url": "/slots/",
@@ -262,7 +312,11 @@
     "icon": "🐺",
     "source": "github",
     "license": "open-source",
-    "tags": ["strategy", "open-source", "html5"],
+    "tags": [
+      "strategy",
+      "open-source",
+      "html5"
+    ],
     "playable": true,
     "local": false,
     "url": "https://github.com/FreezingMoon/AncientBeast"
@@ -274,7 +328,11 @@
     "icon": "🗡️",
     "source": "github",
     "license": "open-source",
-    "tags": ["mmorpg", "open-source", "multiplayer"],
+    "tags": [
+      "mmorpg",
+      "open-source",
+      "multiplayer"
+    ],
     "playable": true,
     "local": false,
     "url": "https://github.com/Kaetram/Kaetram-Open"
@@ -286,7 +344,11 @@
     "icon": "🧪",
     "source": "github",
     "license": "open-source",
-    "tags": ["sandbox", "simulation", "open-source"],
+    "tags": [
+      "sandbox",
+      "simulation",
+      "open-source"
+    ],
     "playable": true,
     "local": false,
     "url": "https://github.com/R74nCom/sandboxels"
@@ -298,7 +360,11 @@
     "icon": "🟡",
     "source": "github",
     "license": "MIT",
-    "tags": ["puzzle", "open-source", "html5"],
+    "tags": [
+      "puzzle",
+      "open-source",
+      "html5"
+    ],
     "playable": true,
     "local": false,
     "url": "https://github.com/kenrick95/c4"
@@ -310,9 +376,253 @@
     "icon": "🐍",
     "source": "github",
     "license": "open-source",
-    "tags": ["io", "arcade", "open-source"],
+    "tags": [
+      "io",
+      "arcade",
+      "open-source"
+    ],
     "playable": true,
     "local": false,
     "url": "https://github.com/knagaitsev/slither.io-clone"
+  },
+  {
+    "id": "gh-browserquest",
+    "title": "BrowserQuest",
+    "description": "DEPRECATED - A HTML5/JavaScript multiplayer game experiment",
+    "icon": "🤖",
+    "source": "github",
+    "license": "NOASSERTION",
+    "tags": [
+      "open-source",
+      "html5"
+    ],
+    "playable": false,
+    "local": false,
+    "url": "https://github.com/mozilla/BrowserQuest",
+    "stars": 9373
+  },
+  {
+    "id": "gh-pacman",
+    "title": "pacman",
+    "description": "基于HTML5的吃豆人游戏 - 经典游戏开发样例_Pacman based on HTML5",
+    "icon": "🤖",
+    "source": "github",
+    "license": "MIT",
+    "tags": [
+      "open-source",
+      "html5"
+    ],
+    "playable": false,
+    "local": false,
+    "url": "https://github.com/mumuy/pacman",
+    "stars": 1646
+  },
+  {
+    "id": "gh-mykonos-island-voxels",
+    "title": "mykonos-island-voxels",
+    "description": "A browser-based isometric island builder with the soft, sun-bleached look of Mykonos. Vanilla ES modules, no bundler, mobile-friendly.",
+    "icon": "🤖",
+    "source": "github",
+    "license": "MIT",
+    "tags": [
+      "open-source",
+      "html5"
+    ],
+    "playable": false,
+    "local": false,
+    "url": "https://github.com/boona13/mykonos-island-voxels",
+    "stars": 1061
+  },
+  {
+    "id": "gh-paint-board",
+    "title": "paint-board",
+    "description": "🎨  A powerful multi-end drawing board that brings together a lot of creative brushes to experience a whole new range of drawing effects!",
+    "icon": "🤖",
+    "source": "github",
+    "license": "MIT",
+    "tags": [
+      "open-source",
+      "html5"
+    ],
+    "playable": false,
+    "local": false,
+    "url": "https://github.com/LHRUN/paint-board",
+    "stars": 2635
+  },
+  {
+    "id": "gh-openscope",
+    "title": "openscope",
+    "description": "openScope Air Traffic Control Simulator",
+    "icon": "🤖",
+    "source": "github",
+    "license": "NOASSERTION",
+    "tags": [
+      "open-source",
+      "html5"
+    ],
+    "playable": false,
+    "local": false,
+    "url": "https://github.com/openscope/openscope",
+    "stars": 840
+  },
+  {
+    "id": "gh-d-zone",
+    "title": "d-zone",
+    "description": "An ambient life simulation driven by user activity within a Discord server",
+    "icon": "🤖",
+    "source": "github",
+    "license": "ISC",
+    "tags": [
+      "open-source",
+      "html5"
+    ],
+    "playable": false,
+    "local": false,
+    "url": "https://github.com/d-zone-org/d-zone",
+    "stars": 592
+  },
+  {
+    "id": "gh-webosu",
+    "title": "webosu",
+    "description": "➤⓵ web rhythm game (unofficial osu!) http://osugame.online/",
+    "icon": "🤖",
+    "source": "github",
+    "license": "MIT",
+    "tags": [
+      "open-source",
+      "html5"
+    ],
+    "playable": false,
+    "local": false,
+    "url": "https://github.com/111116/webosu",
+    "stars": 651
+  },
+  {
+    "id": "gh-mk48",
+    "title": "mk48",
+    "description": "Mk48.io ship combat game (repository commits may lag behind game updates)",
+    "icon": "🤖",
+    "source": "github",
+    "license": "AGPL-3.0",
+    "tags": [
+      "open-source",
+      "html5"
+    ],
+    "playable": false,
+    "local": false,
+    "url": "https://github.com/SoftbearStudios/mk48",
+    "stars": 448
+  },
+  {
+    "id": "gh-billiards",
+    "title": "billiards",
+    "description": "billiards physics in the browser",
+    "icon": "🤖",
+    "source": "github",
+    "license": "GPL-3.0",
+    "tags": [
+      "open-source",
+      "html5"
+    ],
+    "playable": false,
+    "local": false,
+    "url": "https://github.com/tailuge/billiards",
+    "stars": 255
+  },
+  {
+    "id": "gh-kiomet",
+    "title": "kiomet",
+    "description": "Kiomet.com real-time strategy game (repository commits may lag behind game updates) ",
+    "icon": "🤖",
+    "source": "github",
+    "license": "AGPL-3.0",
+    "tags": [
+      "open-source",
+      "html5"
+    ],
+    "playable": false,
+    "local": false,
+    "url": "https://github.com/SoftbearStudios/kiomet",
+    "stars": 179
+  },
+  {
+    "id": "gh-parrothunt",
+    "title": "ParrotHunt",
+    "description": "ParrotHunt - ThreeJS WebGL game (http://parrothunt.nergal.se)",
+    "icon": "🤖",
+    "source": "github",
+    "license": "MIT",
+    "tags": [
+      "open-source",
+      "html5"
+    ],
+    "playable": false,
+    "local": false,
+    "url": "https://github.com/Lallassu/ParrotHunt",
+    "stars": 94
+  },
+  {
+    "id": "gh-openfrontio",
+    "title": "OpenFrontIO",
+    "description": "Online browser-based RTS game",
+    "icon": "🤖",
+    "source": "github",
+    "license": "AGPL-3.0",
+    "tags": [
+      "open-source",
+      "html5"
+    ],
+    "playable": false,
+    "local": false,
+    "url": "https://github.com/openfrontio/OpenFrontIO",
+    "stars": 2775
+  },
+  {
+    "id": "gh-biomes-game",
+    "title": "biomes-game",
+    "description": "Biomes is an open source sandbox MMORPG built for the web using web technologies such as Next.js, Typescript, React and WebAssembly.",
+    "icon": "🤖",
+    "source": "github",
+    "license": "MIT",
+    "tags": [
+      "open-source",
+      "html5"
+    ],
+    "playable": false,
+    "local": false,
+    "url": "https://github.com/ill-inc/biomes-game",
+    "stars": 2685
+  },
+  {
+    "id": "gh-cube-composer",
+    "title": "cube-composer",
+    "description": "A puzzle game inspired by functional programming",
+    "icon": "🤖",
+    "source": "github",
+    "license": "MIT",
+    "tags": [
+      "open-source",
+      "html5"
+    ],
+    "playable": false,
+    "local": false,
+    "url": "https://github.com/sharkdp/cube-composer",
+    "stars": 2046
+  },
+  {
+    "id": "gh-hypersomnia",
+    "title": "Hypersomnia",
+    "description": "Multiplayer top-down shooter made from scratch in C++. Web version: https://play.hypersomnia.io Made in 🇵🇱",
+    "icon": "🤖",
+    "source": "github",
+    "license": "AGPL-3.0",
+    "tags": [
+      "open-source",
+      "html5"
+    ],
+    "playable": false,
+    "local": false,
+    "url": "https://github.com/TeamHypersomnia/Hypersomnia",
+    "stars": 1680
   }
 ]

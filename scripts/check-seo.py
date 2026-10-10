@@ -23,17 +23,23 @@ import sys
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 DIST = os.path.join(ROOT, "dist")
-PAGES = [
-    "index.html",
-    "games.html",
-    "play/snake.html",
-    "play/tic-tac-toe.html",
-    "play/2048.html",
-    "play/memory.html",
-    "play/breakout.html",
-    "play/pong.html",
-    "play/minesweeper.html",
-]
+
+
+def catalog_detail_pages() -> list[str]:
+    """Every game now has a canonical detail page under dist/games/{id}.html."""
+    p = os.path.join(ROOT, "data", "games.json")
+    if not os.path.isfile(p):
+        return []
+    try:
+        data = json.load(open(p, encoding="utf-8"))
+    except Exception:  # noqa: BLE001
+        return []
+    return [f"games/{g['id']}.html" for g in data if g.get("id")]
+
+
+# Static hubs + one detail page per catalog entry (validated for independent meta,
+# VideoGame/Breadcrumb/FAQ structured data and sitemap coverage).
+PAGES = ["index.html", "games.html"] + catalog_detail_pages()
 
 REQUIRED_META = [
     ("title", r"<title>.+</title>"),
