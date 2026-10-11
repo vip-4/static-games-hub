@@ -673,14 +673,17 @@
     "url": "https://anuke.itch.io/mindustry",
     "author": "Anuke",
     "cover": null,
-    "controls": "Play instantly in your browser — use the mouse and keyboard as shown on the title screen. No download, install or account required.",
+    "controls": "Use click, keyboard, space as shown on the start screen.",
     "howto": [
-      "Open the game from its OpenArc catalog link.",
-      "Wait a moment for the lightweight static build to load in your browser.",
-      "Read the in-game menu or start screen, then start playing."
+      "Open \"Mindustry\" from its itch.io page in the OpenArc catalog and press Play (most builds are WebGL/HTML5 and run in the browser with no install; some authors also offer a downloadable build).",
+      "Use click, keyboard, space to move, aim and act — the exact bindings are also shown on the game's start/title screen.",
+      "Goal: The automation tower defense game",
+      "Explore the menu/options for difficulty, sound and control remaps if the author included them.",
+      "Tip: open-source itch.io games are often updated by their authors — revisit the project page for newer versions, mods and source code."
     ],
     "tips": [
-      "Open-source games on itch.io are often updated by their authors — check the project page for new versions and mods."
+      "Open-source itch.io games are often updated by their authors — check the project page for new versions and mods.",
+      "What it is: The automation tower defense game"
     ]
   },
   {
@@ -700,14 +703,17 @@
     "url": "https://ninja-muffin24.itch.io/funkin",
     "author": "ninjamuffin99",
     "cover": null,
-    "controls": "Play instantly in your browser — use the mouse and keyboard as shown on the title screen. No download, install or account required.",
+    "controls": "Use arrow keys, click, gamepad, keyboard, wasd as shown on the start screen.",
     "howto": [
-      "Open the game from its OpenArc catalog link.",
-      "Wait a moment for the lightweight static build to load in your browser.",
-      "Read the in-game menu or start screen, then start playing."
+      "Open \"Friday Night Funkin'\" from its itch.io page in the OpenArc catalog and press Play (most builds are WebGL/HTML5 and run in the browser with no install; some authors also offer a downloadable build).",
+      "Use arrow keys, click, gamepad, keyboard, wasd to move, aim and act — the exact bindings are also shown on the game's start/title screen.",
+      "Goal: The coolest rhythm game",
+      "Explore the menu/options for difficulty, sound and control remaps if the author included them.",
+      "Tip: open-source itch.io games are often updated by their authors — revisit the project page for newer versions, mods and source code."
     ],
     "tips": [
-      "Open-source games on itch.io are often updated by their authors — check the project page for new versions and mods."
+      "Open-source itch.io games are often updated by their authors — check the project page for new versions and mods.",
+      "What it is: The coolest rhythm game"
     ]
   },
   {
@@ -727,14 +733,17 @@
     "url": "https://wesnoth.itch.io/battle-for-wesnoth",
     "author": "Wesnoth",
     "cover": null,
-    "controls": "Play instantly in your browser — use the mouse and keyboard as shown on the title screen. No download, install or account required.",
+    "controls": "Use click, keyboard, mouse, space as shown on the start screen.",
     "howto": [
-      "Open the game from its OpenArc catalog link.",
-      "Wait a moment for the lightweight static build to load in your browser.",
-      "Read the in-game menu or start screen, then start playing."
+      "Open \"Battle for Wesnoth\" from its itch.io page in the OpenArc catalog and press Play (most builds are WebGL/HTML5 and run in the browser with no install; some authors also offer a downloadable build).",
+      "Use click, keyboard, mouse, space to move, aim and act — the exact bindings are also shown on the game's start/title screen.",
+      "Goal: An open source turn based strategy game.",
+      "Explore the menu/options for difficulty, sound and control remaps if the author included them.",
+      "Tip: open-source itch.io games are often updated by their authors — revisit the project page for newer versions, mods and source code."
     ],
     "tips": [
-      "Open-source games on itch.io are often updated by their authors — check the project page for new versions and mods."
+      "Open-source itch.io games are often updated by their authors — check the project page for new versions and mods.",
+      "What it is: An open source turn based strategy game."
     ]
   },
   {
@@ -754,14 +763,17 @@
     "url": "https://supertuxkart.itch.io/supertuxkart",
     "author": "supertuxkart",
     "cover": null,
-    "controls": "Play instantly in your browser — use the mouse and keyboard as shown on the title screen. No download, install or account required.",
+    "controls": "Use click, gamepad, keyboard, mouse as shown on the start screen.",
     "howto": [
-      "Open the game from its OpenArc catalog link.",
-      "Wait a moment for the lightweight static build to load in your browser.",
-      "Read the in-game menu or start screen, then start playing."
+      "Open \"SuperTuxKart\" from its itch.io page in the OpenArc catalog and press Play (most builds are WebGL/HTML5 and run in the browser with no install; some authors also offer a downloadable build).",
+      "Use click, gamepad, keyboard, mouse to move, aim and act — the exact bindings are also shown on the game's start/title screen.",
+      "Goal: A go kart racing game featuring Tux &amp; Friends",
+      "Explore the menu/options for difficulty, sound and control remaps if the author included them.",
+      "Tip: open-source itch.io games are often updated by their authors — revisit the project page for newer versions, mods and source code."
     ],
     "tips": [
-      "Open-source games on itch.io are often updated by their authors — check the project page for new versions and mods."
+      "Open-source itch.io games are often updated by their authors — check the project page for new versions and mods.",
+      "What it is: A go kart racing game featuring Tux &amp; Friends"
     ]
   },
   {
@@ -781,14 +793,17 @@
     "url": "https://idreesinc.itch.io/pocket-bird",
     "author": "Idrees",
     "cover": null,
-    "controls": "Play instantly in your browser — use the mouse and keyboard as shown on the title screen. No download, install or account required.",
+    "controls": "Use click, mouse, scroll, space, touch as shown on the start screen.",
     "howto": [
-      "Open the game from its OpenArc catalog link.",
-      "Wait a moment for the lightweight static build to load in your browser.",
-      "Read the in-game menu or start screen, then start playing."
+      "Open \"Pocket Bird - Portable Desktop Pet\" from its itch.io page in the OpenArc catalog and press Play (most builds are WebGL/HTML5 and run in the browser with no install; some authors also offer a downloadable build).",
+      "Use click, mouse, scroll, space, touch to move, aim and act — the exact bindings are also shown on the game's start/title screen.",
+      "Goal: A tiny bird that flutters around your web browser!",
+      "Explore the menu/options for difficulty, sound and control remaps if the author included them.",
+      "Tip: open-source itch.io games are often updated by their authors — revisit the project page for newer versions, mods and source code."
     ],
     "tips": [
-      "Open-source games on itch.io are often updated by their authors — check the project page for new versions and mods."
+      "Open-source itch.io games are often updated by their authors — check the project page for new versions and mods.",
+      "What it is: A tiny bird that flutters around your web browser!"
     ]
   },
   {
@@ -808,14 +823,15 @@
     "url": "https://openra.itch.io/openra",
     "author": "OpenRA developers",
     "cover": null,
-    "controls": "Play instantly in your browser — use the mouse and keyboard as shown on the title screen. No download, install or account required.",
+    "controls": "Mouse and keyboard; exact bindings are shown on the game's title screen.",
     "howto": [
-      "Open the game from its OpenArc catalog link.",
-      "Wait a moment for the lightweight static build to load in your browser.",
-      "Read the in-game menu or start screen, then start playing."
+      "Open \"OpenRA\" from its itch.io page in the OpenArc catalog and press Play (most builds are WebGL/HTML5 and run in the browser with no install; some authors also offer a downloadable build).",
+      "Follow the on-screen prompts; the controls are listed on the title screen before you begin.",
+      "Explore the menu/options for difficulty, sound and control remaps if the author included them.",
+      "Tip: open-source itch.io games are often updated by their authors — revisit the project page for newer versions, mods and source code."
     ],
     "tips": [
-      "Open-source games on itch.io are often updated by their authors — check the project page for new versions and mods."
+      "Open-source itch.io games are often updated by their authors — check the project page for new versions and mods."
     ]
   },
   {
@@ -835,14 +851,15 @@
     "url": "https://sablesteel.itch.io/clan-gen-fan-edit",
     "author": "SableSteel",
     "cover": null,
-    "controls": "Play instantly in your browser — use the mouse and keyboard as shown on the title screen. No download, install or account required.",
+    "controls": "Mouse and keyboard; exact bindings are shown on the game's title screen.",
     "howto": [
-      "Open the game from its OpenArc catalog link.",
-      "Wait a moment for the lightweight static build to load in your browser.",
-      "Read the in-game menu or start screen, then start playing."
+      "Open \"ClanGen\" from its itch.io page in the OpenArc catalog and press Play (most builds are WebGL/HTML5 and run in the browser with no install; some authors also offer a downloadable build).",
+      "Follow the on-screen prompts; the controls are listed on the title screen before you begin.",
+      "Explore the menu/options for difficulty, sound and control remaps if the author included them.",
+      "Tip: open-source itch.io games are often updated by their authors — revisit the project page for newer versions, mods and source code."
     ],
     "tips": [
-      "Open-source games on itch.io are often updated by their authors — check the project page for new versions and mods."
+      "Open-source itch.io games are often updated by their authors — check the project page for new versions and mods."
     ]
   },
   {
@@ -862,14 +879,15 @@
     "url": "https://johngabrieluk.itch.io/catburglar",
     "author": "JohnGabrielUK",
     "cover": null,
-    "controls": "Play instantly in your browser — use the mouse and keyboard as shown on the title screen. No download, install or account required.",
+    "controls": "Mouse and keyboard; exact bindings are shown on the game's title screen.",
     "howto": [
-      "Open the game from its OpenArc catalog link.",
-      "Wait a moment for the lightweight static build to load in your browser.",
-      "Read the in-game menu or start screen, then start playing."
+      "Open \"Catburglar\" from its itch.io page in the OpenArc catalog and press Play (most builds are WebGL/HTML5 and run in the browser with no install; some authors also offer a downloadable build).",
+      "Follow the on-screen prompts; the controls are listed on the title screen before you begin.",
+      "Explore the menu/options for difficulty, sound and control remaps if the author included them.",
+      "Tip: open-source itch.io games are often updated by their authors — revisit the project page for newer versions, mods and source code."
     ],
     "tips": [
-      "Open-source games on itch.io are often updated by their authors — check the project page for new versions and mods."
+      "Open-source itch.io games are often updated by their authors — check the project page for new versions and mods."
     ]
   },
   {
@@ -889,14 +907,17 @@
     "url": "https://retroarchofficial.itch.io/retroarch",
     "author": "RetroArch",
     "cover": null,
-    "controls": "Play instantly in your browser — use the mouse and keyboard as shown on the title screen. No download, install or account required.",
+    "controls": "Use click, gamepad, keyboard, mouse as shown on the start screen.",
     "howto": [
-      "Open the game from its OpenArc catalog link.",
-      "Wait a moment for the lightweight static build to load in your browser.",
-      "Read the in-game menu or start screen, then start playing."
+      "Open \"RetroArch\" from its itch.io page in the OpenArc catalog and press Play (most builds are WebGL/HTML5 and run in the browser with no install; some authors also offer a downloadable build).",
+      "Use click, gamepad, keyboard, mouse to move, aim and act — the exact bindings are also shown on the game's start/title screen.",
+      "Goal: RetroArch is a frontend for emulators, game engines and media players.",
+      "Explore the menu/options for difficulty, sound and control remaps if the author included them.",
+      "Tip: open-source itch.io games are often updated by their authors — revisit the project page for newer versions, mods and source code."
     ],
     "tips": [
-      "Open-source games on itch.io are often updated by their authors — check the project page for new versions and mods."
+      "Open-source itch.io games are often updated by their authors — check the project page for new versions and mods.",
+      "What it is: RetroArch is a frontend for emulators, game engines and media players."
     ]
   },
   {
@@ -916,14 +937,17 @@
     "url": "https://jorio.itch.io/nanosaur",
     "author": "Iliyas Jorio",
     "cover": null,
-    "controls": "Play instantly in your browser — use the mouse and keyboard as shown on the title screen. No download, install or account required.",
+    "controls": "Use click, gamepad, keyboard as shown on the start screen.",
     "howto": [
-      "Open the game from its OpenArc catalog link.",
-      "Wait a moment for the lightweight static build to load in your browser.",
-      "Read the in-game menu or start screen, then start playing."
+      "Open \"Nanosaur\" from its itch.io page in the OpenArc catalog and press Play (most builds are WebGL/HTML5 and run in the browser with no install; some authors also offer a downloadable build).",
+      "Use click, gamepad, keyboard to move, aim and act — the exact bindings are also shown on the game's start/title screen.",
+      "Goal: Send dinosaur eggs to the future before a meteor hits the Earth!",
+      "Explore the menu/options for difficulty, sound and control remaps if the author included them.",
+      "Tip: open-source itch.io games are often updated by their authors — revisit the project page for newer versions, mods and source code."
     ],
     "tips": [
-      "Open-source games on itch.io are often updated by their authors — check the project page for new versions and mods."
+      "Open-source itch.io games are often updated by their authors — check the project page for new versions and mods.",
+      "What it is: Send dinosaur eggs to the future before a meteor hits the Earth!"
     ]
   },
   {
@@ -943,14 +967,17 @@
     "url": "https://play0ad.itch.io/0ad",
     "author": "Wildfire Games",
     "cover": null,
-    "controls": "Play instantly in your browser — use the mouse and keyboard as shown on the title screen. No download, install or account required.",
+    "controls": "Use click, keyboard, mouse as shown on the start screen.",
     "howto": [
-      "Open the game from its OpenArc catalog link.",
-      "Wait a moment for the lightweight static build to load in your browser.",
-      "Read the in-game menu or start screen, then start playing."
+      "Open \"0 A.D: Empires Ascendant\" from its itch.io page in the OpenArc catalog and press Play (most builds are WebGL/HTML5 and run in the browser with no install; some authors also offer a downloadable build).",
+      "Use click, keyboard, mouse to move, aim and act — the exact bindings are also shown on the game's start/title screen.",
+      "Goal: Empires Ascendant is a free, open-source, historical Real Time Strategy (RTS) game by Wildfire Games.",
+      "Explore the menu/options for difficulty, sound and control remaps if the author included them.",
+      "Tip: open-source itch.io games are often updated by their authors — revisit the project page for newer versions, mods and source code."
     ],
     "tips": [
-      "Open-source games on itch.io are often updated by their authors — check the project page for new versions and mods."
+      "Open-source itch.io games are often updated by their authors — check the project page for new versions and mods.",
+      "What it is: Empires Ascendant is a free, open-source, historical Real Time Strategy (RTS) game by Wildfire Games."
     ]
   },
   {
@@ -970,14 +997,17 @@
     "url": "https://immortalbean.itch.io/dr-virtual-pet",
     "author": "Immortal Bean",
     "cover": null,
-    "controls": "Play instantly in your browser — use the mouse and keyboard as shown on the title screen. No download, install or account required.",
+    "controls": "Use click, drag, mouse, space, wasd as shown on the start screen.",
     "howto": [
-      "Open the game from its OpenArc catalog link.",
-      "Wait a moment for the lightweight static build to load in your browser.",
-      "Read the in-game menu or start screen, then start playing."
+      "Open \"DELTARUNE Desktop Pet\" from its itch.io page in the OpenArc catalog and press Play (most builds are WebGL/HTML5 and run in the browser with no install; some authors also offer a downloadable build).",
+      "Use click, drag, mouse, space, wasd to move, aim and act — the exact bindings are also shown on the game's start/title screen.",
+      "Goal: A game accurate DELTARUNE desktop pet.",
+      "Explore the menu/options for difficulty, sound and control remaps if the author included them.",
+      "Tip: open-source itch.io games are often updated by their authors — revisit the project page for newer versions, mods and source code."
     ],
     "tips": [
-      "Open-source games on itch.io are often updated by their authors — check the project page for new versions and mods."
+      "Open-source itch.io games are often updated by their authors — check the project page for new versions and mods.",
+      "What it is: A game accurate DELTARUNE desktop pet."
     ]
   },
   {
@@ -997,14 +1027,17 @@
     "url": "https://leandrodreamer.itch.io/open-saber",
     "author": "Leandro Dreamer",
     "cover": null,
-    "controls": "Play instantly in your browser — use the mouse and keyboard as shown on the title screen. No download, install or account required.",
+    "controls": "Use click, drag, gamepad as shown on the start screen.",
     "howto": [
-      "Open the game from its OpenArc catalog link.",
-      "Wait a moment for the lightweight static build to load in your browser.",
-      "Read the in-game menu or start screen, then start playing."
+      "Open \"Open Saber\" from its itch.io page in the OpenArc catalog and press Play (most builds are WebGL/HTML5 and run in the browser with no install; some authors also offer a downloadable build).",
+      "Use click, drag, gamepad to move, aim and act — the exact bindings are also shown on the game's start/title screen.",
+      "Goal: Open Source Rythmic Block Cutting Game :)",
+      "Explore the menu/options for difficulty, sound and control remaps if the author included them.",
+      "Tip: open-source itch.io games are often updated by their authors — revisit the project page for newer versions, mods and source code."
     ],
     "tips": [
-      "Open-source games on itch.io are often updated by their authors — check the project page for new versions and mods."
+      "Open-source itch.io games are often updated by their authors — check the project page for new versions and mods.",
+      "What it is: Open Source Rythmic Block Cutting Game :)"
     ]
   },
   {
@@ -1024,14 +1057,17 @@
     "url": "https://jorio.itch.io/cromagrally",
     "author": "Iliyas Jorio",
     "cover": null,
-    "controls": "Play instantly in your browser — use the mouse and keyboard as shown on the title screen. No download, install or account required.",
+    "controls": "Use click, gamepad, keyboard as shown on the start screen.",
     "howto": [
-      "Open the game from its OpenArc catalog link.",
-      "Wait a moment for the lightweight static build to load in your browser.",
-      "Read the in-game menu or start screen, then start playing."
+      "Open \"Cro-Mag Rally\" from its itch.io page in the OpenArc catalog and press Play (most builds are WebGL/HTML5 and run in the browser with no install; some authors also offer a downloadable build).",
+      "Use click, gamepad, keyboard to move, aim and act — the exact bindings are also shown on the game's start/title screen.",
+      "Goal: The wildest racing game since man invented the wheel!",
+      "Explore the menu/options for difficulty, sound and control remaps if the author included them.",
+      "Tip: open-source itch.io games are often updated by their authors — revisit the project page for newer versions, mods and source code."
     ],
     "tips": [
-      "Open-source games on itch.io are often updated by their authors — check the project page for new versions and mods."
+      "Open-source itch.io games are often updated by their authors — check the project page for new versions and mods.",
+      "What it is: The wildest racing game since man invented the wheel!"
     ]
   },
   {
@@ -1051,14 +1087,17 @@
     "url": "https://ninstars.itch.io/unimaker",
     "author": "NinStar",
     "cover": null,
-    "controls": "Play instantly in your browser — use the mouse and keyboard as shown on the title screen. No download, install or account required.",
+    "controls": "Use click, keyboard, mouse, space as shown on the start screen.",
     "howto": [
-      "Open the game from its OpenArc catalog link.",
-      "Wait a moment for the lightweight static build to load in your browser.",
-      "Read the in-game menu or start screen, then start playing."
+      "Open \"UniMaker\" from its itch.io page in the OpenArc catalog and press Play (most builds are WebGL/HTML5 and run in the browser with no install; some authors also offer a downloadable build).",
+      "Use click, keyboard, mouse, space to move, aim and act — the exact bindings are also shown on the game's start/title screen.",
+      "Goal: An easy-to-use level design tool.",
+      "Explore the menu/options for difficulty, sound and control remaps if the author included them.",
+      "Tip: open-source itch.io games are often updated by their authors — revisit the project page for newer versions, mods and source code."
     ],
     "tips": [
-      "Open-source games on itch.io are often updated by their authors — check the project page for new versions and mods."
+      "Open-source itch.io games are often updated by their authors — check the project page for new versions and mods.",
+      "What it is: An easy-to-use level design tool."
     ]
   },
   {
@@ -1072,7 +1111,9 @@
     "tags": [
       "open-source",
       "html5",
-      "ludum-dare"
+      "ludum-dare",
+      "arcade",
+      "action"
     ],
     "playable": true,
     "local": false,
@@ -1088,7 +1129,11 @@
     "tips": [
       "Ludum Dare jam games are small and experimental — play a few rounds to discover the intended mechanic."
     ],
-    "cover": "/assets/img/covers/ld-friendlyfiregame.svg"
+    "cover": "/assets/img/covers/ld-friendlyfiregame.svg",
+    "gameplay": [
+      "arcade",
+      "action"
+    ]
   },
   {
     "id": "ld-ld47-fortloop",
@@ -1101,7 +1146,9 @@
     "tags": [
       "open-source",
       "html5",
-      "ludum-dare"
+      "ludum-dare",
+      "platformer",
+      "puzzle"
     ],
     "playable": true,
     "local": false,
@@ -1117,7 +1164,11 @@
     "tips": [
       "Ludum Dare jam games are small and experimental — play a few rounds to discover the intended mechanic."
     ],
-    "cover": "/assets/img/covers/ld-ld47-fortloop.svg"
+    "cover": "/assets/img/covers/ld-ld47-fortloop.svg",
+    "gameplay": [
+      "platformer",
+      "puzzle"
+    ]
   },
   {
     "id": "ld-holding-out",
@@ -1130,7 +1181,9 @@
     "tags": [
       "open-source",
       "html5",
-      "ludum-dare"
+      "ludum-dare",
+      "tower-defense",
+      "survival"
     ],
     "playable": true,
     "local": false,
@@ -1146,7 +1199,11 @@
     "tips": [
       "Ludum Dare jam games are small and experimental — play a few rounds to discover the intended mechanic."
     ],
-    "cover": "https://img.itch.zone/aW1nLzEyMDI5NzM0LnBuZw==/original/s8h4DU.png"
+    "cover": "https://img.itch.zone/aW1nLzEyMDI5NzM0LnBuZw==/original/s8h4DU.png",
+    "gameplay": [
+      "tower-defense",
+      "survival"
+    ]
   },
   {
     "id": "ld-dragon-taxes",
@@ -1159,7 +1216,9 @@
     "tags": [
       "open-source",
       "html5",
-      "ludum-dare"
+      "ludum-dare",
+      "puzzle",
+      "management"
     ],
     "playable": true,
     "local": false,
@@ -1175,7 +1234,11 @@
     "tips": [
       "Ludum Dare jam games are small and experimental — play a few rounds to discover the intended mechanic."
     ],
-    "cover": "/assets/img/covers/ld-dragon-taxes.svg"
+    "cover": "/assets/img/covers/ld-dragon-taxes.svg",
+    "gameplay": [
+      "puzzle",
+      "management"
+    ]
   },
   {
     "id": "ld-ld25",
@@ -1188,7 +1251,9 @@
     "tags": [
       "open-source",
       "html5",
-      "ludum-dare"
+      "ludum-dare",
+      "arcade",
+      "action"
     ],
     "playable": true,
     "local": false,
@@ -1204,7 +1269,11 @@
     "tips": [
       "Ludum Dare jam games are small and experimental — play a few rounds to discover the intended mechanic."
     ],
-    "cover": "/assets/img/covers/ld-ld25.svg"
+    "cover": "/assets/img/covers/ld-ld25.svg",
+    "gameplay": [
+      "arcade",
+      "action"
+    ]
   },
   {
     "id": "ld-ludum-dare-31",
@@ -1217,7 +1286,9 @@
     "tags": [
       "open-source",
       "html5",
-      "ludum-dare"
+      "ludum-dare",
+      "arcade",
+      "minimalist"
     ],
     "playable": true,
     "local": false,
@@ -1233,7 +1304,11 @@
     "tips": [
       "Ludum Dare jam games are small and experimental — play a few rounds to discover the intended mechanic."
     ],
-    "cover": "/assets/img/covers/ld-ludum-dare-31.svg"
+    "cover": "/assets/img/covers/ld-ludum-dare-31.svg",
+    "gameplay": [
+      "arcade",
+      "minimalist"
+    ]
   },
   {
     "id": "ld-ld49",
@@ -1246,7 +1321,9 @@
     "tags": [
       "open-source",
       "html5",
-      "ludum-dare"
+      "ludum-dare",
+      "arcade",
+      "action"
     ],
     "playable": true,
     "local": false,
@@ -1262,7 +1339,11 @@
     "tips": [
       "Ludum Dare jam games are small and experimental — play a few rounds to discover the intended mechanic."
     ],
-    "cover": "/assets/img/covers/ld-ld49.svg"
+    "cover": "/assets/img/covers/ld-ld49.svg",
+    "gameplay": [
+      "arcade",
+      "action"
+    ]
   },
   {
     "id": "ld-pack",
@@ -1275,7 +1356,9 @@
     "tags": [
       "open-source",
       "html5",
-      "ludum-dare"
+      "ludum-dare",
+      "puzzle",
+      "strategy"
     ],
     "playable": true,
     "local": false,
@@ -1291,7 +1374,11 @@
     "tips": [
       "Ludum Dare jam games are small and experimental — play a few rounds to discover the intended mechanic."
     ],
-    "cover": "/assets/img/covers/ld-pack.svg"
+    "cover": "/assets/img/covers/ld-pack.svg",
+    "gameplay": [
+      "puzzle",
+      "strategy"
+    ]
   },
   {
     "id": "ld-defold-ld48-game",
@@ -1304,7 +1391,9 @@
     "tags": [
       "open-source",
       "html5",
-      "ludum-dare"
+      "ludum-dare",
+      "arcade",
+      "action"
     ],
     "playable": true,
     "local": false,
@@ -1320,7 +1409,11 @@
     "tips": [
       "Ludum Dare jam games are small and experimental — play a few rounds to discover the intended mechanic."
     ],
-    "cover": "/assets/img/covers/ld-defold-ld48-game.svg"
+    "cover": "/assets/img/covers/ld-defold-ld48-game.svg",
+    "gameplay": [
+      "arcade",
+      "action"
+    ]
   },
   {
     "id": "ld-spacehoarder",
@@ -1333,7 +1426,9 @@
     "tags": [
       "open-source",
       "html5",
-      "ludum-dare"
+      "ludum-dare",
+      "arcade",
+      "space"
     ],
     "playable": true,
     "local": false,
@@ -1349,7 +1444,11 @@
     "tips": [
       "Ludum Dare jam games are small and experimental — play a few rounds to discover the intended mechanic."
     ],
-    "cover": "/assets/img/covers/ld-spacehoarder.svg"
+    "cover": "/assets/img/covers/ld-spacehoarder.svg",
+    "gameplay": [
+      "arcade",
+      "space"
+    ]
   },
   {
     "id": "ld-cave",
@@ -1362,7 +1461,9 @@
     "tags": [
       "open-source",
       "html5",
-      "ludum-dare"
+      "ludum-dare",
+      "roguelike",
+      "exploration"
     ],
     "playable": true,
     "local": false,
@@ -1378,7 +1479,11 @@
     "tips": [
       "Ludum Dare jam games are small and experimental — play a few rounds to discover the intended mechanic."
     ],
-    "cover": "/assets/img/covers/ld-cave.svg"
+    "cover": "/assets/img/covers/ld-cave.svg",
+    "gameplay": [
+      "roguelike",
+      "exploration"
+    ]
   },
   {
     "id": "ld-knight-general",
@@ -1391,7 +1496,9 @@
     "tags": [
       "open-source",
       "html5",
-      "ludum-dare"
+      "ludum-dare",
+      "strategy",
+      "rpg"
     ],
     "playable": true,
     "local": false,
@@ -1407,7 +1514,11 @@
     "tips": [
       "Ludum Dare jam games are small and experimental — play a few rounds to discover the intended mechanic."
     ],
-    "cover": "/assets/img/covers/ld-knight-general.svg"
+    "cover": "/assets/img/covers/ld-knight-general.svg",
+    "gameplay": [
+      "strategy",
+      "rpg"
+    ]
   },
   {
     "id": "ld-ludumdare26",
@@ -1420,7 +1531,9 @@
     "tags": [
       "open-source",
       "html5",
-      "ludum-dare"
+      "ludum-dare",
+      "arcade",
+      "minimalist"
     ],
     "playable": true,
     "local": false,
@@ -1436,7 +1549,11 @@
     "tips": [
       "Ludum Dare jam games are small and experimental — play a few rounds to discover the intended mechanic."
     ],
-    "cover": "/assets/img/covers/ld-ludumdare26.svg"
+    "cover": "/assets/img/covers/ld-ludumdare26.svg",
+    "gameplay": [
+      "arcade",
+      "minimalist"
+    ]
   },
   {
     "id": "ld-fallowtide",
@@ -1449,7 +1566,9 @@
     "tags": [
       "open-source",
       "html5",
-      "ludum-dare"
+      "ludum-dare",
+      "adventure",
+      "puzzle"
     ],
     "playable": true,
     "local": false,
@@ -1465,7 +1584,11 @@
     "tips": [
       "Ludum Dare jam games are small and experimental — play a few rounds to discover the intended mechanic."
     ],
-    "cover": "https://img.itch.zone/aW1nLzEwOTc2NTcxLnBuZw==/original/Up9at6.png"
+    "cover": "https://img.itch.zone/aW1nLzEwOTc2NTcxLnBuZw==/original/Up9at6.png",
+    "gameplay": [
+      "adventure",
+      "puzzle"
+    ]
   },
   {
     "id": "ld-oneroom",
@@ -1478,7 +1601,9 @@
     "tags": [
       "open-source",
       "html5",
-      "ludum-dare"
+      "ludum-dare",
+      "puzzle",
+      "escape"
     ],
     "playable": true,
     "local": false,
@@ -1494,7 +1619,11 @@
     "tips": [
       "Ludum Dare jam games are small and experimental — play a few rounds to discover the intended mechanic."
     ],
-    "cover": "/assets/img/covers/ld-oneroom.svg"
+    "cover": "/assets/img/covers/ld-oneroom.svg",
+    "gameplay": [
+      "puzzle",
+      "escape"
+    ]
   },
   {
     "id": "gh-internalbeyond",

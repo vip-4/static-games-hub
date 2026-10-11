@@ -45,6 +45,11 @@ jobs:
         env:
           PIXABAY_KEY: ${{ secrets.PIXABAY_KEY }}
         run: python scripts/fetch-itchio.py --tag open-source --pages 3 --merge
+      - name: Enrich Ludum Dare covers with Pixabay
+        if: ${{ secrets.PIXABAY_KEY != '' }}
+        env:
+          PIXABAY_KEY: ${{ secrets.PIXABAY_KEY }}
+        run: python scripts/pixabay_cover.py
       - name: Commit if catalog changed
         run: |
           git config user.name "openarc-bot"
