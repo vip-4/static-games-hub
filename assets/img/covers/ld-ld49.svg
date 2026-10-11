@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#0f172a"/><stop offset="1" stop-color="#1e3a8a"/>
+  </linearGradient></defs>
+  <rect width="1200" height="630" fill="url(#g)"/>
+  <text x="60" y="300" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="72" font-weight="700">ld49</text>
+  <text x="60" y="382" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="40">LD49</text>
+  <text x="60" y="560" fill="#64748b" font-family="Segoe UI, Arial, sans-serif" font-size="28">OpenArc · Ludum Dare jam</text>
+</svg>

@@ -672,7 +672,16 @@
     "local": false,
     "url": "https://anuke.itch.io/mindustry",
     "author": "Anuke",
-    "cover": null
+    "cover": null,
+    "controls": "Play instantly in your browser — use the mouse and keyboard as shown on the title screen. No download, install or account required.",
+    "howto": [
+      "Open the game from its OpenArc catalog link.",
+      "Wait a moment for the lightweight static build to load in your browser.",
+      "Read the in-game menu or start screen, then start playing."
+    ],
+    "tips": [
+      "Open-source games on itch.io are often updated by their authors — check the project page for new versions and mods."
+    ]
   },
   {
     "id": "itch-funkin",
@@ -690,7 +699,16 @@
     "local": false,
     "url": "https://ninja-muffin24.itch.io/funkin",
     "author": "ninjamuffin99",
-    "cover": null
+    "cover": null,
+    "controls": "Play instantly in your browser — use the mouse and keyboard as shown on the title screen. No download, install or account required.",
+    "howto": [
+      "Open the game from its OpenArc catalog link.",
+      "Wait a moment for the lightweight static build to load in your browser.",
+      "Read the in-game menu or start screen, then start playing."
+    ],
+    "tips": [
+      "Open-source games on itch.io are often updated by their authors — check the project page for new versions and mods."
+    ]
   },
   {
     "id": "itch-battle-for-wesnoth",
@@ -708,7 +726,16 @@
     "local": false,
     "url": "https://wesnoth.itch.io/battle-for-wesnoth",
     "author": "Wesnoth",
-    "cover": null
+    "cover": null,
+    "controls": "Play instantly in your browser — use the mouse and keyboard as shown on the title screen. No download, install or account required.",
+    "howto": [
+      "Open the game from its OpenArc catalog link.",
+      "Wait a moment for the lightweight static build to load in your browser.",
+      "Read the in-game menu or start screen, then start playing."
+    ],
+    "tips": [
+      "Open-source games on itch.io are often updated by their authors — check the project page for new versions and mods."
+    ]
   },
   {
     "id": "itch-supertuxkart",
@@ -726,7 +753,16 @@
     "local": false,
     "url": "https://supertuxkart.itch.io/supertuxkart",
     "author": "supertuxkart",
-    "cover": null
+    "cover": null,
+    "controls": "Play instantly in your browser — use the mouse and keyboard as shown on the title screen. No download, install or account required.",
+    "howto": [
+      "Open the game from its OpenArc catalog link.",
+      "Wait a moment for the lightweight static build to load in your browser.",
+      "Read the in-game menu or start screen, then start playing."
+    ],
+    "tips": [
+      "Open-source games on itch.io are often updated by their authors — check the project page for new versions and mods."
+    ]
   },
   {
     "id": "itch-pocket-bird",
@@ -744,7 +780,16 @@
     "local": false,
     "url": "https://idreesinc.itch.io/pocket-bird",
     "author": "Idrees",
-    "cover": null
+    "cover": null,
+    "controls": "Play instantly in your browser — use the mouse and keyboard as shown on the title screen. No download, install or account required.",
+    "howto": [
+      "Open the game from its OpenArc catalog link.",
+      "Wait a moment for the lightweight static build to load in your browser.",
+      "Read the in-game menu or start screen, then start playing."
+    ],
+    "tips": [
+      "Open-source games on itch.io are often updated by their authors — check the project page for new versions and mods."
+    ]
   },
   {
     "id": "itch-openra",
@@ -762,7 +807,16 @@
     "local": false,
     "url": "https://openra.itch.io/openra",
     "author": "OpenRA developers",
-    "cover": null
+    "cover": null,
+    "controls": "Play instantly in your browser — use the mouse and keyboard as shown on the title screen. No download, install or account required.",
+    "howto": [
+      "Open the game from its OpenArc catalog link.",
+      "Wait a moment for the lightweight static build to load in your browser.",
+      "Read the in-game menu or start screen, then start playing."
+    ],
+    "tips": [
+      "Open-source games on itch.io are often updated by their authors — check the project page for new versions and mods."
+    ]
   },
   {
     "id": "itch-clan-gen-fan-edit",
@@ -780,7 +834,16 @@
     "local": false,
     "url": "https://sablesteel.itch.io/clan-gen-fan-edit",
     "author": "SableSteel",
-    "cover": null
+    "cover": null,
+    "controls": "Play instantly in your browser — use the mouse and keyboard as shown on the title screen. No download, install or account required.",
+    "howto": [
+      "Open the game from its OpenArc catalog link.",
+      "Wait a moment for the lightweight static build to load in your browser.",
+      "Read the in-game menu or start screen, then start playing."
+    ],
+    "tips": [
+      "Open-source games on itch.io are often updated by their authors — check the project page for new versions and mods."
+    ]
   },
   {
     "id": "itch-catburglar",
@@ -798,7 +861,16 @@
     "local": false,
     "url": "https://johngabrieluk.itch.io/catburglar",
     "author": "JohnGabrielUK",
-    "cover": null
+    "cover": null,
+    "controls": "Play instantly in your browser — use the mouse and keyboard as shown on the title screen. No download, install or account required.",
+    "howto": [
+      "Open the game from its OpenArc catalog link.",
+      "Wait a moment for the lightweight static build to load in your browser.",
+      "Read the in-game menu or start screen, then start playing."
+    ],
+    "tips": [
+      "Open-source games on itch.io are often updated by their authors — check the project page for new versions and mods."
+    ]
   },
   {
     "id": "itch-retroarch",
@@ -816,7 +888,16 @@
     "local": false,
     "url": "https://retroarchofficial.itch.io/retroarch",
     "author": "RetroArch",
-    "cover": null
+    "cover": null,
+    "controls": "Play instantly in your browser — use the mouse and keyboard as shown on the title screen. No download, install or account required.",
+    "howto": [
+      "Open the game from its OpenArc catalog link.",
+      "Wait a moment for the lightweight static build to load in your browser.",
+      "Read the in-game menu or start screen, then start playing."
+    ],
+    "tips": [
+      "Open-source games on itch.io are often updated by their authors — check the project page for new versions and mods."
+    ]
   },
   {
     "id": "itch-nanosaur",
@@ -834,7 +915,16 @@
     "local": false,
     "url": "https://jorio.itch.io/nanosaur",
     "author": "Iliyas Jorio",
-    "cover": null
+    "cover": null,
+    "controls": "Play instantly in your browser — use the mouse and keyboard as shown on the title screen. No download, install or account required.",
+    "howto": [
+      "Open the game from its OpenArc catalog link.",
+      "Wait a moment for the lightweight static build to load in your browser.",
+      "Read the in-game menu or start screen, then start playing."
+    ],
+    "tips": [
+      "Open-source games on itch.io are often updated by their authors — check the project page for new versions and mods."
+    ]
   },
   {
     "id": "itch-0ad",
@@ -852,7 +942,16 @@
     "local": false,
     "url": "https://play0ad.itch.io/0ad",
     "author": "Wildfire Games",
-    "cover": null
+    "cover": null,
+    "controls": "Play instantly in your browser — use the mouse and keyboard as shown on the title screen. No download, install or account required.",
+    "howto": [
+      "Open the game from its OpenArc catalog link.",
+      "Wait a moment for the lightweight static build to load in your browser.",
+      "Read the in-game menu or start screen, then start playing."
+    ],
+    "tips": [
+      "Open-source games on itch.io are often updated by their authors — check the project page for new versions and mods."
+    ]
   },
   {
     "id": "itch-dr-virtual-pet",
@@ -870,7 +969,16 @@
     "local": false,
     "url": "https://immortalbean.itch.io/dr-virtual-pet",
     "author": "Immortal Bean",
-    "cover": null
+    "cover": null,
+    "controls": "Play instantly in your browser — use the mouse and keyboard as shown on the title screen. No download, install or account required.",
+    "howto": [
+      "Open the game from its OpenArc catalog link.",
+      "Wait a moment for the lightweight static build to load in your browser.",
+      "Read the in-game menu or start screen, then start playing."
+    ],
+    "tips": [
+      "Open-source games on itch.io are often updated by their authors — check the project page for new versions and mods."
+    ]
   },
   {
     "id": "itch-open-saber",
@@ -888,7 +996,16 @@
     "local": false,
     "url": "https://leandrodreamer.itch.io/open-saber",
     "author": "Leandro Dreamer",
-    "cover": null
+    "cover": null,
+    "controls": "Play instantly in your browser — use the mouse and keyboard as shown on the title screen. No download, install or account required.",
+    "howto": [
+      "Open the game from its OpenArc catalog link.",
+      "Wait a moment for the lightweight static build to load in your browser.",
+      "Read the in-game menu or start screen, then start playing."
+    ],
+    "tips": [
+      "Open-source games on itch.io are often updated by their authors — check the project page for new versions and mods."
+    ]
   },
   {
     "id": "itch-cromagrally",
@@ -906,7 +1023,16 @@
     "local": false,
     "url": "https://jorio.itch.io/cromagrally",
     "author": "Iliyas Jorio",
-    "cover": null
+    "cover": null,
+    "controls": "Play instantly in your browser — use the mouse and keyboard as shown on the title screen. No download, install or account required.",
+    "howto": [
+      "Open the game from its OpenArc catalog link.",
+      "Wait a moment for the lightweight static build to load in your browser.",
+      "Read the in-game menu or start screen, then start playing."
+    ],
+    "tips": [
+      "Open-source games on itch.io are often updated by their authors — check the project page for new versions and mods."
+    ]
   },
   {
     "id": "itch-unimaker",
@@ -924,7 +1050,16 @@
     "local": false,
     "url": "https://ninstars.itch.io/unimaker",
     "author": "NinStar",
-    "cover": null
+    "cover": null,
+    "controls": "Play instantly in your browser — use the mouse and keyboard as shown on the title screen. No download, install or account required.",
+    "howto": [
+      "Open the game from its OpenArc catalog link.",
+      "Wait a moment for the lightweight static build to load in your browser.",
+      "Read the in-game menu or start screen, then start playing."
+    ],
+    "tips": [
+      "Open-source games on itch.io are often updated by their authors — check the project page for new versions and mods."
+    ]
   },
   {
     "id": "ld-friendlyfiregame",
@@ -943,7 +1078,17 @@
     "local": false,
     "url": "https://github.com/friendlyfiregame/friendlyfiregame",
     "author": "friendlyfiregame",
-    "edition": "Ludum Dare"
+    "edition": "Ludum Dare",
+    "controls": "Launch the game from its project page and play in the browser; controls are shown on the start screen. See the README for build/run details if you want to run it locally.",
+    "howto": [
+      "Open the game from its OpenArc catalog link.",
+      "Wait a moment for the lightweight static build to load in your browser.",
+      "Read the in-game menu or start screen, then start playing."
+    ],
+    "tips": [
+      "Ludum Dare jam games are small and experimental — play a few rounds to discover the intended mechanic."
+    ],
+    "cover": "/assets/img/covers/ld-friendlyfiregame.svg"
   },
   {
     "id": "ld-ld47-fortloop",
@@ -962,7 +1107,17 @@
     "local": false,
     "url": "https://github.com/deepnight/ld47-fortLoop",
     "author": "deepnight",
-    "edition": "LD47"
+    "edition": "LD47",
+    "controls": "Launch the game from its project page and play in the browser; controls are shown on the start screen. See the README for build/run details if you want to run it locally.",
+    "howto": [
+      "Open the game from its OpenArc catalog link.",
+      "Wait a moment for the lightweight static build to load in your browser.",
+      "Read the in-game menu or start screen, then start playing."
+    ],
+    "tips": [
+      "Ludum Dare jam games are small and experimental — play a few rounds to discover the intended mechanic."
+    ],
+    "cover": "/assets/img/covers/ld-ld47-fortloop.svg"
   },
   {
     "id": "ld-holding-out",
@@ -981,7 +1136,17 @@
     "local": false,
     "url": "https://github.com/jeremycryan/Holding-Out",
     "author": "jeremycryan",
-    "edition": "Ludum Dare"
+    "edition": "Ludum Dare",
+    "controls": "Launch the game from its project page and play in the browser; controls are shown on the start screen. See the README for build/run details if you want to run it locally.",
+    "howto": [
+      "Open the game from its OpenArc catalog link.",
+      "Wait a moment for the lightweight static build to load in your browser.",
+      "Read the in-game menu or start screen, then start playing."
+    ],
+    "tips": [
+      "Ludum Dare jam games are small and experimental — play a few rounds to discover the intended mechanic."
+    ],
+    "cover": "https://img.itch.zone/aW1nLzEyMDI5NzM0LnBuZw==/original/s8h4DU.png"
   },
   {
     "id": "ld-dragon-taxes",
@@ -1000,7 +1165,17 @@
     "local": false,
     "url": "https://github.com/walsh9/dragon-taxes",
     "author": "walsh9",
-    "edition": "Ludum Dare"
+    "edition": "Ludum Dare",
+    "controls": "Launch the game from its project page and play in the browser; controls are shown on the start screen. See the README for build/run details if you want to run it locally.",
+    "howto": [
+      "Open the game from its OpenArc catalog link.",
+      "Wait a moment for the lightweight static build to load in your browser.",
+      "Read the in-game menu or start screen, then start playing."
+    ],
+    "tips": [
+      "Ludum Dare jam games are small and experimental — play a few rounds to discover the intended mechanic."
+    ],
+    "cover": "/assets/img/covers/ld-dragon-taxes.svg"
   },
   {
     "id": "ld-ld25",
@@ -1019,7 +1194,17 @@
     "local": false,
     "url": "https://github.com/suve/LD25",
     "author": "suve",
-    "edition": "LD25"
+    "edition": "LD25",
+    "controls": "Launch the game from its project page and play in the browser; controls are shown on the start screen. See the README for build/run details if you want to run it locally.",
+    "howto": [
+      "Open the game from its OpenArc catalog link.",
+      "Wait a moment for the lightweight static build to load in your browser.",
+      "Read the in-game menu or start screen, then start playing."
+    ],
+    "tips": [
+      "Ludum Dare jam games are small and experimental — play a few rounds to discover the intended mechanic."
+    ],
+    "cover": "/assets/img/covers/ld-ld25.svg"
   },
   {
     "id": "ld-ludum-dare-31",
@@ -1038,7 +1223,17 @@
     "local": false,
     "url": "https://github.com/gelisam/ludum-dare-31",
     "author": "gelisam",
-    "edition": "LD31"
+    "edition": "LD31",
+    "controls": "Launch the game from its project page and play in the browser; controls are shown on the start screen. See the README for build/run details if you want to run it locally.",
+    "howto": [
+      "Open the game from its OpenArc catalog link.",
+      "Wait a moment for the lightweight static build to load in your browser.",
+      "Read the in-game menu or start screen, then start playing."
+    ],
+    "tips": [
+      "Ludum Dare jam games are small and experimental — play a few rounds to discover the intended mechanic."
+    ],
+    "cover": "/assets/img/covers/ld-ludum-dare-31.svg"
   },
   {
     "id": "ld-ld49",
@@ -1057,7 +1252,17 @@
     "local": false,
     "url": "https://github.com/mausimus/ld49",
     "author": "mausimus",
-    "edition": "LD49"
+    "edition": "LD49",
+    "controls": "Launch the game from its project page and play in the browser; controls are shown on the start screen. See the README for build/run details if you want to run it locally.",
+    "howto": [
+      "Open the game from its OpenArc catalog link.",
+      "Wait a moment for the lightweight static build to load in your browser.",
+      "Read the in-game menu or start screen, then start playing."
+    ],
+    "tips": [
+      "Ludum Dare jam games are small and experimental — play a few rounds to discover the intended mechanic."
+    ],
+    "cover": "/assets/img/covers/ld-ld49.svg"
   },
   {
     "id": "ld-pack",
@@ -1076,7 +1281,17 @@
     "local": false,
     "url": "https://github.com/jeremycryan/Pack",
     "author": "jeremycryan",
-    "edition": "Ludum Dare"
+    "edition": "Ludum Dare",
+    "controls": "Launch the game from its project page and play in the browser; controls are shown on the start screen. See the README for build/run details if you want to run it locally.",
+    "howto": [
+      "Open the game from its OpenArc catalog link.",
+      "Wait a moment for the lightweight static build to load in your browser.",
+      "Read the in-game menu or start screen, then start playing."
+    ],
+    "tips": [
+      "Ludum Dare jam games are small and experimental — play a few rounds to discover the intended mechanic."
+    ],
+    "cover": "/assets/img/covers/ld-pack.svg"
   },
   {
     "id": "ld-defold-ld48-game",
@@ -1095,7 +1310,17 @@
     "local": false,
     "url": "https://github.com/aglitchman/defold-ld48-game",
     "author": "aglitchman",
-    "edition": "LD48"
+    "edition": "LD48",
+    "controls": "Launch the game from its project page and play in the browser; controls are shown on the start screen. See the README for build/run details if you want to run it locally.",
+    "howto": [
+      "Open the game from its OpenArc catalog link.",
+      "Wait a moment for the lightweight static build to load in your browser.",
+      "Read the in-game menu or start screen, then start playing."
+    ],
+    "tips": [
+      "Ludum Dare jam games are small and experimental — play a few rounds to discover the intended mechanic."
+    ],
+    "cover": "/assets/img/covers/ld-defold-ld48-game.svg"
   },
   {
     "id": "ld-spacehoarder",
@@ -1114,7 +1339,17 @@
     "local": false,
     "url": "https://github.com/LeandroDotta/SpaceHoarder",
     "author": "LeandroDotta",
-    "edition": "Ludum Dare"
+    "edition": "Ludum Dare",
+    "controls": "Launch the game from its project page and play in the browser; controls are shown on the start screen. See the README for build/run details if you want to run it locally.",
+    "howto": [
+      "Open the game from its OpenArc catalog link.",
+      "Wait a moment for the lightweight static build to load in your browser.",
+      "Read the in-game menu or start screen, then start playing."
+    ],
+    "tips": [
+      "Ludum Dare jam games are small and experimental — play a few rounds to discover the intended mechanic."
+    ],
+    "cover": "/assets/img/covers/ld-spacehoarder.svg"
   },
   {
     "id": "ld-cave",
@@ -1133,7 +1368,17 @@
     "local": false,
     "url": "https://github.com/Team-on-gamejams/Cave",
     "author": "Team-on-gamejams",
-    "edition": "Ludum Dare"
+    "edition": "Ludum Dare",
+    "controls": "Launch the game from its project page and play in the browser; controls are shown on the start screen. See the README for build/run details if you want to run it locally.",
+    "howto": [
+      "Open the game from its OpenArc catalog link.",
+      "Wait a moment for the lightweight static build to load in your browser.",
+      "Read the in-game menu or start screen, then start playing."
+    ],
+    "tips": [
+      "Ludum Dare jam games are small and experimental — play a few rounds to discover the intended mechanic."
+    ],
+    "cover": "/assets/img/covers/ld-cave.svg"
   },
   {
     "id": "ld-knight-general",
@@ -1152,7 +1397,17 @@
     "local": false,
     "url": "https://github.com/lchsk/knight-general",
     "author": "lchsk",
-    "edition": "Ludum Dare"
+    "edition": "Ludum Dare",
+    "controls": "Launch the game from its project page and play in the browser; controls are shown on the start screen. See the README for build/run details if you want to run it locally.",
+    "howto": [
+      "Open the game from its OpenArc catalog link.",
+      "Wait a moment for the lightweight static build to load in your browser.",
+      "Read the in-game menu or start screen, then start playing."
+    ],
+    "tips": [
+      "Ludum Dare jam games are small and experimental — play a few rounds to discover the intended mechanic."
+    ],
+    "cover": "/assets/img/covers/ld-knight-general.svg"
   },
   {
     "id": "ld-ludumdare26",
@@ -1171,7 +1426,17 @@
     "local": false,
     "url": "https://github.com/Gama11/LudumDare26",
     "author": "Gama11",
-    "edition": "LD26"
+    "edition": "LD26",
+    "controls": "Launch the game from its project page and play in the browser; controls are shown on the start screen. See the README for build/run details if you want to run it locally.",
+    "howto": [
+      "Open the game from its OpenArc catalog link.",
+      "Wait a moment for the lightweight static build to load in your browser.",
+      "Read the in-game menu or start screen, then start playing."
+    ],
+    "tips": [
+      "Ludum Dare jam games are small and experimental — play a few rounds to discover the intended mechanic."
+    ],
+    "cover": "/assets/img/covers/ld-ludumdare26.svg"
   },
   {
     "id": "ld-fallowtide",
@@ -1190,7 +1455,17 @@
     "local": false,
     "url": "https://github.com/jeremycryan/Fallowtide",
     "author": "jeremycryan",
-    "edition": "Ludum Dare"
+    "edition": "Ludum Dare",
+    "controls": "Launch the game from its project page and play in the browser; controls are shown on the start screen. See the README for build/run details if you want to run it locally.",
+    "howto": [
+      "Open the game from its OpenArc catalog link.",
+      "Wait a moment for the lightweight static build to load in your browser.",
+      "Read the in-game menu or start screen, then start playing."
+    ],
+    "tips": [
+      "Ludum Dare jam games are small and experimental — play a few rounds to discover the intended mechanic."
+    ],
+    "cover": "https://img.itch.zone/aW1nLzEwOTc2NTcxLnBuZw==/original/Up9at6.png"
   },
   {
     "id": "ld-oneroom",
@@ -1209,7 +1484,17 @@
     "local": false,
     "url": "https://github.com/britzl/oneroom",
     "author": "britzl",
-    "edition": "Ludum Dare"
+    "edition": "Ludum Dare",
+    "controls": "Launch the game from its project page and play in the browser; controls are shown on the start screen. See the README for build/run details if you want to run it locally.",
+    "howto": [
+      "Open the game from its OpenArc catalog link.",
+      "Wait a moment for the lightweight static build to load in your browser.",
+      "Read the in-game menu or start screen, then start playing."
+    ],
+    "tips": [
+      "Ludum Dare jam games are small and experimental — play a few rounds to discover the intended mechanic."
+    ],
+    "cover": "/assets/img/covers/ld-oneroom.svg"
   },
   {
     "id": "gh-internalbeyond",
