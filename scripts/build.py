@@ -373,6 +373,9 @@ def game_schema_head(g: dict, site_url: str, image: str | None = None) -> str:
     }
     if image:
         vg["image"] = image
+    author = g.get("author")
+    if author:
+        vg["author"] = {"@type": "Person", "name": author}
     lic_url = _license_url(g)
     if lic_url:
         vg["license"] = lic_url
@@ -489,6 +492,10 @@ def render_game_detail(g: dict, site_url: str) -> str:
     body.append(f"        <dt>Tags</dt><dd>{e(', '.join(tags) if tags else '—')}</dd>")
     if g.get("stars"):
         body.append(f"        <dt>Stars</dt><dd>{e(str(g['stars']))}</dd>")
+    if g.get("author"):
+        body.append(f"        <dt>Author</dt><dd>{e(g['author'])}</dd>")
+    if g.get("edition"):
+        body.append(f"        <dt>Edition</dt><dd>{e(g['edition'])}</dd>")
     body.append("      </dl>")
 
     if g.get("playable") and g.get("local"):

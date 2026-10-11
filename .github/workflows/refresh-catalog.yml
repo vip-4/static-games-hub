@@ -40,7 +40,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ITCH_IO_API_KEY: ${{ secrets.ITCH_IO_API_KEY }}
-        run: python scripts/fetch-games.py --merge
+        run: python scripts/fetch-games.py --merge --trending --since-days 30
       - name: Commit if catalog changed
         run: |
           git config user.name "openarc-bot"

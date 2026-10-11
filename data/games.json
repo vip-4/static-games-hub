@@ -655,5 +655,752 @@
     "url": "https://github.com/TeamHypersomnia/Hypersomnia",
     "stars": 1680,
     "cover": "https://pixabay.com/get/g290e274e117e6b73a69a0a72225b5cefca7f6fb1c16b3d6aeb5347f945e72ff886e3c1d2608d63aa891894edcbf8614ec89c77a098c91d892101c48d87118680_1280.jpg"
+  },
+  {
+    "id": "itch-mindustry",
+    "title": "Mindustry",
+    "description": "Mindustry is an open-source game by Anuke, published on itch.io — a strategy game.",
+    "icon": "🎮",
+    "source": "itchio",
+    "license": "open-source",
+    "tags": [
+      "open-source",
+      "itchio",
+      "strategy"
+    ],
+    "playable": true,
+    "local": false,
+    "url": "https://anuke.itch.io/mindustry",
+    "author": "Anuke",
+    "cover": null
+  },
+  {
+    "id": "itch-funkin",
+    "title": "Friday Night Funkin'",
+    "description": "Friday Night Funkin' is an open-source game by ninjamuffin99, published on itch.io — a rhythm game.",
+    "icon": "🎮",
+    "source": "itchio",
+    "license": "open-source",
+    "tags": [
+      "open-source",
+      "itchio",
+      "rhythm"
+    ],
+    "playable": true,
+    "local": false,
+    "url": "https://ninja-muffin24.itch.io/funkin",
+    "author": "ninjamuffin99",
+    "cover": null
+  },
+  {
+    "id": "itch-battle-for-wesnoth",
+    "title": "Battle for Wesnoth",
+    "description": "Battle for Wesnoth is an open-source game by Wesnoth, published on itch.io — a strategy game.",
+    "icon": "🎮",
+    "source": "itchio",
+    "license": "open-source",
+    "tags": [
+      "open-source",
+      "itchio",
+      "strategy"
+    ],
+    "playable": true,
+    "local": false,
+    "url": "https://wesnoth.itch.io/battle-for-wesnoth",
+    "author": "Wesnoth",
+    "cover": null
+  },
+  {
+    "id": "itch-supertuxkart",
+    "title": "SuperTuxKart",
+    "description": "SuperTuxKart is an open-source game by supertuxkart, published on itch.io — a racing game.",
+    "icon": "🎮",
+    "source": "itchio",
+    "license": "open-source",
+    "tags": [
+      "open-source",
+      "itchio",
+      "racing"
+    ],
+    "playable": true,
+    "local": false,
+    "url": "https://supertuxkart.itch.io/supertuxkart",
+    "author": "supertuxkart",
+    "cover": null
+  },
+  {
+    "id": "itch-pocket-bird",
+    "title": "Pocket Bird - Portable Desktop Pet",
+    "description": "Pocket Bird - Portable Desktop Pet is an open-source game by Idrees, published on itch.io — a casual game.",
+    "icon": "🎮",
+    "source": "itchio",
+    "license": "open-source",
+    "tags": [
+      "open-source",
+      "itchio",
+      "casual"
+    ],
+    "playable": true,
+    "local": false,
+    "url": "https://idreesinc.itch.io/pocket-bird",
+    "author": "Idrees",
+    "cover": null
+  },
+  {
+    "id": "itch-openra",
+    "title": "OpenRA",
+    "description": "OpenRA is an open-source game by OpenRA developers, published on itch.io — a strategy game.",
+    "icon": "🎮",
+    "source": "itchio",
+    "license": "open-source",
+    "tags": [
+      "open-source",
+      "itchio",
+      "strategy"
+    ],
+    "playable": true,
+    "local": false,
+    "url": "https://openra.itch.io/openra",
+    "author": "OpenRA developers",
+    "cover": null
+  },
+  {
+    "id": "itch-clan-gen-fan-edit",
+    "title": "ClanGen",
+    "description": "ClanGen is an open-source game by SableSteel, published on itch.io — a simulation game.",
+    "icon": "🎮",
+    "source": "itchio",
+    "license": "open-source",
+    "tags": [
+      "open-source",
+      "itchio",
+      "simulation"
+    ],
+    "playable": true,
+    "local": false,
+    "url": "https://sablesteel.itch.io/clan-gen-fan-edit",
+    "author": "SableSteel",
+    "cover": null
+  },
+  {
+    "id": "itch-catburglar",
+    "title": "Catburglar",
+    "description": "Catburglar is an open-source game by JohnGabrielUK, published on itch.io — a arcade game.",
+    "icon": "🎮",
+    "source": "itchio",
+    "license": "open-source",
+    "tags": [
+      "open-source",
+      "itchio",
+      "arcade"
+    ],
+    "playable": true,
+    "local": false,
+    "url": "https://johngabrieluk.itch.io/catburglar",
+    "author": "JohnGabrielUK",
+    "cover": null
+  },
+  {
+    "id": "itch-retroarch",
+    "title": "RetroArch",
+    "description": "RetroArch is an open-source game by RetroArch, published on itch.io — a emulator game.",
+    "icon": "🎮",
+    "source": "itchio",
+    "license": "open-source",
+    "tags": [
+      "open-source",
+      "itchio",
+      "emulator"
+    ],
+    "playable": true,
+    "local": false,
+    "url": "https://retroarchofficial.itch.io/retroarch",
+    "author": "RetroArch",
+    "cover": null
+  },
+  {
+    "id": "itch-nanosaur",
+    "title": "Nanosaur",
+    "description": "Nanosaur is an open-source game by Iliyas Jorio, published on itch.io — a action game.",
+    "icon": "🎮",
+    "source": "itchio",
+    "license": "open-source",
+    "tags": [
+      "open-source",
+      "itchio",
+      "action"
+    ],
+    "playable": true,
+    "local": false,
+    "url": "https://jorio.itch.io/nanosaur",
+    "author": "Iliyas Jorio",
+    "cover": null
+  },
+  {
+    "id": "itch-0ad",
+    "title": "0 A.D: Empires Ascendant",
+    "description": "0 A.D: Empires Ascendant is an open-source game by Wildfire Games, published on itch.io — a strategy game.",
+    "icon": "🎮",
+    "source": "itchio",
+    "license": "open-source",
+    "tags": [
+      "open-source",
+      "itchio",
+      "strategy"
+    ],
+    "playable": true,
+    "local": false,
+    "url": "https://play0ad.itch.io/0ad",
+    "author": "Wildfire Games",
+    "cover": null
+  },
+  {
+    "id": "itch-dr-virtual-pet",
+    "title": "DELTARUNE Desktop Pet",
+    "description": "DELTARUNE Desktop Pet is an open-source game by Immortal Bean, published on itch.io — a casual game.",
+    "icon": "🎮",
+    "source": "itchio",
+    "license": "open-source",
+    "tags": [
+      "open-source",
+      "itchio",
+      "casual"
+    ],
+    "playable": true,
+    "local": false,
+    "url": "https://immortalbean.itch.io/dr-virtual-pet",
+    "author": "Immortal Bean",
+    "cover": null
+  },
+  {
+    "id": "itch-open-saber",
+    "title": "Open Saber",
+    "description": "Open Saber is an open-source game by Leandro Dreamer, published on itch.io — a action game.",
+    "icon": "🎮",
+    "source": "itchio",
+    "license": "open-source",
+    "tags": [
+      "open-source",
+      "itchio",
+      "action"
+    ],
+    "playable": true,
+    "local": false,
+    "url": "https://leandrodreamer.itch.io/open-saber",
+    "author": "Leandro Dreamer",
+    "cover": null
+  },
+  {
+    "id": "itch-cromagrally",
+    "title": "Cro-Mag Rally",
+    "description": "Cro-Mag Rally is an open-source game by Iliyas Jorio, published on itch.io — a racing game.",
+    "icon": "🎮",
+    "source": "itchio",
+    "license": "open-source",
+    "tags": [
+      "open-source",
+      "itchio",
+      "racing"
+    ],
+    "playable": true,
+    "local": false,
+    "url": "https://jorio.itch.io/cromagrally",
+    "author": "Iliyas Jorio",
+    "cover": null
+  },
+  {
+    "id": "itch-unimaker",
+    "title": "UniMaker",
+    "description": "UniMaker is an open-source game by NinStar, published on itch.io — a sandbox game.",
+    "icon": "🎮",
+    "source": "itchio",
+    "license": "open-source",
+    "tags": [
+      "open-source",
+      "itchio",
+      "sandbox"
+    ],
+    "playable": true,
+    "local": false,
+    "url": "https://ninstars.itch.io/unimaker",
+    "author": "NinStar",
+    "cover": null
+  },
+  {
+    "id": "ld-friendlyfiregame",
+    "title": "friendlyfiregame",
+    "description": "Explore the world of “Friendly Fire” and meet all its inhabitants in a quest to save the world from an unknown destiny.",
+    "icon": "🕹️",
+    "source": "ludumdare",
+    "license": "NOASSERTION",
+    "stars": 90,
+    "tags": [
+      "open-source",
+      "html5",
+      "ludum-dare"
+    ],
+    "playable": true,
+    "local": false,
+    "url": "https://github.com/friendlyfiregame/friendlyfiregame",
+    "author": "friendlyfiregame",
+    "edition": "Ludum Dare"
+  },
+  {
+    "id": "ld-ld47-fortloop",
+    "title": "ld47-fortLoop",
+    "description": "Fort Loop: a 48h puzzle game for Ludum Dare 47.",
+    "icon": "🕹️",
+    "source": "ludumdare",
+    "license": "MIT",
+    "stars": 35,
+    "tags": [
+      "open-source",
+      "html5",
+      "ludum-dare"
+    ],
+    "playable": true,
+    "local": false,
+    "url": "https://github.com/deepnight/ld47-fortLoop",
+    "author": "deepnight",
+    "edition": "LD47"
+  },
+  {
+    "id": "ld-holding-out",
+    "title": "Holding-Out",
+    "description": "Source for \"Holding Out\", a game where you grapple with customer support and zombies simultaneously. Made for Ludum Dare 53 in 48 hours.",
+    "icon": "🕹️",
+    "source": "ludumdare",
+    "license": "MIT",
+    "stars": 33,
+    "tags": [
+      "open-source",
+      "html5",
+      "ludum-dare"
+    ],
+    "playable": true,
+    "local": false,
+    "url": "https://github.com/jeremycryan/Holding-Out",
+    "author": "jeremycryan",
+    "edition": "Ludum Dare"
+  },
+  {
+    "id": "ld-dragon-taxes",
+    "title": "dragon-taxes",
+    "description": "🐲📝 Dragon Tax Return Simulator 2015 - A game made for Ludum Dare 33.",
+    "icon": "🕹️",
+    "source": "ludumdare",
+    "license": "MIT",
+    "stars": 33,
+    "tags": [
+      "open-source",
+      "html5",
+      "ludum-dare"
+    ],
+    "playable": true,
+    "local": false,
+    "url": "https://github.com/walsh9/dragon-taxes",
+    "author": "walsh9",
+    "edition": "Ludum Dare"
+  },
+  {
+    "id": "ld-ld25",
+    "title": "LD25",
+    "description": "Colorful - Ludum Dare 25 (December 2012) entry.",
+    "icon": "🕹️",
+    "source": "ludumdare",
+    "license": "NOASSERTION",
+    "stars": 31,
+    "tags": [
+      "open-source",
+      "html5",
+      "ludum-dare"
+    ],
+    "playable": true,
+    "local": false,
+    "url": "https://github.com/suve/LD25",
+    "author": "suve",
+    "edition": "LD25"
+  },
+  {
+    "id": "ld-ludum-dare-31",
+    "title": "ludum-dare-31",
+    "description": "The theme for LD31 was \"Entire Game on One Screen\".",
+    "icon": "🕹️",
+    "source": "ludumdare",
+    "license": "varies",
+    "stars": 27,
+    "tags": [
+      "open-source",
+      "html5",
+      "ludum-dare"
+    ],
+    "playable": true,
+    "local": false,
+    "url": "https://github.com/gelisam/ludum-dare-31",
+    "author": "gelisam",
+    "edition": "LD31"
+  },
+  {
+    "id": "ld-ld49",
+    "title": "ld49",
+    "description": "Ludum Dare 49.",
+    "icon": "🕹️",
+    "source": "ludumdare",
+    "license": "varies",
+    "stars": 24,
+    "tags": [
+      "open-source",
+      "html5",
+      "ludum-dare"
+    ],
+    "playable": true,
+    "local": false,
+    "url": "https://github.com/mausimus/ld49",
+    "author": "mausimus",
+    "edition": "LD49"
+  },
+  {
+    "id": "ld-pack",
+    "title": "Pack",
+    "description": "Source for \"Pack\", a cozy puzzler about packing your suitcase made for Ludum Dare 57.",
+    "icon": "🕹️",
+    "source": "ludumdare",
+    "license": "MIT",
+    "stars": 21,
+    "tags": [
+      "open-source",
+      "html5",
+      "ludum-dare"
+    ],
+    "playable": true,
+    "local": false,
+    "url": "https://github.com/jeremycryan/Pack",
+    "author": "jeremycryan",
+    "edition": "Ludum Dare"
+  },
+  {
+    "id": "ld-defold-ld48-game",
+    "title": "defold-ld48-game",
+    "description": "3D shooter game made with Defold. Fuel a mysterious machine with blue boxes!.",
+    "icon": "🕹️",
+    "source": "ludumdare",
+    "license": "varies",
+    "stars": 21,
+    "tags": [
+      "open-source",
+      "html5",
+      "ludum-dare"
+    ],
+    "playable": true,
+    "local": false,
+    "url": "https://github.com/aglitchman/defold-ld48-game",
+    "author": "aglitchman",
+    "edition": "LD48"
+  },
+  {
+    "id": "ld-spacehoarder",
+    "title": "SpaceHoarder",
+    "description": "A Unity 3D action game for Ludum Dare #42.",
+    "icon": "🕹️",
+    "source": "ludumdare",
+    "license": "MIT",
+    "stars": 19,
+    "tags": [
+      "open-source",
+      "html5",
+      "ludum-dare"
+    ],
+    "playable": true,
+    "local": false,
+    "url": "https://github.com/LeandroDotta/SpaceHoarder",
+    "author": "LeandroDotta",
+    "edition": "Ludum Dare"
+  },
+  {
+    "id": "ld-cave",
+    "title": "Cave",
+    "description": "Ludum Dare Jam #45. Theme: \"Start with nothing\". Game: Cave - 2D survival RPG with Dark Souls battle system.",
+    "icon": "🕹️",
+    "source": "ludumdare",
+    "license": "MIT",
+    "stars": 18,
+    "tags": [
+      "open-source",
+      "html5",
+      "ludum-dare"
+    ],
+    "playable": true,
+    "local": false,
+    "url": "https://github.com/Team-on-gamejams/Cave",
+    "author": "Team-on-gamejams",
+    "edition": "Ludum Dare"
+  },
+  {
+    "id": "ld-knight-general",
+    "title": "knight-general",
+    "description": "Turn-based strategy game in 72 hours for Ludum Dare 42.",
+    "icon": "🕹️",
+    "source": "ludumdare",
+    "license": "GPL-3.0",
+    "stars": 17,
+    "tags": [
+      "open-source",
+      "html5",
+      "ludum-dare"
+    ],
+    "playable": true,
+    "local": false,
+    "url": "https://github.com/lchsk/knight-general",
+    "author": "lchsk",
+    "edition": "Ludum Dare"
+  },
+  {
+    "id": "ld-ludumdare26",
+    "title": "LudumDare26",
+    "description": "My Ludum Dare 26 entry, \"Minimalist TD\". Programmed in Haxe using HaxeFlixel.",
+    "icon": "🕹️",
+    "source": "ludumdare",
+    "license": "varies",
+    "stars": 17,
+    "tags": [
+      "open-source",
+      "html5",
+      "ludum-dare"
+    ],
+    "playable": true,
+    "local": false,
+    "url": "https://github.com/Gama11/LudumDare26",
+    "author": "Gama11",
+    "edition": "LD26"
+  },
+  {
+    "id": "ld-fallowtide",
+    "title": "Fallowtide",
+    "description": "Source for \"Fallowtide\", a spooky farming deckbuilder made in 48 hours for Ludum Dare 52.",
+    "icon": "🕹️",
+    "source": "ludumdare",
+    "license": "MIT",
+    "stars": 17,
+    "tags": [
+      "open-source",
+      "html5",
+      "ludum-dare"
+    ],
+    "playable": true,
+    "local": false,
+    "url": "https://github.com/jeremycryan/Fallowtide",
+    "author": "jeremycryan",
+    "edition": "Ludum Dare"
+  },
+  {
+    "id": "ld-oneroom",
+    "title": "oneroom",
+    "description": "Ludum Dare #37.",
+    "icon": "🕹️",
+    "source": "ludumdare",
+    "license": "varies",
+    "stars": 14,
+    "tags": [
+      "open-source",
+      "html5",
+      "ludum-dare"
+    ],
+    "playable": true,
+    "local": false,
+    "url": "https://github.com/britzl/oneroom",
+    "author": "britzl",
+    "edition": "Ludum Dare"
+  },
+  {
+    "id": "gh-internalbeyond",
+    "title": "InternalBeyond",
+    "description": "【Project-IB】边界之外：离线运行的单文件个人网站式项目，旨于维系情感的连续性。A single-file offline personal website, built to sustain the continuity of feeling.",
+    "icon": "🤖",
+    "source": "github",
+    "license": "NOASSERTION",
+    "tags": [
+      "open-source",
+      "html5"
+    ],
+    "playable": false,
+    "local": false,
+    "url": "https://github.com/Sui-IB/InternalBeyond",
+    "stars": 636
+  },
+  {
+    "id": "gh-reldens",
+    "title": "reldens",
+    "description": "Reldens - You can make it - Open Source MMORPG Platform",
+    "icon": "🤖",
+    "source": "github",
+    "license": "MIT",
+    "tags": [
+      "open-source",
+      "html5"
+    ],
+    "playable": false,
+    "local": false,
+    "url": "https://github.com/damian-pastorini/reldens",
+    "stars": 588
+  },
+  {
+    "id": "gh-pip-web",
+    "title": "pip-web",
+    "description": "Casual poker, redesigned — clean single-player Texas Hold'em. Play money, no account needed, no fake felt.",
+    "icon": "🤖",
+    "source": "github",
+    "license": "MIT",
+    "tags": [
+      "open-source",
+      "html5"
+    ],
+    "playable": false,
+    "local": false,
+    "url": "https://github.com/playpip/pip-web",
+    "stars": 16
+  },
+  {
+    "id": "gh-yunyin-xiuxian",
+    "title": "yunyin-xiuxian",
+    "description": "《云隐修仙录》是一款文字修仙放置游戏 ",
+    "icon": "🤖",
+    "source": "github",
+    "license": "NOASSERTION",
+    "tags": [
+      "open-source",
+      "html5"
+    ],
+    "playable": false,
+    "local": false,
+    "url": "https://github.com/setube/yunyin-xiuxian",
+    "stars": 50
+  },
+  {
+    "id": "gh-danoniplus",
+    "title": "danoniplus",
+    "description": "🍙 Dancing☆Onigiri (CW Edition) - Web-based Rhythm Game",
+    "icon": "🤖",
+    "source": "github",
+    "license": "MIT",
+    "tags": [
+      "open-source",
+      "html5"
+    ],
+    "playable": false,
+    "local": false,
+    "url": "https://github.com/cwtickle/danoniplus",
+    "stars": 45
+  },
+  {
+    "id": "gh-quick-dungeon-crawler-rpg-od",
+    "title": "quick-dungeon-crawler-rpg-od",
+    "description": "Quick Dungeon Crawler on Demand is an open-source endless dungeon crawler with randomized floors, enemies and items. It's based on the source code of Dungeon crawler on Demand, by ",
+    "icon": "🤖",
+    "source": "github",
+    "license": "AGPL-3.0",
+    "tags": [
+      "open-source",
+      "html5"
+    ],
+    "playable": false,
+    "local": false,
+    "url": "https://github.com/Werkstattl/quick-dungeon-crawler-rpg-od",
+    "stars": 34
+  },
+  {
+    "id": "gh-kingdomarchitect",
+    "title": "kingdomarchitect",
+    "description": "Medieval simulation/city builder game for the browser.",
+    "icon": "🤖",
+    "source": "github",
+    "license": "NOASSERTION",
+    "tags": [
+      "open-source",
+      "html5"
+    ],
+    "playable": false,
+    "local": false,
+    "url": "https://github.com/trymnilsen/kingdomarchitect",
+    "stars": 23
+  },
+  {
+    "id": "gh-mario-maker",
+    "title": "mario-maker",
+    "description": "Classic Mario Game with Level-Editor",
+    "icon": "🤖",
+    "source": "github",
+    "license": "varies",
+    "tags": [
+      "open-source",
+      "html5"
+    ],
+    "playable": false,
+    "local": false,
+    "url": "https://github.com/pratishshr/mario-maker",
+    "stars": 108
+  },
+  {
+    "id": "gh-puzzle",
+    "title": "Puzzle",
+    "description": "grrd's Puzzle - a HTML5 PWA jigsaw puzzle game",
+    "icon": "🤖",
+    "source": "github",
+    "license": "NOASSERTION",
+    "tags": [
+      "open-source",
+      "html5"
+    ],
+    "playable": false,
+    "local": false,
+    "url": "https://github.com/grrd01/Puzzle",
+    "stars": 39
+  },
+  {
+    "id": "gh-opensro",
+    "title": "opensro",
+    "description": "🏯 Silkroad Online v1.150 rebuilt end to end: a WebGPU browser client 🎮, a Go game server ⚔️ and the asset pipeline 🧰 that ties them together. Play in your browser.",
+    "icon": "🤖",
+    "source": "github",
+    "license": "AGPL-3.0",
+    "tags": [
+      "open-source",
+      "html5"
+    ],
+    "playable": false,
+    "local": false,
+    "url": "https://github.com/opensro-dev/opensro",
+    "stars": 30
+  },
+  {
+    "id": "gh-type-pal",
+    "title": "type-pal",
+    "description": "用 TypeScript 从零重写《仙剑奇侠传》（1995），浏览器里能通关，附可视化编辑器 · A from-scratch TypeScript remake of PAL (1995) with a visual editor. Unofficial fan project.",
+    "icon": "🤖",
+    "source": "github",
+    "license": "GPL-3.0",
+    "tags": [
+      "open-source",
+      "html5"
+    ],
+    "playable": false,
+    "local": false,
+    "url": "https://github.com/IllegalCreed/type-pal",
+    "stars": 57
+  },
+  {
+    "id": "gh-fate",
+    "title": "Fate",
+    "description": "Fate is a fast-paced first-person shooter where players battle dangerous mythical monsters from an array of unique fantasy environments. As the levels progress the enemies get more",
+    "icon": "🤖",
+    "source": "github",
+    "license": "MIT",
+    "tags": [
+      "open-source",
+      "html5"
+    ],
+    "playable": false,
+    "local": false,
+    "url": "https://github.com/KylerCondran/Fate",
+    "stars": 19
   }
 ]

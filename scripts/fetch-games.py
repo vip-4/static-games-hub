@@ -80,6 +80,7 @@ import os
 import re
 import sys
 import time
+from datetime import date, timedelta
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -312,7 +313,8 @@ def _is_game(it: dict) -> bool:
 
 
 def fetch_github(topics: list[str], curated: list[str], token: Optional[str],
-                 limit: int, min_stars: int, cap: int) -> list[dict]:
+                 limit: int, min_stars: int, cap: int,
+                 trending: bool = False, since_days: int = 30) -> list[dict]:
     out: dict[str, dict] = {}
     order: list[str] = []
 
@@ -342,12 +344,22 @@ def fetch_github(topics: list[str], curated: list[str], token: Optional[str],
             log.warning("github curated '%s' not found (HTTP %s) — skipped.", full, status)
         time.sleep(0.6)
 
-    # 2) topic searches (trending-style, sorted by stars) fill the rest up to cap
+    # 2) topic searches fill the rest up to cap.
+    #    Trending mode: restrict to repos pushed within `since_days` (recently
+    #    active) and sort by `updated` — this surfaces currently-hot, popular
+    #    open-source HTML5 games and approximates GitHub's Trending board. The
+    #    search API cannot sort by raw star *velocity*, so we filter by recent
+    #    activity + popularity instead. Default mode sorts by all-time stars.
+    sort = "updated" if trending else "stars"
+    if trending:
+        since = (date.today() - timedelta(days=since_days)).isoformat()
     for t in topics:
         if len(out) >= cap:
             break
-        q = urllib.parse.quote(f"topic:{t} stars:>{min_stars} fork:false")
-        url = f"{GITHUB_SEARCH}?q={q}&sort=stars&order=desc&per_page={limit}"
+        q = f"topic:{t} stars:>{min_stars} fork:false"
+        if trending:
+            q += f" pushed:>{since}"
+        url = f"{GITHUB_SEARCH}?q={urllib.parse.quote(q)}&sort={sort}&order=desc&per_page={limit}"
         try:
             status, body = _gh_call(url, token)
         except Exception as e:  # noqa: BLE001
@@ -649,6 +661,12 @@ def parse_args(argv: Optional[list[str]] = None) -> argparse.Namespace:
                     help="Hard cap on total GitHub entries fetched.")
     ap.add_argument("--min-stars", type=int, default=15,
                     help="Minimum stars for a GitHub repo to be included.")
+    ap.add_argument("--trending", action="store_true",
+                    help="GitHub Trending mode: only consider repos pushed in the "
+                         "last --since-days and sort by recent activity, mirroring "
+                         "the Trending board (recently-hot, popular games).")
+    ap.add_argument("--since-days", type=int, default=30,
+                    help="Recency window (days) used by --trending.")
     ap.add_argument("--out", default=OUT_DEFAULT,
                     help="Where to write the generated catalog JSON.")
     ap.add_argument("--no-itch", action="store_true", help="Skip itch.io entirely.")
@@ -692,7 +710,8 @@ def main(argv: Optional[list[str]] = None) -> int:
         log.info("GitHub: searching %d topics, %d curated repos (min %d stars).",
                  len(topics), len(curated), args.min_stars)
         generated += fetch_github(topics, curated, args.github_token,
-                                 args.limit, args.min_stars, args.cap)
+                                 args.limit, args.min_stars, args.cap,
+                                 trending=args.trending, since_days=args.since_days)
     if not args.no_itch:
         generated += fetch_itchio(args.itch_key)
 
