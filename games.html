@@ -13,6 +13,7 @@
   <meta name="theme-color" content="#0e1020" />
   <meta name="color-scheme" content="dark" />
   <link rel="canonical" href="https://openarc.example.com/games.html" />
+  <!--HREFLANG-->
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
@@ -37,6 +38,7 @@
   <link rel="stylesheet" href="/assets/css/style.css" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text y='14' font-size='14'>🎮</text></svg>" />
 
+  <!--SITE_JSONLD-->
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
     {"@type":"ListItem","position":1,"name":"Home","item":"https://openarc.example.com/"},
@@ -57,6 +59,12 @@
   </header>
 
   <main id="main">
+    <nav aria-label="Breadcrumb" class="breadcrumb-nav">
+      <ol class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li aria-current="page">Games</li>
+      </ol>
+    </nav>
     <section aria-labelledby="all-h">
       <h1 id="all-h">All games</h1>
       <p class="section-note">

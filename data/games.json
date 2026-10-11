@@ -25,7 +25,7 @@
       "Hug the edges early so the centre stays open.",
       "Never box yourself into a tight loop around your own body."
     ],
-    "cover": "https://pixabay.com/get/gd6fd1d11971c109b9e82e3a34bc67bfcec82f6ea88e6aec2e07d268fde6c2caf75964c752740e5560a1d7a976d3e382a06475008798c33d3431cbcbb86a1d1a1_1280.jpg"
+    "cover": "https://pixabay.com/get/gcef1a8e7778ec141575fac00d42b32019d9d085593dbf49d23c9728c0d9d6076e2f1f2aa39f7ca1e65575a33b3ef47c5c4868a138b8f70601f769643299d4fe5_1280.jpg"
   },
   {
     "id": "tic-tac-toe",
@@ -53,7 +53,7 @@
       "Take the centre — it sits on the most possible winning lines.",
       "Always block an opponent who has two in a row."
     ],
-    "cover": "https://pixabay.com/get/g94791f444e23517851280eaa4e4791f2add50629206a0218cd0cc9807f26ad2e17020fe57c7bfdf690af25eba8181731d46216bf3665177f2c38c74285f9f16c_1280.jpg"
+    "cover": "https://pixabay.com/get/g6afdf5860289c810b4ed535106b0bce1baba273189b14cb021e23662e27b51d18fa927d7e7a5ef2e573276517a1ea9a3463a3e44e66e9fd5e9166b9bf5532fce_1280.jpg"
   },
   {
     "id": "2048",
@@ -81,7 +81,7 @@
       "Keep your highest tile locked in one corner.",
       "Avoid sliding in the direction that breaks your corner stack."
     ],
-    "cover": "https://pixabay.com/get/ge8272593c1aac5e2674f3ce49fb518e0dfa0453582d6d912268d8bf5f11689c46492097ab5da7df68506a957dda8605e4fbdb3323afca00be009c1224afd7fb1_1280.jpg"
+    "cover": "https://pixabay.com/get/g00c5e6fa723a9496a12995e10d128cd386f01c5242e923e690c03f3944fbafe4e1898c96c39da0f1b842bd9de866fc4aa05e64d20bf9e3d7d1ce89595996cdd9_1280.jpg"
   },
   {
     "id": "memory",
@@ -109,7 +109,7 @@
       "Remember positions revealed by earlier missed flips.",
       "Clear pairs you already know first to shrink the board."
     ],
-    "cover": "https://pixabay.com/get/gb463c8cd44b1be77baecd01821aac6e9b81d87af6c4baa5c9cc539717494e9e1e68d56534c1353602f4d6f11010d440271570f9f7d9a0e85be5e0f165a444373_1280.jpg"
+    "cover": "https://pixabay.com/get/g0e2301108bc2ff2c394d0f978dcf64659f4c1cbdbf9a74335931840300279b805a746e69977fb91a73d8cc5aa9ee8b1efb52b46e6e19109c7b6da4de27e10004_1280.jpg"
   },
   {
     "id": "breakout",
@@ -137,7 +137,7 @@
       "Strike the ball with the paddle edges for wider angles.",
       "Keep an escape lane above the paddle for fast returns."
     ],
-    "cover": "https://pixabay.com/get/gad2c6a8648116fde8028a6a63c86862605592d4aa1473e9a718a1315e9cab8ea4b635bc5119c237503ea522c28c7ea77389b2d450e83e7e624a3464190b0540d_1280.jpg"
+    "cover": "https://pixabay.com/get/ge0f7812edc3c0b7c9a3e7da5944d391953a3811e850d51a2baeede594007d020b205d0d007829065656d77092483942cfe58ee2625a1d6879f1af6eb1418bd5c_1280.jpg"
   },
   {
     "id": "pong",
@@ -165,7 +165,7 @@
       "Hit with the paddle edges to add angle to your return.",
       "Watch the vertical speed change after each hit."
     ],
-    "cover": "https://pixabay.com/get/g826ae8c18e29f1d496dcaa7a6d7fa85bbd4a53af4e729cd5115925bf12a1497dee5244c58457ddbd0af7e9fc6293d222b4bfe5e6577f2450eabde6157baf453b_1280.jpg"
+    "cover": "https://pixabay.com/get/gd57cdae9185e345a19721e03852abbb4f6d794c32779b01b149b5129c998528db8a08c1c7ba118f0ca19db9c0d7ace55c5a857ccf29b4810a2a5b54d4c4fc24e_1280.jpg"
   },
   {
     "id": "minesweeper",
@@ -193,7 +193,7 @@
       "Open in a corner for a safer first move.",
       "Deduce from the numbers instead of guessing."
     ],
-    "cover": "https://pixabay.com/get/gebd38f9e1c3e3cbd8e083d7cc6be947babdc2a28aaa65d4424efa53a48c96c5c5e1b5c78a2b295835e8cf726762dec4dbc265f64adec2708160dacaa1e9a728b_1280.jpg"
+    "cover": "https://pixabay.com/get/g9bb87d57eebf0658ae6bc6705ddfcae968d9b8c53f6624e7ddc0a9a13300bf693cfb44354c14ad389dfbc753f60b4c0b4329e72a6af059d2fdeb76a359a0e40c_1280.jpg"
   },
   {
     "id": "sgt-tetris",
@@ -209,7 +209,7 @@
     "playable": true,
     "local": false,
     "url": "https://github.com/Simple-Game-Tutorials",
-    "cover": "https://pixabay.com/get/g01d8c4e6fe461993eaaa33ad2acc459790d03a98203fc1b919d2c045fde525501712ddbfda335bc39403ade58b900ec2a06b5f650cf73fc00734953ce2a4b85b_1280.jpg"
+    "cover": "https://pixabay.com/get/gaccbd335bc50fadbfe1bbe11cdc4b11fbf6c23be352614957ef69e66f06f7efc6fa93e59ac0df21de4d047b202264e9b381e00e5a567e10a63dec1939641d8c9_1280.jpg"
   },
   {
     "id": "sgt-asteroids",
@@ -225,7 +225,7 @@
     "playable": true,
     "local": false,
     "url": "https://github.com/Simple-Game-Tutorials",
-    "cover": "https://pixabay.com/get/g19b55d284d1ccdaa95103164bbc478a9f8c50ba484a3533a6023e6b7eda89fdabc5379f00afd7192a7263cfd93ac46c498c4ad9ec36cd6290ef52dc8c36731f0_1280.jpg"
+    "cover": "https://pixabay.com/get/g6b58a1d448ea27725d2643ec8ec9d2bd3132370c07339d98f646110ee2070791efc8bccba02c2bf3d65a778cf25913d6e98f85da1b118c9490238da3c97e6146_1280.jpg"
   },
   {
     "id": "sgt-minesweeper",
@@ -241,7 +241,7 @@
     "playable": true,
     "local": false,
     "url": "https://github.com/Simple-Game-Tutorials",
-    "cover": "https://pixabay.com/get/gebd38f9e1c3e3cbd8e083d7cc6be947babdc2a28aaa65d4424efa53a48c96c5c5e1b5c78a2b295835e8cf726762dec4dbc265f64adec2708160dacaa1e9a728b_1280.jpg"
+    "cover": "https://pixabay.com/get/g9bb87d57eebf0658ae6bc6705ddfcae968d9b8c53f6624e7ddc0a9a13300bf693cfb44354c14ad389dfbc753f60b4c0b4329e72a6af059d2fdeb76a359a0e40c_1280.jpg"
   },
   {
     "id": "browse-itchio",
@@ -314,7 +314,7 @@
       "Respins and Hold & Win rounds can chain, so let the animation finish before spinning again.",
       "Each game's RTP is reproducible from a seed, so results are fair and auditable."
     ],
-    "cover": "https://pixabay.com/get/gab8e3eac14acc54804a059ee479dafce2959688f53c499f5253fd86cf9002555b2be20db6363857cc622eb19d91dfd0470767d1962733c671241ddda648de0a1_1280.jpg"
+    "cover": "https://pixabay.com/get/gff949a523d20e4fc12840a2f0f1a053ae8f000067cc446db57ca09992f9e4dda98f3d6380f6a2e2c7c438cf0b701e5c2625f13eef1dcbb88c8fbb693cfc0fc8c_1280.jpg"
   },
   {
     "id": "gh-ancientbeast",
@@ -331,7 +331,7 @@
     "playable": true,
     "local": false,
     "url": "https://github.com/FreezingMoon/AncientBeast",
-    "cover": "https://pixabay.com/get/gc4187e2d7c13611253c2eeff9f9301f27f6122e674cbca0362dfb8ae9bab3e649055352f50c0be94f18f257ef990768d2f22d82a6aab565151d71cad6b77e483_1280.png"
+    "cover": "https://pixabay.com/get/gd9ad76dbfc501952bb5ace1ab3b582edee2eba0dc26b124416da01eac630b630824f9351d34e21154edc36f41d8addb084f95c6a0fd73b22134b88422e1a03bd_1280.png"
   },
   {
     "id": "gh-kaetram",
@@ -348,7 +348,7 @@
     "playable": true,
     "local": false,
     "url": "https://github.com/Kaetram/Kaetram-Open",
-    "cover": "https://pixabay.com/get/g76133e21e26a665be06fd4bb3243b83f3455fcd32d961cd09f57d0711b14913a17f29d6aae19ec4233a1acd44b388923ca24281907a8430c62447ee1aef9c014_1280.jpg"
+    "cover": "https://pixabay.com/get/g35af2cebdf3774b826f42901c69be0176560174d4ed13fe143b8267ecf9e2de76f5a1fb28e96b8b8c189e5caf06d9dd7a1e3f378de96a94959a5365bb5177d88_1280.jpg"
   },
   {
     "id": "gh-sandboxels",
@@ -365,7 +365,7 @@
     "playable": true,
     "local": false,
     "url": "https://github.com/R74nCom/sandboxels",
-    "cover": "https://pixabay.com/get/g0bab6b9255cc67fe1ecd6cab9ba6a5b9bad4557307d998f82531bbcba7c22f1d9427e3e416773d0cb7ceaa487b44f2f9ad7336ada57194fbb071e8cd49ddcb9f_1280.jpg"
+    "cover": "https://pixabay.com/get/g978ae4a17e5dcebfc3ad0391ae14d34b15ce71fe685463251559abc82099c3b7efb5c5de5d43a0e392e7cf91175481269b7205d84dcdb1ae5c976fd68adca31f_1280.jpg"
   },
   {
     "id": "gh-c4",
@@ -382,7 +382,7 @@
     "playable": true,
     "local": false,
     "url": "https://github.com/kenrick95/c4",
-    "cover": "https://pixabay.com/get/gdef6c70cadacae77369c2f88399c9ad4e2349eb328b6ebe1b8cca669728f25ca9db516ac1eeacd2cb1069e2e268b4944b4006a3003f641a40778b73e12933996_1280.jpg"
+    "cover": "https://pixabay.com/get/g59f7752361b1867ff94614be80431fbba6a967c1cf04bc14f8b7fbd27760eb70b619ed7d98ce6047cc39c1c240119a72e5ca2d185fe8a390c98c936a4062f681_1280.jpg"
   },
   {
     "id": "gh-slither-clone",
@@ -399,7 +399,7 @@
     "playable": true,
     "local": false,
     "url": "https://github.com/knagaitsev/slither.io-clone",
-    "cover": "https://pixabay.com/get/g7853d5accfe2eab4c12a91f644f08571e7a5b181489f552b9833827993e4839a72fa5367a769dcf1f125ebdfa3b658819b8efd1fa3002f5afa46c8920e6e16a4_1280.jpg"
+    "cover": "https://pixabay.com/get/g3713eb5c988eb9f9739e8c4fbd4c0378cdfde5c2e2605d9a8c7b19708d7817e5cb50bde37fe668d255d6588f5cef0563d95cee37d335f7d30a2d01825f813983_1280.jpg"
   },
   {
     "id": "gh-browserquest",
@@ -416,7 +416,7 @@
     "local": false,
     "url": "https://github.com/mozilla/BrowserQuest",
     "stars": 9373,
-    "cover": "https://pixabay.com/get/ga812e7ed8f29a8d4ba2715e5e7511922b895e780b7980268968e7f91b2549c3b4feb9c7843d82e4829321ff95c8a4a95af5a3ac96d3588218697c5a1dbbef072_1280.jpg"
+    "cover": "https://pixabay.com/get/g64b0a1ac1561baaff02df643ce919478e173559aaaa83bdf1b5bed34ebf141508e368fcdea20805a0d23fa8ceb2bcf5f537bad69d922cd23a729c1b785aec75f_1280.jpg"
   },
   {
     "id": "gh-pacman",
@@ -433,7 +433,7 @@
     "local": false,
     "url": "https://github.com/mumuy/pacman",
     "stars": 1646,
-    "cover": "https://pixabay.com/get/g77a0cc6d2ee690651ec2d25526be12ee41e6c12f044b2d1f842bcee1dd049a30e260cb36f0adf0bf633e051f2ee4e13afc6939359f3091eed0e396763053b6c6_1280.jpg"
+    "cover": "https://pixabay.com/get/gd6026425ac89747675c86c297b075672b3c1ecde640cc64dba3f423aab33af61569d706f73417935906cde66d24488bc57331f813995689ae5882b4f9f84effe_1280.jpg"
   },
   {
     "id": "gh-mykonos-island-voxels",
@@ -450,7 +450,7 @@
     "local": false,
     "url": "https://github.com/boona13/mykonos-island-voxels",
     "stars": 1061,
-    "cover": "https://pixabay.com/get/g540337104f7ba82703393d59e586ef70b3f5539ee2a078bb922d57c0a77f82a66b64384993ea8671f2ca7cb7ab142202839b3055f3559e0440d9541a946e53db_1280.jpg"
+    "cover": "https://pixabay.com/get/gf0193bd0ba4b9485e544b6e4ac29b260c6927ea8d54025bb67a7298e56ddd0410cb95b0c6cf1fbe4c111d79f555106a4ef3dc17a29c68108ab464b4e78eb4842_1280.jpg"
   },
   {
     "id": "gh-paint-board",
@@ -467,7 +467,7 @@
     "local": false,
     "url": "https://github.com/LHRUN/paint-board",
     "stars": 2635,
-    "cover": "https://pixabay.com/get/gbadce1260ff1c67630340138f63869b8006ba15d2e788783d23bdbeac506ee54d2cc361abd8c7d124526db1e96c8860bd3c376eb42b1db31bcf5f8a31156fcc9_1280.jpg"
+    "cover": "https://pixabay.com/get/g430f58df4bb4dcbe5a41bdac1564c2149e457d5a664015e2133c9b81a470d006437d0dc7fafb1b90bc6ed5958bfbdc0c44bc861a38e01b46912c1c0065114731_1280.jpg"
   },
   {
     "id": "gh-openscope",
@@ -484,7 +484,7 @@
     "local": false,
     "url": "https://github.com/openscope/openscope",
     "stars": 840,
-    "cover": "https://pixabay.com/get/g110f0826f4b879ace38823f7d35ac7f7d96d64f1fe96cc15fe2fde9b43a8acd15a61f841727b41343cd3f2663c96fba98b2dcb4f4db8adc514035cde92349c31_1280.jpg"
+    "cover": "https://pixabay.com/get/gc2f7b0002357de36aa7c5aa281cb31bd6492a5a39b1bcb08e91da26cd8e9684ac866599c8feb3f217aafb78ed8a1fe4b86dc1fbf9e89d060d3a94f409d4eac39_1280.jpg"
   },
   {
     "id": "gh-d-zone",
@@ -501,7 +501,7 @@
     "local": false,
     "url": "https://github.com/d-zone-org/d-zone",
     "stars": 592,
-    "cover": "https://pixabay.com/get/g24759d418d4df7dd3a34bf48967ee1b356c61490bc9d5ddf5713e71c0f178ba69edce84265e03bd0dedb15f05bce89b6cf81063eb1750437d4db993f73938f3a_1280.jpg"
+    "cover": "https://pixabay.com/get/g7ffcb1c96cee34bf1ae431a95a33784630e8c4a8df9a11cacc1c4f8edc2eadb5f4f8532eb066bb7baa17549904e7ce61b11ea7d97346317e839b5bcded8ea153_1280.jpg"
   },
   {
     "id": "gh-webosu",
@@ -518,7 +518,7 @@
     "local": false,
     "url": "https://github.com/111116/webosu",
     "stars": 651,
-    "cover": "https://pixabay.com/get/g6b69413f61d374a823caba5105832a617bc26fc2bc70472d4b13b78891ff24794b6b0995a47e543118ada222bdcced37863d3b3971b3d31b86858cb9e4b29a70_1280.jpg"
+    "cover": "https://pixabay.com/get/gd99dcbace6ddc128e85db4f29ac6c005b5d6428035d3455bd7b3a7ea9d1a8c15d407f12b6c9d2fdcd0800e7c0a75b3cf8c24830d945c661573d58f950aec16d0_1280.jpg"
   },
   {
     "id": "gh-mk48",
@@ -535,7 +535,7 @@
     "local": false,
     "url": "https://github.com/SoftbearStudios/mk48",
     "stars": 448,
-    "cover": "https://pixabay.com/get/g02648de89601f4d34fd090673d3d58e3d0853e987ca94a9a130bfc7dfdc8a6302cadbdd30fb6868e762aa6f0e2618bd2ce3f9ee37bc0d5f01edd943289feba88_1280.jpg"
+    "cover": "https://pixabay.com/get/gd3cc26789fa33ae57120c8bb0a4786471dcd36759fb1862f45907c5ec21943d2c22f5dd94d37b8a897c79017c9e59be33d83b5cfcbe374972e142b74254c2925_1280.jpg"
   },
   {
     "id": "gh-billiards",
@@ -552,7 +552,7 @@
     "local": false,
     "url": "https://github.com/tailuge/billiards",
     "stars": 255,
-    "cover": "https://pixabay.com/get/gac0acd56ee07c33741948604a4bf6607bddeee9f49508ee635d3ea94ac8fc5ddf0ae582f0452db2cfa45093d2835a3e0826b611880584d299f9d2b1da46c8950_1280.jpg"
+    "cover": "https://pixabay.com/get/gff1fe602b1a670ee5571d02a5a726c6e7bc7931d6b9426af0dfe0b5fdbdcd16a6345cf2ec5054a87efb81caf471d56de2f8927f22a80e988725c0f9f62d62e75_1280.jpg"
   },
   {
     "id": "gh-kiomet",
@@ -569,7 +569,7 @@
     "local": false,
     "url": "https://github.com/SoftbearStudios/kiomet",
     "stars": 179,
-    "cover": "https://pixabay.com/get/g53dc9a48f6f3b230a66f52a03a17472438b743c9c6689909958e93019cb1a829fbc303df07d5cfaefab3b45fbea88199835cc4e542d9c8d915ba83e19ed178ff_1280.jpg"
+    "cover": "https://pixabay.com/get/g420f8ae027eb3d9bb9c3441a5f0e743e1d9ec5dd51a660e65bd2b526757679f0434ddba2b0888e56d616742a7e1f99494cf23c5113e3c41140a0198150fe174b_1280.jpg"
   },
   {
     "id": "gh-parrothunt",
@@ -586,7 +586,7 @@
     "local": false,
     "url": "https://github.com/Lallassu/ParrotHunt",
     "stars": 94,
-    "cover": "https://pixabay.com/get/gc6b9ee5a05261d74e333b3b51e9e90432d8419edde590430474085c596c00d025c32b6b255bbb6c5525c58764be3a92f2f54fb3048d35ffdde22e2e101063ee6_1280.jpg"
+    "cover": "https://pixabay.com/get/ga71837632679f45794826ffc226d8c88a75eac996cb74a3588bb9114bd953f58158ca66d949b8963cc5534b9b038bbd9467057d5773c32538763c66e5584516e_1280.jpg"
   },
   {
     "id": "gh-openfrontio",
@@ -603,7 +603,7 @@
     "local": false,
     "url": "https://github.com/openfrontio/OpenFrontIO",
     "stars": 2775,
-    "cover": "https://pixabay.com/get/gabf9ebbf045dac21fc184435469dfa09c8bb5f54178fa482624da5196b40c7188186f77faf921139a44c671b82ed279b80a3ed70f95eaeb568d8acd84f66628b_1280.jpg"
+    "cover": "https://pixabay.com/get/gc5e99183b1e0c05047c1644bb1c9e2b007efe5c599f1e3913a70986a00810ff4c0bd40cf68552e735d32289bd1c421a96ef03a724ead2ea520954fdf97a99955_1280.jpg"
   },
   {
     "id": "gh-biomes-game",
@@ -620,7 +620,7 @@
     "local": false,
     "url": "https://github.com/ill-inc/biomes-game",
     "stars": 2685,
-    "cover": "https://pixabay.com/get/g60a5d8ee81503687a9ddca57918fe417eb84f8e432dfe5b439c91f0270cc7b23065ed1311727eed120148470e3389a3ea8809699b6e60a15c702e410acc68986_1280.jpg"
+    "cover": "https://pixabay.com/get/gc3073b81be7365cabc8a798d9c2d261fce7125874f25edc969fe11ae403b15eb0a2e2bf4bc127687dd70eabfcdba919774b8073b503aa6a65d89d1de48f94e82_1280.jpg"
   },
   {
     "id": "gh-cube-composer",
@@ -637,7 +637,7 @@
     "local": false,
     "url": "https://github.com/sharkdp/cube-composer",
     "stars": 2046,
-    "cover": "https://pixabay.com/get/g8e0d079aa3f6ed91eebf320afb439a5df46817859e20ab396d13b39fbc198c17b0ebf1917900ec112207206e3be75b6784ab0ade88616a8c215f8ed18df288e7_1280.jpg"
+    "cover": "https://pixabay.com/get/g1bcac04b7f5549b795b999f437871c26abd13483bf044bbb3682c0a72a49a28e35ee4c6aae1b5cd5e2595017f83e002d4011193e957371f4aa7e825a6942b9d6_1280.jpg"
   },
   {
     "id": "gh-hypersomnia",
@@ -654,6 +654,6 @@
     "local": false,
     "url": "https://github.com/TeamHypersomnia/Hypersomnia",
     "stars": 1680,
-    "cover": "https://pixabay.com/get/g14bfaf9d1bc643c0ec5745c6d0c07cf9cc43b9fc2d73b8332c6925db14c53e8b74c7b123031972dd21398f1278a0abdb8c4fab6ad8e63ca0724514e018c5d648_1280.jpg"
+    "cover": "https://pixabay.com/get/g290e274e117e6b73a69a0a72225b5cefca7f6fb1c16b3d6aeb5347f945e72ff886e3c1d2608d63aa891894edcbf8614ec89c77a098c91d892101c48d87118680_1280.jpg"
   }
 ]

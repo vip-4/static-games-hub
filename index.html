@@ -15,6 +15,7 @@
   <meta name="theme-color" content="#0e1020" />
   <meta name="color-scheme" content="dark" />
   <link rel="canonical" href="https://openarc.example.com/" />
+  <!--HREFLANG-->
   <link rel="alternate" type="application/json" href="/data/games.json" title="OpenArc game catalog (JSON)" />
 
   <!-- ============ Open Graph ============ -->
@@ -46,20 +47,7 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text y='14' font-size='14'>🎮</text></svg>" />
 
   <!-- ============ Structured data ============ -->
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Organization","name":"OpenArc",
-   "url":"https://openarc.example.com/",
-   "description":"Curated hub of lightweight open-source static HTML5 games.",
-   "logo":"https://openarc.example.com/assets/img/cover.png"}
-  </script>
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"WebSite","name":"OpenArc",
-   "url":"https://openarc.example.com/","inLanguage":"en",
-   "description":"Curated hub of lightweight open-source static HTML5 games.",
-   "potentialAction":{"@type":"SearchAction",
-     "target":"https://openarc.example.com/games.html?q={search_term_string}",
-     "query-input":"required name=search_term_string"}}
-  </script>
+  <!--SITE_JSONLD-->
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
     {"@type":"ListItem","position":1,"name":"Home","item":"https://openarc.example.com/"},

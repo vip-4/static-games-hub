@@ -34,6 +34,12 @@ COPY = ["assets", "data", "slots", "robots.txt", "_headers", "_redirects"]
 
 DEFAULT_SITE = "https://openarc.example.com"
 
+# Languages the site is published in, as hreflang codes. Each entry maps to an
+# hreflang attribute; extend this (and publish the translated pages, e.g. /es/,
+# /zh/) to switch on full multilingual hreflang — the build emits the reciprocal
+# alternate link set automatically for every page. `x-default` is always added.
+SITE_LANGS = ["en"]
+
 # Default thumbnail glyph used when a catalog entry omits "icon". Kept as a plain
 # string constant so it never lands inside an f-string expression (which would
 # raise SyntaxError on Python < 3.12, e.g. the CI runner's Python 3.11).
@@ -54,14 +60,140 @@ def play_href(g: dict) -> str:
     return f"/games/{g['id']}.html"
 
 
+def site_jsonld(site_url: str) -> str:
+    """Site-wide Organization + WebSite structured data, injected into every page head.
+
+    Carrying publisher identity on every URL (not only the homepage) is a
+    search-engine best practice and lets the Knowledge Graph / site links pick
+    up the brand consistently across crawled pages.
+    """
+    site = site_url.rstrip("/")
+    org: dict[str, Any] = {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "OpenArc",
+        "url": site + "/",
+        "logo": site + "/assets/img/cover.png",
+        "description": "Curated hub of lightweight open-source static HTML5 games.",
+    }
+    web: dict[str, Any] = {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "OpenArc",
+        "url": site + "/",
+        "inLanguage": "en",
+        "description": "Curated hub of lightweight open-source static HTML5 games.",
+        "publisher": {"@type": "Organization", "name": "OpenArc", "url": site + "/"},
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": site + "/games.html?q={search_term_string}",
+            "query-input": "required name=search_term_string",
+        },
+    }
+    return "\n".join([
+        '<script type="application/ld+json">',
+        json.dumps(org, ensure_ascii=False),
+        "</script>",
+        '<script type="application/ld+json">',
+        json.dumps(web, ensure_ascii=False),
+        "</script>",
+    ])
+
+
+def hreflang_tags(site_url: str, page_url: str) -> str:
+    """Generate reciprocal hreflang <link> tags for internationalization SEO.
+
+    Every language version must reference all others (and itself). With a single
+    published language we emit `en` + `x-default` (both pointing at the page);
+    extend SITE_LANGS and publish translated pages (e.g. /es/, /zh/) to activate
+    full multilingual hreflang — the reciprocal set is built automatically here.
+    """
+    site = site_url.rstrip("/")
+    abs_url = page_url if page_url.startswith("http") else site + page_url
+    e = html.escape
+    tags = [f'<link rel="alternate" hreflang="{lang}" href="{e(abs_url)}" />'
+            for lang in SITE_LANGS]
+    tags.append(f'<link rel="alternate" hreflang="x-default" href="{e(abs_url)}" />')
+    return "\n".join("  " + t for t in tags)
+
+
+def render_breadcrumb(trail: list[tuple[str, str | None]]) -> str:
+    """Visible, semantic breadcrumb. `trail` is (name, url); url=None = current page.
+
+    Pairs with the BreadcrumbList JSON-LD so assistive tech and crawlers see the
+    same hierarchy in markup and structured data.
+    """
+    e = html.escape
+    items = []
+    for name, url in trail:
+        if url is None:
+            items.append(f'      <li aria-current="page">{e(name)}</li>')
+        else:
+            items.append(f'      <li><a href="{e(url)}">{e(name)}</a></li>')
+    return (
+        '  <nav aria-label="Breadcrumb" class="breadcrumb-nav">\n'
+        '    <ol class="breadcrumb">\n' + "\n".join(items) + "\n    </ol>\n  </nav>"
+    )
+
+
+def cover_base(url: str) -> str | None:
+    """Return a resizable base URL (with a size token) for a cover, or None.
+
+    Pexels resizes via `?w=` (no token needed). Pixabay embeds a `_SIZE` token
+    in the filename (`..._1280.jpg`); older stored links are the bare
+    `.../g<hash>` form with no size — we normalise those to the 1280 variant,
+    which is the same image served at a known, resizable size.
+    """
+    if not url:
+        return None
+    if "images.pexels.com" in url:
+        return url.split("?", 1)[0]
+    if "pixabay.com" in url:
+        m = re.search(r"(.*/g[a-f0-9]+?)(?:_\d+)?(\.jpg)?$", url, re.I)
+        if not m:
+            return None
+        return f"{m.group(1)}_1280.jpg"
+    return None
+
+
+def cover_srcset(url: str) -> str | None:
+    """Build a responsive `srcset` from a Pexels / Pixabay cover URL.
+
+    Pexels supports the `w=` query param; Pixabay embeds the size token in the
+    filename (e.g. `_1280.jpg`). Returns None when the host is unrecognised or
+    not resizable, so callers fall back to a plain `src`.
+    """
+    if not url:
+        return None
+    if "images.pexels.com" in url:
+        base = url.split("?", 1)[0]
+        return ", ".join(f"{base}?auto=compress&cs=tinysrgb&w={w} {w}w"
+                         for w in (400, 800, 1200))
+    if "pixabay.com" in url:
+        base = cover_base(url)
+        if not base:
+            return None
+        # Pixabay serves 640 and 1280 reliably; 1920 is not always available,
+        # so we emit the two sizes that are guaranteed to exist.
+        m = re.search(r"(.*_)(\d+)((\.\w+)$)", base)
+        if not m:
+            return None
+        stem, _n, ext = m.group(1), m.group(2), m.group(3)
+        return ", ".join(f"{stem}{w}{ext} {w}w" for w in (640, 1280))
+    return None
+
+
 def render_item(g: dict) -> str:
     e = html.escape
     ea = lambda s: html.escape(s, quote=True)  # noqa: E731 (attr-safe escaping)
     cover = g.get("cover")
     if cover:
+        base = cover_base(cover) or cover
+        ss = cover_srcset(cover)
+        srcset = f' srcset="{ea(ss)}" sizes="(max-width: 600px) 100vw, 240px"' if ss else ""
         # Decorative cover; the emoji glyph is the accessible fallback if the
         # image fails to load (onerror removes the <img>, revealing the glyph).
-        thumb = (f'<img class="cover" src="{ea(cover)}" alt="" loading="lazy" '
+        thumb = (f'<img class="cover" src="{ea(base)}"{srcset} alt="" loading="lazy" '
                  f'width="400" height="120" onerror="this.remove()">')
     else:
         thumb = ""
@@ -326,8 +458,9 @@ def render_game_detail(g: dict, site_url: str) -> str:
     lic = g.get("license", "varies")
     cover = g.get("cover")
     # Social/crawler preview image: the game cover if we have one, else the
-    # site default. Cover URLs are absolute (Pexels/Pixabay CDN), so use as-is.
-    og_img = cover if cover else (site + "/assets/img/cover.png")
+    # site default. Cover URLs are absolute (Pexels/Pixabay CDN); normalise the
+    # Pixabay bare links to the 1280 variant so the 1200x630 OG slot is filled.
+    og_img = (cover_base(cover) or cover) if cover else (site + "/assets/img/cover.png")
 
     keywords = ", ".join([title] + tags + [g.get("source", "other"), lic,
                                           "open source game", "HTML5 game",
@@ -342,9 +475,12 @@ def render_game_detail(g: dict, site_url: str) -> str:
     # ---- visible body ----
     body = []
     if cover:
+        base = cover_base(cover) or cover
+        ss = cover_srcset(cover)
+        srcset = f' srcset="{ea(ss)}" sizes="(max-width: 820px) 100vw, 820px"' if ss else ""
         body.append(
             '      <figure class="game-cover-wrap">\n'
-            f'        <img class="game-cover" src="{ea(cover)}" '
+            f'        <img class="game-cover" src="{ea(base)}"{srcset} '
             f'alt="{e(title)} — themed artwork" loading="lazy" '
             f'width="1200" height="630">\n      </figure>')
     body.append("      <dl class=\"game-meta\">")
@@ -407,6 +543,10 @@ def render_game_detail(g: dict, site_url: str) -> str:
         "__OG_IMG__": ea(og_img),
         "__LEAD__": ea(desc or title),
         "<!--JSONLD-->": game_schema_head(g, site_url, image=og_img),
+        "<!--SITE_JSONLD-->": site_jsonld(site_url),
+        "<!--HREFLANG-->": hreflang_tags(site_url, url),
+        "<!--BREADCRUMB-->": render_breadcrumb(
+            [("Home", "/"), ("Games", "/games.html"), (title, None)]),
         "<!--GAME_CONTENT-->": "\n".join(body),
     }
     for k, v in repl.items():
@@ -672,6 +812,9 @@ def build(base: str = "/", site_url: str = DEFAULT_SITE, cname: str | None = Non
         content = content.replace("<!--STATIC_GAMES-->", items_html)
         content = content.replace("<!--ITEMLIST_JSONLD-->", itemlist)
         content = content.replace("<!--SOURCE_SECTION-->", render_source_section(games))
+        content = content.replace("<!--SITE_JSONLD-->", site_jsonld(site_url))
+        page_url = "/" if page == "index.html" else f"/{page}"
+        content = content.replace("<!--HREFLANG-->", hreflang_tags(site_url, page_url))
         with open(os.path.join(DIST, page), "w", encoding="utf-8") as fh:
             fh.write(content)
         print(f"built {page} ({len(games)} games)")

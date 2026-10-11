@@ -503,7 +503,13 @@ def fetch_cover_pexels(queries: list[str], key: str) -> Optional[str]:
 
 
 def fetch_cover_pixabay(queries: list[str], key: str) -> Optional[str]:
-    """Return a cover URL from Pixabay (fallback source), or None on failure."""
+    """Return a cover URL from Pixabay (fallback source), or None on failure.
+
+    Pixabay's image URLs embed a `_SIZE` token (e.g. `..._1280.jpg`) and are
+    served from pixabay.com/get/ as well as cdn.pixabay.com, so they are
+    resizable. We prefer `largeImageURL` (1280px) for crisp display, then
+    `webformatURL` (640px). `fullHDURL` is often absent, so it is not relied on.
+    """
     for query in queries:
         try:
             status, body = _get_json(

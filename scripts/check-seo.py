@@ -24,6 +24,10 @@ import sys
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 DIST = os.path.join(ROOT, "dist")
 
+# Reuse the build's srcset logic so the check never drifts from generation.
+sys.path.insert(0, os.path.join(ROOT, "scripts"))
+import build as _build  # noqa: E402
+
 
 def catalog_detail_pages() -> list[str]:
     """Every game now has a canonical detail page under dist/games/{id}.html."""
@@ -95,8 +99,25 @@ def main() -> int:
         check(re.search(r"<h1[\s>]", html) is not None, "has <h1>", "missing <h1>")
         check("skip-link" in html, "has skip link", "missing skip link")
 
+        # ---- hreflang (internationalization SEO) ----
+        if page != "404.html":
+            check('rel="alternate" hreflang="x-default"' in html,
+                  "has hreflang x-default", "missing hreflang x-default")
+            for lang in ("en",):
+                check(f'hreflang="{lang}"' in html,
+                      f"has hreflang {lang}", f"missing hreflang {lang}",
+                      warn_only=True)
+
+        # ---- visible semantic breadcrumb ----
+        is_games = page == "games.html"
+        is_detail = page.startswith("games/")
+        if is_games or is_detail:
+            check('aria-label="Breadcrumb"' in html,
+                  "has visible breadcrumb", "missing visible breadcrumb")
+
         blocks = re.findall(r'<script type="application/ld\+json">(.*?)</script>', html, re.S)
         check(bool(blocks), "has JSON-LD", "no JSON-LD")
+        types = set()
         for b in blocks:
             try:
                 data = json.loads(b)
@@ -105,10 +126,26 @@ def main() -> int:
                 print(f"  FAIL invalid JSON-LD: {exc}")
                 continue
             t = data.get("@type", "?")
+            types.add(t)
             print(f"  ok   JSON-LD @type={t}")
             if t not in {"Organization", "WebSite", "BreadcrumbList", "ItemList",
                          "FAQPage", "HowTo", "VideoGame"}:
                 warnings.append(f"{page}: unknown schema type {t}")
+
+        # ---- site-level structured data on every indexable page ----
+        if page != "404.html":
+            check("Organization" in types,
+                  "has Organization JSON-LD", "missing Organization JSON-LD")
+            check("WebSite" in types,
+                  "has WebSite JSON-LD", "missing WebSite JSON-LD")
+
+        # ---- responsive cover image (srcset) where a resizable cover exists ----
+        if is_detail and "game-cover-wrap" in html:
+            m = re.search(r'<img class="game-cover"[^>]*\ssrc="([^"]+)"', html)
+            src = m.group(1) if m else ""
+            if _build.cover_srcset(src):
+                check("srcset=" in html, "cover image has srcset",
+                      "cover missing srcset")
 
     # Pre-rendered catalog (the key crawler-indexability check)
     print("\n[crawlability]")
