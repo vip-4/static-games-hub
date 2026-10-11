@@ -1,0 +1,50 @@
+name: Daily catalog refresh
+
+# Keeps the OpenArc catalog fresh. Every day it re-pulls lightweight open-source
+# static HTML5 games from GitHub (topics: html5-game, canvas-game, webgl-game,
+# browser-game, game-off, js13k, ludum-dare) and itch.io, then commits any NEW
+# entries into data/games.json. The push to main triggers the Deploy workflow
+# (pages.yml), which rebuilds and re-publishes the static site — so new games go
+# live automatically with no manual step.
+#
+# This is the "GitHub Trending 每日更新" + itch.io / Ludum Dare pipeline:
+#   - GitHub topic searches are re-run daily, so newly popular / newly tagged
+#     open-source HTML5 games (including `ludum-dare` jam entries) appear.
+#   - Simple Game Tutorials and itch.io open-source games are curated/browsable
+#     entries already present in the catalog.
+#
+# SECURITY: credentials are referenced ONLY as ${{ secrets.* }} — never inline.
+#   - GITHUB_TOKEN is provided automatically by Actions (higher API rate limit).
+#   - ITCH_IO_API_KEY is optional; add it under Settings ▸ Secrets and variables
+#     ▸ Actions if you want the authenticated account's own games pulled too.
+#     Without it, the itch.io open-source browse link is kept (itch.io's API is
+#     account-scoped and cannot search the whole site by the open-source tag).
+
+on:
+  schedule:
+    - cron: "23 2 * * *"   # daily at 02:23 UTC
+  workflow_dispatch: {}     # allow manual runs from the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Refresh catalog from sources
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ITCH_IO_API_KEY: ${{ secrets.ITCH_IO_API_KEY }}
+        run: python scripts/fetch-games.py --merge
+      - name: Commit if catalog changed
+        run: |
+          git config user.name "openarc-bot"
+          git config user.email "bot@openarc.example.com"
+          git add data/games.json data/games.generated.json
+          git diff --cached --quiet || git commit -m "chore: daily catalog refresh (GitHub + itch.io)"
+          git push
